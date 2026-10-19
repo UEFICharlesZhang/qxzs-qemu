@@ -44,10 +44,14 @@ static void test_uart(void)
     QTestState *qts = qtest_init(MACHINE_CMD);
 
     /*
-     * LSR bit 5 (THRE) is set at reset, and the divisor latch is not
-     * selected, so offset 5 reads the LSR.
+     * The UART uses reg-shift 2 (32-bit register spacing), so LSR is at
+     * offset 5 * 4 = 0x14.  Bit 5 (THRE) is set at reset, and the divisor
+     * latch is not selected.
      */
-    g_assert_cmphex(qtest_readb(qts, UART_BASE + 5) & 0x20, ==, 0x20);
+    g_assert_cmphex(qtest_readb(qts, UART_BASE + (5 << 2)) & 0x20, ==, 0x20);
+
+    /* Register 0 (THR/RBR) must be writable without aborting. */
+    qtest_writeb(qts, UART_BASE, 'A');
 
     qtest_quit(qts);
 }

@@ -40,7 +40,7 @@ scope.
 
 ```
 0x0000_0000  (unmapped; no reset vector — see §9 on -bios)
-0x0C00_0000  8250 UART       0x0000_0008   (serial-mm maps 8 bytes at regshift=0)
+0x0C00_0000  8250 UART       0x0000_0100   (regshift=2, so 32 bytes are mapped)
 0x0E00_0000  GICD            0x0001_0000   (64 KiB)
 0x0E04_0000  GITS            0x0002_0000   (128 KiB)
 0x0E08_0000  GICR            0x0020_0000   (2 MiB = 8 × 0x40000 GICv4 frames)
@@ -407,29 +407,26 @@ them is harmless (they simply never assert) and keeps the table identical to
 ### 4.5 8250 UART
 
 ```c
-serial_mm_init(get_system_memory(), N2_REF_UART_BASE, 0,   /* regshift */
+serial_mm_init(get_system_memory(), N2_REF_UART_BASE,
+               N2_REF_UART_REGSHIFT,             /* 2 */
                qdev_get_gpio_in(s->gic, N2_REF_UART_SPI),
                115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
 ```
 
-`regshift=0` means true 8250 byte-spaced registers. The device creates its own
-MMIO region, sized `8 << regshift` bytes (`hw/char/serial-mm.c`), so with
-`regshift=0` only 8 bytes are mapped. Two consistent options:
+The reference platform (`refer-sys.dts`) puts the 16550 on a 32-bit AXI4-Lite
+bus, so it uses `reg-shift = <2>` and `reg-io-width = <4>`, and its bootargs
+use `earlycon=uart8250,mmio32,0x0C000000`. The board therefore passes
+`regshift = 2` and advertises the same in the DT. Register `n` is then at byte
+offset `4 * n`, e.g. LSR at `0x0C00_0014`.
 
-- **Declare what is actually there:** DT `reg = <0x0c000000 0x8>`. Simple and
-  honest, but unusual for a real SoC and some tooling assumes a page-sized
-  window.
-- **Keep a 4 KiB DT window:** wrap the device region in an alias, the way
-  `virt` does for PCIe (`memory_region_init_alias()` + add at the base), so the
-  DT can say `0x1000` and the extra bytes are unassigned rather than faulting.
-  The alias target is `sysbus_mmio_get_region(SYS_BUS_DEVICE(smm), 0)`; keep the
-  `SerialMM *` returned by `serial_mm_init()` to reach it.
+The device creates its own MMIO region, sized `8 << regshift` bytes
+(`hw/char/serial-mm.c`), i.e. 32 bytes here, while the reference reserves a
+256-byte page. The DT therefore declares `reg = <0x0 0x0C000000 0x0 0x100>`.
+Bytes 32..255 are not backed; reads there return 0 through the generic
+unassigned handler rather than aborting.
 
-Either way, accesses past the 8 real bytes read as 0 through the generic
-unassigned handler, so they will not abort.
-
-If your hardware puts the 16550 on a 32-bit AXI4-Lite bus, use `regshift=2`
-(32-byte region) and set `reg-shift = <2>; reg-io-width = <4>;` in the DT.
+If you instead need byte-spaced registers, use `regshift = 0` (8-byte region)
+and drop `reg-shift` / `reg-io-width` from the DT.
 
 `serial_mm_init()` is a helper that does the `qdev_new(TYPE_SERIAL_MM)` /
 property setup / `sysbus_realize` / `memory_region_add_subregion()` for you and
@@ -626,12 +623,12 @@ Required nodes:
                         compatible="arm,gic-v3-its"; msi-controller;
                         #msi-cells=1; phandle=<its_ph>
                         reg = <0x0 0x0E040000 0x0 0x00020000>;
-/serial@0c000000        compatible="ns16550a"; reg=<0x0 0x0c000000 0x0 0x1000>;
-                        interrupts=<SPI 1 LEVEL_HI>; clock-frequency=<100000000>
-                        (reg-shift=<2>; reg-io-width=<4> if regshift=2)
-                        NOTE: serial_mm_init() maps only 8 bytes at regshift=0,
-                        so either declare reg size 0x8 here or wrap the device
-                        region in a 4 KiB alias (see §4.5).
+/serial@0c000000        compatible="ns16550a"; reg=<0x0 0x0c000000 0x0 0x100>;
+                        interrupts=<SPI 1 LEVEL_HI>; clock-frequency=<100000000>;
+                        reg-shift=<2>; reg-io-width=<4>; status="okay"
+                        NOTE: serial_mm_init() maps 8 << regshift = 32 bytes;
+                        the remaining 224 bytes of the 256-byte window are
+                        unbacked and read as 0 (see §4.5).
 /pci@40000000           see below
 /memory@80000000        added automatically by arm_load_dtb()
 /chosen                 added automatically; /psci added automatically
@@ -649,9 +646,12 @@ consistent choices: `#address-cells = <1>` + `qemu_fdt_setprop_cell()` (what
 `qemu_fdt_setprop_u64()` (what `sbsa-ref` uses). Pick one and use the matching
 setter; a mismatch silently writes the wrong property length.
 
-PCI node — **copy the shape from `hw/mips/boston.c::fdt_create_pcie()`**,
-because Linux's `pcie-xilinx` driver requires the synthetic child
-interrupt-controller node, not a direct pointer to the GIC:
+PCI node — follow the reference platform DTS (`refer-sys.dts`) and
+`hw/arm/virt.c::create_pcie_irq_map()`: route the INTx lines **directly at the
+GIC**. (An earlier draft copied `hw/mips/boston.c::fdt_create_pcie()`, which
+targets a synthetic child interrupt-controller; that leaves the INTx lines
+pointing at a controller with no parent, so the chain terminates before the
+GIC. Both the reference platform and `virt` point at the GIC instead.)
 
 ```
 /pci@40000000
@@ -669,10 +669,16 @@ interrupt-controller node, not a direct pointer to the GIC:
     msi-map = <0 its_ph 0 0x10000>       /* devid == BDF */
     dma-coherent
     interrupt-map-mask = <0 0 0 7>
-    interrupt-map = 4 entries: <0 0 0 pin  intc_ph pin>
-    /pci@40000000/interrupt-controller
-        interrupt-controller; #address-cells=<0>; #interrupt-cells=<1>; phandle=<intc_ph>
+    interrupt-map = 4 entries of 10 cells each:
+                    <0 0 0 pin  gic_ph 0 0 SPI 33 LEVEL_HI>
 ```
+
+Each `interrupt-map` entry is 10 cells, not 6: 3 child address cells, the PCI
+pin, the GIC phandle, **2 GIC address cells** (the GIC node has
+`#address-cells = <2>`), then the 3-cell GIC specifier. `boston.c` writes
+6-cell entries because its interrupt controller is a synthetic child with
+`#address-cells = <0>`; copying that shape here produces an entry that does not
+reach the GIC.
 
 The cell counts above are the classic trap: `boston.c` can write `ranges` as
 6 cells because its root node uses `#address-cells = <1>`, but this board's
@@ -782,7 +788,7 @@ The test source is picked up automatically as `<name>.c`. Test with
 | GICD_TYPER | `(readl(0x0E000004) & 0x1f) == 8` (288/32 − 1) |
 | ITS present | `readl(0x0E040004) != 0` (GITS_IIDR, `gicv3_iidr()` = `0x43b`) |
 | GICR mapped | `(readl(0x0E080008) & 3) == 3` (GICR_TYPER PLPIS/VLPIS, low word) |
-| UART mapped | `(readb(0x0C000000 + 5) & 0x20) != 0` (LSR.THRE, set at reset) |
+| UART mapped | `(readb(0x0C000000 + (5 << 2)) & 0x20) != 0` (LSR.THRE, set at reset) |
 
 The ECAM read works **without** `BRIDGEEN`: the config region is the
 `PCIExpressHost::mmio` region, and only the separate BAR container
@@ -912,10 +918,10 @@ one, add it at a separate base later.
 **PCIe INTx line.** The RC's single `interrupt_out` is wired to **INTID 65**
 (SPI 33). Three places must agree: `qdev_get_gpio_in(s->gic, 33)` in C, the
 PCI node's `interrupts = <GIC_SPI 33 ...>` in the FDT, and the `interrupt-map`
-entries (which route all four PCI pins to the synthetic interrupt-controller
-child, so the SPI number does not appear there). Writing 65 instead of 33 in
-either C or the FDT is a silent off-by-32: the line still exists, so nothing
-fails at realize time, but the guest never receives the interrupt.
+entries (which also name SPI 33, pointing straight at the GIC). Writing 65
+instead of 33 in either C or the FDT is a silent off-by-32: the line still
+exists, so nothing fails at realize time, but the guest never receives the
+interrupt.
 
 **BAR window.** The root bridge only advertises `0x60000000`–`0x7FFFFFFF`. Any
 BAR the guest places elsewhere either fails allocation or, if below the window,

@@ -71,6 +71,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 #define N2_REF_RAM_BASE       0x80000000ULL
 #define N2_REF_RAM_SIZE_MAX   (2 * GiB)
 #define N2_REF_UART_BASE      0x0C000000ULL
+#define N2_REF_UART_SIZE      0x00000100ULL
+#define N2_REF_UART_REGSHIFT  2
 #define N2_REF_GICD_BASE      0x0E000000ULL
 #define N2_REF_GICD_SIZE      0x00010000ULL
 #define N2_REF_GITS_BASE      0x0E040000ULL
@@ -220,7 +222,14 @@ static void n2_ref_create_gic(N2RefMachineState *s)
 
 static void n2_ref_create_uart(N2RefMachineState *s)
 {
-    serial_mm_init(get_system_memory(), N2_REF_UART_BASE, 0,
+    /*
+     * The reference platform puts the 16550 on a 32-bit AXI4-Lite bus, so
+     * registers are 4 bytes apart (reg-shift 2, reg-io-width 4).  That also
+     * matches the reference bootargs, which use
+     * earlycon=uart8250,mmio32,0x0C000000.
+     */
+    serial_mm_init(get_system_memory(), N2_REF_UART_BASE,
+                   N2_REF_UART_REGSHIFT,
                    qdev_get_gpio_in(s->gic, N2_REF_UART_SPI),
                    115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
 }
@@ -424,11 +433,17 @@ static void n2_ref_fdt_add_uart(N2RefMachineState *s)
     qemu_fdt_add_subnode(fdt, nodename);
     qemu_fdt_setprop_string(fdt, nodename, "compatible", "ns16550a");
     /*
-     * serial_mm_init() with regshift 0 maps exactly 8 bytes, so describe
-     * exactly that much rather than a page that is not backed.
+     * serial_mm_init() maps 8 << regshift bytes, i.e. 32 bytes here, but
+     * the reference platform reserves a 256-byte page for the UART, so
+     * describe that.  Accesses past the mapped 32 bytes fall through to
+     * the unassigned-memory handler and read as zero.
      */
     qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
-                                 2, (uint64_t)N2_REF_UART_BASE, 2, 8);
+                                 2, (uint64_t)N2_REF_UART_BASE,
+                                 2, (uint64_t)N2_REF_UART_SIZE);
+    qemu_fdt_setprop_cell(fdt, nodename, "reg-shift",
+                          N2_REF_UART_REGSHIFT);
+    qemu_fdt_setprop_cell(fdt, nodename, "reg-io-width", 4);
     qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
                            GIC_FDT_IRQ_TYPE_SPI, N2_REF_UART_SPI,
                            GIC_FDT_IRQ_FLAGS_LEVEL_HI);
@@ -443,10 +458,9 @@ static void n2_ref_fdt_add_pcie(N2RefMachineState *s)
 {
     MachineState *ms = MACHINE(s);
     void *fdt = ms->fdt;
-    char *nodename, *intc_name;
-    uint32_t intc_ph = qemu_fdt_alloc_phandle(fdt);
-    uint32_t interrupt_map[4][6];
-    int i;
+    char *nodename;
+    uint32_t interrupt_map[4][10];
+    int pin, i;
 
     nodename = g_strdup_printf("/pci@%" PRIx64,
                                (uint64_t)N2_REF_PCIE_ECAM_BASE);
@@ -491,28 +505,30 @@ static void n2_ref_fdt_add_pcie(N2RefMachineState *s)
     /*
      * Downstream INTx lines.  The xilinx-pcie model collapses all four
      * root-bus pins onto its single interrupt_out line, so every entry
-     * routes to the same GIC SPI.
+     * routes to the same GIC SPI.  Each entry is 10 cells: 3 child
+     * address cells, 1 PCI pin, the GIC phandle, 2 GIC address cells
+     * (the GIC node has #address-cells = 2) and the 3-cell GIC
+     * interrupt specifier.  This matches the reference platform DTS
+     * and hw/arm/virt.c::create_pcie_irq_map().
      */
-    intc_name = g_strdup_printf("%s/interrupt-controller", nodename);
-    qemu_fdt_add_subnode(fdt, intc_name);
-    qemu_fdt_setprop(fdt, intc_name, "interrupt-controller", NULL, 0);
-    qemu_fdt_setprop_cell(fdt, intc_name, "#address-cells", 0);
-    qemu_fdt_setprop_cell(fdt, intc_name, "#interrupt-cells", 1);
-    qemu_fdt_setprop_cell(fdt, intc_name, "phandle", intc_ph);
+    for (pin = 0; pin < 4; pin++) {
+        uint32_t map[] = {
+            0, 0, 0,                        /* devfn 0, any function */
+            pin + 1,                        /* INTA..INTD */
+            s->gic_phandle, 0, 0,           /* parent: the GIC */
+            GIC_FDT_IRQ_TYPE_SPI, N2_REF_PCIE_SPI,
+            GIC_FDT_IRQ_FLAGS_LEVEL_HI,
+        };
+
+        for (i = 0; i < ARRAY_SIZE(map); i++) {
+            interrupt_map[pin][i] = cpu_to_be32(map[i]);
+        }
+    }
 
     qemu_fdt_setprop_cells(fdt, nodename, "interrupt-map-mask", 0, 0, 0, 7);
-    for (i = 0; i < 4; i++) {
-        interrupt_map[i][0] = cpu_to_be32(0);
-        interrupt_map[i][1] = cpu_to_be32(0);
-        interrupt_map[i][2] = cpu_to_be32(0);
-        interrupt_map[i][3] = cpu_to_be32(i + 1);
-        interrupt_map[i][4] = cpu_to_be32(intc_ph);
-        interrupt_map[i][5] = cpu_to_be32(i + 1);
-    }
     qemu_fdt_setprop(fdt, nodename, "interrupt-map",
                      interrupt_map, sizeof(interrupt_map));
 
-    g_free(intc_name);
     g_free(nodename);
 }
 
