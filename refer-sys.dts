@@ -1,0 +1,150 @@
+/dts-v1/;
+// #define GIC_SPI 0
+// #define GIC_PPI 1
+
+// #define IRQ_TYPE_NONE		0
+// #define IRQ_TYPE_EDGE_RISING	1
+// #define IRQ_TYPE_EDGE_FALLING	2
+// #define IRQ_TYPE_EDGE_BOTH	(IRQ_TYPE_EDGE_FALLING | IRQ_TYPE_EDGE_RISING)
+// #define IRQ_TYPE_LEVEL_HIGH	4
+// #define IRQ_TYPE_LEVEL_LOW	8
+
+/memreserve/	0x0000000080000000 0x0000000000010000;
+/ {
+	model = "arm-v9 compliant core with pcie";
+	compatible = "arm,neoverse-rdn2-cfg1", "arm,neoverse";
+	interrupt-parent = <&gic>;
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	chosen {
+		stdout-path = &soc_serial0;
+		// bootargs = "earlycon=uart8250,mmio32,0x0C000000,115200n8 console=ttyS0,115200n8 memtest=17";
+		// bootargs = "console=ttyS0,115200n8 earlycon=uart8250,mmio32,0x0C000000 memtest=3";
+		// bootargs = "earlycon=uart8250,mmio32,0x0C000000";
+		bootargs = "earlycon=uart8250,mmio32,0x0C000000,115200n8 console=ttyS0,115200n8";
+	};
+
+	cpus {
+		#address-cells = <2>;
+		#size-cells = <0>;
+
+		cpu0: cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,neoverse-n2";
+			reg = <0x0 0x0>;
+		};
+	};
+
+	memory@80000000 {
+		device_type = "memory";
+		reg = <0x00000000 0x80000000 0x0000000 0x80000000>;
+	};
+
+	//skip pcie
+	memory@900000000 {
+		device_type = "memory";
+		reg = <0x00000009 0x00000000 0x0000003 0x7fffffff>;
+	};
+
+	timer {
+		compatible = "arm,armv8-timer";
+		interrupts = <1 13 8>,
+			<1 14 8>,
+			<1 11 8>,
+			<1 10 8>;
+	};
+	soc_serial0: serial@c000000 {
+		compatible = "ns16550a";
+		reg = <0x0 0x0C000000 0x0 0x00000100>;
+		// interrupts = <0 66 4>;
+		clock-frequency = <100000000>;
+		baud = <115200>;
+		reg-shift = <2>;
+		reg-io-width = <4>;
+		no-loopback-test = <1>;
+		current-speed = <115200>;
+	};
+	soc {
+		compatible = "simple-bus";
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		gic: interrupt-controller@e000000 {
+			compatible = "arm,gic-v3";
+			reg = <0x0 0x0E000000 0 0x10000>,	// GICD
+			      <0x0 0x0E080000 0 0x1000000>;	// GICR
+			#interrupt-cells = <3>;
+			interrupt-controller;
+			interrupts = <1 9 4>;
+
+			//	its1: msi-controller@e040000 {
+			//		compatible = "arm,gic-v3-its";
+			//		msi-controller;
+			//		#msi-cells = <1>;
+			//		reg = <0x0 0x0E040000 0x0 0x30000>;
+			//		/* Debug: explicitly declare msi-parent for PCIe */
+			//		status = "okay";
+			//	};
+		};
+//		peri_gpio0: gpio@c005000 {
+//			#address-cells = <1>;
+//			#size-cells = <0>;
+//			compatible = "snps,dw-apb-gpio";
+//			reg = <0x0 0x0C005000 0x0 0x1000>;
+//			status = "okay";
+//
+//			porta: gpio-controller@0 {
+//				compatible = "snps,dw-apb-gpio-port";
+//				gpio-controller;
+//				#gpio-cells = <2>;
+//				ngpios = <8>;
+//				reg = <0>;
+//				interrupt-controller;
+//				interrupt-parent = <&gic>;
+//				#interrupt-cells = <2>;
+//				interrupts = <0 33 4>;// gpio0_0 SPI33 (GIC IRQ 65)
+//			};
+//		};
+		 pci0: pci@40000000 {
+		 	compatible = "xlnx,axi-pcie-host-1.00.a";
+		 	device_type = "pci";
+		 	reg = <0 0x40000000 0 0x20000000>;
+		 	status = "okay";
+
+		 	#address-cells = <3>;
+		 	#size-cells = <2>;
+		 	#interrupt-cells = <1>;
+
+		 	/* PCIe controller interrupt (MSI/INTx processing) shared with INTx via GPIO */
+//		 	interrupt-parent = <&porta>;
+//		 	interrupts = <0 4>; /* GPIO hwirq 0, LEVEL_HIGH */
+
+		 	interrupt-parent = <&gic>;
+		 	interrupts = <0 33 4>; /* GPIO hwirq 0, LEVEL_HIGH */
+
+		 	ranges = <
+		 	0x01000000 0 0x00000000 0 0x70000000 0 0x01000000
+		 	0x02000000 0 0x60000000 0 0x60000000 0 0x10000000>;
+
+		 	bus-range = <0x00 0x10>;
+
+		 	/* MSI configuration for PCIe - use msi-map for proper PCI MSI domain association */
+			/* msi-map maps RID to ITS PCI MSI domain: <RID_base ITS_node RID_base RID_count> */
+			// msi-map = <0x0 &its1 0x0 0x10000>;
+
+		 	interrupt-map-mask = <0 0 0 7>;
+		 	interrupt-map =
+					<0 0 0 1 &gic 0 33 4>,
+		 			<0 0 0 2 &gic 0 33 4>,
+		 			<0 0 0 3 &gic 0 33 4>,
+		 			<0 0 0 4 &gic 0 33 4>;
+		 	pci0_intc: interrupt-controller {
+		 		interrupt-controller;
+		 		#address-cells = <0>;
+		 		#interrupt-cells = <1>;
+		 	};
+		 };
+	};
+};
