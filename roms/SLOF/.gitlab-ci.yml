@@ -1,0 +1,27 @@
+before_script:
+ - apt-get update -qq
+ - apt-get install -y --no-install-recommends gcc-powerpc64-linux-gnu make
+
+board-js2x:
+ script:
+ - make -j$(nproc) js2x CROSS=powerpc64-linux-gnu-
+
+board-qemu:
+ script:
+ - apt-get install -y --no-install-recommends qemu-system-ppc seabios
+ - export CROSS=powerpc64-linux-gnu-
+ - if [ "x$CI_COMMIT_TAG" != "x" ]; then
+     make -j$(nproc) qemu RELEASE="$CI_COMMIT_TAG" ;
+   else
+      make -j$(nproc) qemu ;
+   fi
+ - qemu-system-ppc64 -nographic -bios boot_rom.bin
+    -M pseries,cap-cfpc=broken,cap-ibs=broken,cap-sbbc=broken,cap-ccf-assist=off
+    -prom-env 'use-nvramrc?=true' -prom-env 'nvramrc=." SUCCESS" cr halt'
+    | tee log.txt
+ - grep -q SUCCESS log.txt
+ artifacts:
+  when: on_success
+  expire_in: 3 months
+  paths:
+  - boot_rom.bin
