@@ -1,0 +1,691 @@
+/*
+ * Neoverse-N2 reference board emulation
+ *
+ * Copyright (c) 2026
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms and conditions of the GNU General Public License,
+ * version 2 or later, as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*
+ * Board layout (CPU physical addresses):
+ *
+ *   0x0C00_0000  8250 UART (8 bytes, regshift 0)
+ *   0x0E00_0000  GIC distributor
+ *   0x0E04_0000  GIC ITS
+ *   0x0E08_0000  GIC redistributors (8 x GICv4 frames)
+ *   0x4000_0000  PCIe ECAM (256 MiB)
+ *   0x6000_0000  PCIe MMIO/BAR window (512 MiB)
+ *   0x8000_0000  RAM (2 GiB)
+ *
+ * Interrupts (the FDT and the GIC qdev input lines are both indexed by
+ * SPI, i.e. INTID - 32):
+ *
+ *   SPI 1   INTID 33   8250 UART
+ *   SPI 33  INTID 65   Xilinx AXI-PCIe INTx
+ */
+
+#include "qemu/osdep.h"
+#include "qapi/error.h"
+#include "qemu/cutils.h"
+#include "qemu/error-report.h"
+#include "qemu/units.h"
+#include "system/cpus.h"
+#include "system/device_tree.h"
+#include "system/numa.h"
+#include "system/system.h"
+#include "exec/hwaddr.h"
+#include "hw/arm/boot.h"
+#include "hw/arm/bsa.h"
+#include "hw/arm/fdt.h"
+#include "hw/arm/machines-qom.h"
+#include "hw/char/serial-mm.h"
+#include "hw/core/boards.h"
+#include "hw/core/irq.h"
+#include "hw/core/qdev-properties.h"
+#include "hw/intc/arm_gicv3_common.h"
+#include "hw/intc/arm_gicv3_its_common.h"
+#include "hw/pci-host/xilinx-pcie.h"
+#include "hw/pci/pci.h"
+#include "net/net.h"
+#include "qobject/qlist.h"
+#include "qom/object.h"
+#include "target/arm/cpu.h"
+#include "target/arm/cpu-features.h"
+#include "target/arm/cpu-qom.h"
+#include "target/arm/gtimer.h"
+
+#define TYPE_N2_REF_MACHINE MACHINE_TYPE_NAME("n2-ref")
+OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
+
+/* Memory map. */
+#define N2_REF_RAM_BASE       0x80000000ULL
+#define N2_REF_RAM_SIZE_MAX   (2 * GiB)
+#define N2_REF_UART_BASE      0x0C000000ULL
+#define N2_REF_GICD_BASE      0x0E000000ULL
+#define N2_REF_GICD_SIZE      0x00010000ULL
+#define N2_REF_GITS_BASE      0x0E040000ULL
+#define N2_REF_GITS_SIZE      0x00020000ULL
+#define N2_REF_GICR_BASE      0x0E080000ULL
+#define N2_REF_GICR_SIZE      0x00200000ULL
+#define N2_REF_PCIE_ECAM_BASE 0x40000000ULL
+#define N2_REF_PCIE_ECAM_SIZE 0x10000000ULL
+#define N2_REF_PCIE_MMIO_BASE 0x60000000ULL
+#define N2_REF_PCIE_MMIO_SIZE 0x20000000ULL
+
+/*
+ * GIC interrupt IDs.  The board spec numbers lines by INTID; both the
+ * device tree and qdev_get_gpio_in() index SPIs, which is INTID - 32.
+ */
+#define N2_REF_UART_INTID     33
+#define N2_REF_PCIE_INTID     65
+#define N2_REF_UART_SPI       (N2_REF_UART_INTID - 32)
+#define N2_REF_PCIE_SPI       (N2_REF_PCIE_INTID - 32)
+
+#define N2_REF_GIC_NUM_SPI    256   /* SPIs 0..255 */
+#define N2_REF_GIC_NUM_IRQ    (N2_REF_GIC_NUM_SPI + GIC_INTERNAL)
+#define N2_REF_MAX_CPUS       8     /* N2_REF_GICR_SIZE / GICV4_REDIST_SIZE */
+
+/* Armv8.6 mandates a 1 GHz generic timer. */
+#define N2_REF_GTIMER_HZ      1000000000
+
+struct N2RefMachineState {
+    MachineState parent;
+
+    struct arm_boot_info bootinfo;
+    DeviceState *gic;
+    DeviceState *pcie;
+    uint32_t gic_phandle;
+    uint32_t its_phandle;
+    int fdt_size;
+};
+
+static uint64_t n2_ref_cpu_mp_affinity(int idx)
+{
+    return arm_build_mp_affinity(idx, ARM_DEFAULT_CPUS_PER_CLUSTER);
+}
+
+/* ---- GIC and ITS ------------------------------------------------------ */
+
+static void n2_ref_create_its(N2RefMachineState *s)
+{
+    DeviceState *dev = qdev_new(its_class_name());
+
+    object_property_set_link(OBJECT(dev), "parent-gicv3", OBJECT(s->gic),
+                             &error_abort);
+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, N2_REF_GITS_BASE);
+}
+
+static void n2_ref_create_gic(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    unsigned int smp_cpus = ms->smp.cpus;
+    SysBusDevice *gicbusdev;
+    QList *redist_region_count;
+    uint32_t capacity;
+    int i;
+
+    /*
+     * GIC-700 is a GICv4.1 implementation.  QEMU models GICv4 (revision 4)
+     * plus vLPI support; the v4.1-only features (vSGI, VCONFADDR,
+     * GICD_TYPER2) are not emulated.
+     */
+    s->gic = qdev_new(gicv3_class_name());
+    qdev_prop_set_uint32(s->gic, "revision", 4);
+    qdev_prop_set_uint32(s->gic, "num-cpu", smp_cpus);
+    qdev_prop_set_uint32(s->gic, "num-irq", N2_REF_GIC_NUM_IRQ);
+    qdev_prop_set_bit(s->gic, "has-security-extensions", false);
+    qdev_prop_set_bit(s->gic, "has-lpi", true);
+
+    /*
+     * With has-lpi and revision > 3 the redistributor frame is
+     * GICV4_REDIST_SIZE (256 KiB), so the 2 MiB window holds 8 CPUs.
+     */
+    capacity = N2_REF_GICR_SIZE / GICV4_REDIST_SIZE;
+    redist_region_count = qlist_new();
+    qlist_append_int(redist_region_count, MIN(smp_cpus, capacity));
+    qdev_prop_set_array(s->gic, "redist-region-count", redist_region_count);
+
+    object_property_set_link(OBJECT(s->gic), "sysmem",
+                             OBJECT(get_system_memory()), &error_fatal);
+
+    gicbusdev = SYS_BUS_DEVICE(s->gic);
+    sysbus_realize_and_unref(gicbusdev, &error_fatal);
+    sysbus_mmio_map(gicbusdev, 0, N2_REF_GICD_BASE);
+    sysbus_mmio_map(gicbusdev, 1, N2_REF_GICR_BASE);
+
+    for (i = 0; i < smp_cpus; i++) {
+        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
+        /*
+         * The GIC's input GPIO array is [0..num_spis-1] for SPIs, followed
+         * by 32 PPIs per CPU.  The base is therefore num_spis, not num_irq.
+         */
+        int intidbase = N2_REF_GIC_NUM_SPI + i * GIC_INTERNAL;
+        int irq;
+
+        /*
+         * The timer PPI numbers are not contiguous, so use the same table
+         * as sbsa-ref.  The secure lines have no source because EL3 is
+         * disabled, but connecting them is harmless.
+         */
+        const int timer_irq[] = {
+            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
+            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
+            [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
+            [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
+            [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
+            [GTIMER_S_EL2_PHYS] = ARCH_TIMER_S_EL2_IRQ,
+            [GTIMER_S_EL2_VIRT] = ARCH_TIMER_S_EL2_VIRT_IRQ,
+        };
+
+        for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+            qdev_connect_gpio_out(cpudev, irq,
+                                  qdev_get_gpio_in(s->gic,
+                                                   intidbase + timer_irq[irq]));
+        }
+
+        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt", 0,
+                                    qdev_get_gpio_in(s->gic,
+                                                     intidbase
+                                                     + ARCH_GIC_MAINT_IRQ));
+        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
+                                    qdev_get_gpio_in(s->gic,
+                                                     intidbase
+                                                     + VIRTUAL_PMU_IRQ));
+
+        sysbus_connect_irq(gicbusdev, i,
+                           qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+        sysbus_connect_irq(gicbusdev, i + smp_cpus,
+                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
+        sysbus_connect_irq(gicbusdev, i + 2 * smp_cpus,
+                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+        sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
+                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+    }
+
+    n2_ref_create_its(s);
+}
+
+/* ---- Devices ---------------------------------------------------------- */
+
+static void n2_ref_create_uart(N2RefMachineState *s)
+{
+    serial_mm_init(get_system_memory(), N2_REF_UART_BASE, 0,
+                   qdev_get_gpio_in(s->gic, N2_REF_UART_SPI),
+                   115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+}
+
+static void n2_ref_create_pcie(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    MachineClass *mc = MACHINE_GET_CLASS(ms);
+    DeviceState *dev = qdev_new(TYPE_XILINX_PCIE_HOST);
+    MemoryRegion *cfg, *mmio;
+    PCIHostState *pci;
+
+    qdev_prop_set_uint32(dev, "bus_nr", 0);
+    qdev_prop_set_uint64(dev, "cfg_base", N2_REF_PCIE_ECAM_BASE);
+    qdev_prop_set_uint64(dev, "cfg_size", N2_REF_PCIE_ECAM_SIZE);
+    qdev_prop_set_uint64(dev, "mmio_base", N2_REF_PCIE_MMIO_BASE);
+    qdev_prop_set_uint64(dev, "mmio_size", N2_REF_PCIE_MMIO_SIZE);
+    qdev_prop_set_bit(dev, "link_up", true);
+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+
+    cfg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
+    memory_region_add_subregion_overlap(get_system_memory(),
+                                        N2_REF_PCIE_ECAM_BASE, cfg, 0);
+
+    /*
+     * The BAR container is mapped at address 0 and stays disabled until
+     * the guest sets ROOTCFG_RPSCR.BRIDGEEN; the model's MMIO region is
+     * absolute-addressed, so this is a 1:1 mapping.
+     */
+    mmio = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
+    memory_region_add_subregion_overlap(get_system_memory(), 0, mmio, 0);
+
+    qdev_connect_gpio_out_named(dev, "interrupt_out", 0,
+                                qdev_get_gpio_in(s->gic, N2_REF_PCIE_SPI));
+
+    pci = PCI_HOST_BRIDGE(dev);
+    pci_init_nic_devices(pci->bus, mc->default_nic);
+
+    s->pcie = dev;
+}
+
+/* ---- Device tree ------------------------------------------------------ */
+
+static void n2_ref_fdt_add_gic(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = ms->fdt;
+    char *gic_name, *its_name;
+
+    s->gic_phandle = qemu_fdt_alloc_phandle(fdt);
+    qemu_fdt_setprop_cell(fdt, "/", "interrupt-parent", s->gic_phandle);
+
+    gic_name = g_strdup_printf("/intc@%" PRIx64,
+                               (uint64_t)N2_REF_GICD_BASE);
+    qemu_fdt_add_subnode(fdt, gic_name);
+    qemu_fdt_setprop_string(fdt, gic_name, "compatible", "arm,gic-v3");
+    qemu_fdt_setprop(fdt, gic_name, "interrupt-controller", NULL, 0);
+    qemu_fdt_setprop_cell(fdt, gic_name, "#interrupt-cells", 3);
+    qemu_fdt_setprop_cell(fdt, gic_name, "#address-cells", 2);
+    qemu_fdt_setprop_cell(fdt, gic_name, "#size-cells", 2);
+    qemu_fdt_setprop(fdt, gic_name, "ranges", NULL, 0);
+    qemu_fdt_setprop_cell(fdt, gic_name, "#redistributor-regions", 1);
+    qemu_fdt_setprop_sized_cells(fdt, gic_name, "reg",
+                                 2, (uint64_t)N2_REF_GICD_BASE,
+                                 2, (uint64_t)N2_REF_GICD_SIZE,
+                                 2, (uint64_t)N2_REF_GICR_BASE,
+                                 2, (uint64_t)N2_REF_GICR_SIZE);
+    qemu_fdt_setprop_cells(fdt, gic_name, "interrupts",
+                           GIC_FDT_IRQ_TYPE_PPI,
+                           INTID_TO_PPI(ARCH_GIC_MAINT_IRQ),
+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+    qemu_fdt_setprop_cell(fdt, gic_name, "phandle", s->gic_phandle);
+
+    s->its_phandle = qemu_fdt_alloc_phandle(fdt);
+    its_name = g_strdup_printf("%s/its@%" PRIx64, gic_name,
+                               (uint64_t)N2_REF_GITS_BASE);
+    qemu_fdt_add_subnode(fdt, its_name);
+    qemu_fdt_setprop_string(fdt, its_name, "compatible", "arm,gic-v3-its");
+    qemu_fdt_setprop(fdt, its_name, "msi-controller", NULL, 0);
+    qemu_fdt_setprop_cell(fdt, its_name, "#msi-cells", 1);
+    qemu_fdt_setprop_sized_cells(fdt, its_name, "reg",
+                                 2, (uint64_t)N2_REF_GITS_BASE,
+                                 2, (uint64_t)N2_REF_GITS_SIZE);
+    qemu_fdt_setprop_cell(fdt, its_name, "phandle", s->its_phandle);
+
+    g_free(its_name);
+    g_free(gic_name);
+}
+
+static void n2_ref_fdt_add_cpus(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = ms->fdt;
+    unsigned int smp_cpus = ms->smp.cpus;
+    int cpu;
+
+    /*
+     * arm_build_mp_affinity() only packs Aff0/Aff1, and with max_cpus = 8
+     * every MPIDR is 0..7, so a single address cell is enough.
+     */
+    qemu_fdt_add_subnode(fdt, "/cpus");
+    qemu_fdt_setprop_cell(fdt, "/cpus", "#address-cells", 1);
+    qemu_fdt_setprop_cell(fdt, "/cpus", "#size-cells", 0);
+
+    for (cpu = smp_cpus - 1; cpu >= 0; cpu--) {
+        char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+        ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
+        CPUState *cs = CPU(armcpu);
+
+        qemu_fdt_add_subnode(fdt, nodename);
+        qemu_fdt_setprop_string(fdt, nodename, "device_type", "cpu");
+        qemu_fdt_setprop_string(fdt, nodename, "compatible",
+                                armcpu->dtb_compatible);
+
+        if (s->bootinfo.psci_conduit != QEMU_PSCI_CONDUIT_DISABLED &&
+            smp_cpus > 1) {
+            qemu_fdt_setprop_string(fdt, nodename, "enable-method", "psci");
+        }
+
+        qemu_fdt_setprop_cell(fdt, nodename, "reg",
+                              n2_ref_cpu_mp_affinity(cpu));
+
+        if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
+            qemu_fdt_setprop_cell(fdt, nodename, "numa-node-id",
+                ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
+        }
+
+        g_free(nodename);
+    }
+}
+
+static void n2_ref_fdt_add_timer(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = ms->fdt;
+    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
+    const char compat[] = "arm,armv8-timer\0arm,armv7-timer";
+    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+
+    qemu_fdt_add_subnode(fdt, "/timer");
+    qemu_fdt_setprop(fdt, "/timer", "compatible", compat, sizeof(compat));
+    qemu_fdt_setprop(fdt, "/timer", "always-on", NULL, 0);
+
+    /*
+     * Neoverse-N2 advertises FEAT_VHE, so the EL2 virtual timer exists and
+     * must be described too -- the board wires it up in n2_ref_create_gic().
+     */
+    if (arm_feature(&armcpu->env, ARM_FEATURE_EL2) &&
+        cpu_isar_feature(aa64_vh, armcpu)) {
+        qemu_fdt_setprop_cells(fdt, "/timer", "interrupts",
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_S_EL1_IRQ), irqflags,
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_NS_EL1_IRQ), irqflags,
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_VIRT_IRQ), irqflags,
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_NS_EL2_IRQ), irqflags,
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_NS_EL2_VIRT_IRQ),
+                               irqflags);
+    } else {
+        qemu_fdt_setprop_cells(fdt, "/timer", "interrupts",
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_S_EL1_IRQ), irqflags,
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_NS_EL1_IRQ), irqflags,
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_VIRT_IRQ), irqflags,
+                               GIC_FDT_IRQ_TYPE_PPI,
+                               INTID_TO_PPI(ARCH_TIMER_NS_EL2_IRQ), irqflags);
+    }
+}
+
+static void n2_ref_fdt_add_pmu(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = ms->fdt;
+    ARMCPU *armcpu = ARM_CPU(first_cpu);
+    const char compat[] = "arm,armv8-pmuv3";
+
+    if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+        return;
+    }
+
+    qemu_fdt_add_subnode(fdt, "/pmu");
+    qemu_fdt_setprop(fdt, "/pmu", "compatible", compat, sizeof(compat));
+    qemu_fdt_setprop_cells(fdt, "/pmu", "interrupts",
+                           GIC_FDT_IRQ_TYPE_PPI,
+                           INTID_TO_PPI(VIRTUAL_PMU_IRQ),
+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+}
+
+static void n2_ref_fdt_add_uart(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = ms->fdt;
+    char *nodename = g_strdup_printf("/serial@%" PRIx64,
+                                     (uint64_t)N2_REF_UART_BASE);
+
+    qemu_fdt_add_subnode(fdt, nodename);
+    qemu_fdt_setprop_string(fdt, nodename, "compatible", "ns16550a");
+    /*
+     * serial_mm_init() with regshift 0 maps exactly 8 bytes, so describe
+     * exactly that much rather than a page that is not backed.
+     */
+    qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+                                 2, (uint64_t)N2_REF_UART_BASE, 2, 8);
+    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
+                           GIC_FDT_IRQ_TYPE_SPI, N2_REF_UART_SPI,
+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+    qemu_fdt_setprop_cell(fdt, nodename, "clock-frequency", 100000000);
+    qemu_fdt_setprop_string(fdt, nodename, "status", "okay");
+    qemu_fdt_setprop_string(fdt, "/chosen", "stdout-path", nodename);
+
+    g_free(nodename);
+}
+
+static void n2_ref_fdt_add_pcie(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = ms->fdt;
+    char *nodename, *intc_name;
+    uint32_t intc_ph = qemu_fdt_alloc_phandle(fdt);
+    uint32_t interrupt_map[4][6];
+    int i;
+
+    nodename = g_strdup_printf("/pci@%" PRIx64,
+                               (uint64_t)N2_REF_PCIE_ECAM_BASE);
+    qemu_fdt_add_subnode(fdt, nodename);
+    qemu_fdt_setprop_string(fdt, nodename, "compatible",
+                            "xlnx,axi-pcie-host-1.00.a");
+    qemu_fdt_setprop_string(fdt, nodename, "device_type", "pci");
+    qemu_fdt_setprop_cell(fdt, nodename, "#address-cells", 3);
+    qemu_fdt_setprop_cell(fdt, nodename, "#size-cells", 2);
+    qemu_fdt_setprop_cell(fdt, nodename, "#interrupt-cells", 1);
+    qemu_fdt_setprop_cell(fdt, nodename, "linux,pci-domain", 0);
+
+    qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+                                 2, (uint64_t)N2_REF_PCIE_ECAM_BASE,
+                                 2, (uint64_t)N2_REF_PCIE_ECAM_SIZE);
+
+    /*
+     * ranges: child address (3 cells), parent address (2 cells, because
+     * / has #address-cells = 2), size (2 cells) = 7 cells.
+     */
+    qemu_fdt_setprop_cells(fdt, nodename, "ranges",
+                           FDT_PCI_RANGE_MMIO,
+                           (uint32_t)(N2_REF_PCIE_MMIO_BASE >> 32),
+                           (uint32_t)N2_REF_PCIE_MMIO_BASE,
+                           (uint32_t)(N2_REF_PCIE_MMIO_BASE >> 32),
+                           (uint32_t)N2_REF_PCIE_MMIO_BASE,
+                           (uint32_t)(N2_REF_PCIE_MMIO_SIZE >> 32),
+                           (uint32_t)N2_REF_PCIE_MMIO_SIZE);
+
+    qemu_fdt_setprop_cells(fdt, nodename, "bus-range", 0, 0xff);
+    qemu_fdt_setprop(fdt, nodename, "dma-coherent", NULL, 0);
+
+    qemu_fdt_setprop_cell(fdt, nodename, "interrupt-parent", s->gic_phandle);
+    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
+                           GIC_FDT_IRQ_TYPE_SPI, N2_REF_PCIE_SPI,
+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+
+    /* Required for MSI/MSI-X: the ITS uses the BDF as the device ID. */
+    qemu_fdt_setprop_cells(fdt, nodename, "msi-map",
+                           0, s->its_phandle, 0, 0x10000);
+
+    /*
+     * Downstream INTx lines.  The xilinx-pcie model collapses all four
+     * root-bus pins onto its single interrupt_out line, so every entry
+     * routes to the same GIC SPI.
+     */
+    intc_name = g_strdup_printf("%s/interrupt-controller", nodename);
+    qemu_fdt_add_subnode(fdt, intc_name);
+    qemu_fdt_setprop(fdt, intc_name, "interrupt-controller", NULL, 0);
+    qemu_fdt_setprop_cell(fdt, intc_name, "#address-cells", 0);
+    qemu_fdt_setprop_cell(fdt, intc_name, "#interrupt-cells", 1);
+    qemu_fdt_setprop_cell(fdt, intc_name, "phandle", intc_ph);
+
+    qemu_fdt_setprop_cells(fdt, nodename, "interrupt-map-mask", 0, 0, 0, 7);
+    for (i = 0; i < 4; i++) {
+        interrupt_map[i][0] = cpu_to_be32(0);
+        interrupt_map[i][1] = cpu_to_be32(0);
+        interrupt_map[i][2] = cpu_to_be32(0);
+        interrupt_map[i][3] = cpu_to_be32(i + 1);
+        interrupt_map[i][4] = cpu_to_be32(intc_ph);
+        interrupt_map[i][5] = cpu_to_be32(i + 1);
+    }
+    qemu_fdt_setprop(fdt, nodename, "interrupt-map",
+                     interrupt_map, sizeof(interrupt_map));
+
+    g_free(intc_name);
+    g_free(nodename);
+}
+
+static void n2_ref_create_fdt(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = create_device_tree(&s->fdt_size);
+
+    if (!fdt) {
+        error_report("create_device_tree() failed");
+        exit(1);
+    }
+
+    ms->fdt = fdt;
+
+    qemu_fdt_setprop_string(fdt, "/", "compatible", "qemu,n2-ref");
+    qemu_fdt_setprop_string(fdt, "/", "model",
+                            "QEMU Neoverse-N2 reference board");
+    qemu_fdt_setprop_cell(fdt, "/", "#address-cells", 2);
+    qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 2);
+    qemu_fdt_setprop(fdt, "/", "dma-coherent", NULL, 0);
+
+    /*
+     * /chosen must exist before arm_load_kernel() runs; /memory, the
+     * bootargs and /psci are added by arm_load_dtb() later.
+     */
+    qemu_fdt_add_subnode(fdt, "/chosen");
+
+    n2_ref_fdt_add_cpus(s);
+    n2_ref_fdt_add_timer(s);
+    n2_ref_fdt_add_pmu(s);
+    n2_ref_fdt_add_gic(s);
+    n2_ref_fdt_add_uart(s);
+    n2_ref_fdt_add_pcie(s);
+}
+
+static void *n2_ref_get_dtb(const struct arm_boot_info *info, int *size)
+{
+    N2RefMachineState *s = container_of(info, N2RefMachineState, bootinfo);
+
+    *size = s->fdt_size;
+    return MACHINE(s)->fdt;
+}
+
+/* ---- Machine ---------------------------------------------------------- */
+
+static const CPUArchIdList *n2_ref_possible_cpu_arch_ids(MachineState *ms)
+{
+    unsigned int max_cpus = ms->smp.max_cpus;
+    int n;
+
+    if (ms->possible_cpus) {
+        assert(ms->possible_cpus->len == max_cpus);
+        return ms->possible_cpus;
+    }
+
+    ms->possible_cpus = g_malloc0(sizeof(CPUArchIdList) +
+                                  sizeof(CPUArchId) * max_cpus);
+    ms->possible_cpus->len = max_cpus;
+    for (n = 0; n < ms->possible_cpus->len; n++) {
+        ms->possible_cpus->cpus[n].type = ms->cpu_type;
+        ms->possible_cpus->cpus[n].arch_id = n2_ref_cpu_mp_affinity(n);
+        ms->possible_cpus->cpus[n].props.has_thread_id = true;
+        ms->possible_cpus->cpus[n].props.thread_id = n;
+    }
+    return ms->possible_cpus;
+}
+
+static void n2_ref_init(MachineState *machine)
+{
+    N2RefMachineState *s = N2_REF_MACHINE(machine);
+    MachineClass *mc = MACHINE_GET_CLASS(machine);
+    MemoryRegion *sysmem = get_system_memory();
+    const CPUArchIdList *possible_cpus;
+    unsigned int smp_cpus = machine->smp.cpus;
+    int n;
+
+    if (machine->ram_size > N2_REF_RAM_SIZE_MAX) {
+        error_report("n2-ref: cannot model more than %s of RAM",
+                     size_to_str(N2_REF_RAM_SIZE_MAX));
+        exit(1);
+    }
+
+    if (machine->smp.max_cpus > N2_REF_MAX_CPUS) {
+        error_report("n2-ref: number of CPUs (%u) exceeds the %d supported "
+                     "by the GIC redistributor window",
+                     machine->smp.max_cpus, N2_REF_MAX_CPUS);
+        exit(1);
+    }
+
+    /* RAM: one region at 0x8000_0000. */
+    memory_region_add_subregion(sysmem, N2_REF_RAM_BASE, machine->ram);
+
+    /* CPUs must exist and be realized before the GIC is created. */
+    possible_cpus = mc->possible_cpu_arch_ids(machine);
+    for (n = 0; n < possible_cpus->len; n++) {
+        Object *cpuobj;
+        CPUState *cs;
+
+        if (n >= smp_cpus) {
+            break;
+        }
+
+        cpuobj = object_new(possible_cpus->cpus[n].type);
+        object_property_set_int(cpuobj, "mp-affinity",
+                                possible_cpus->cpus[n].arch_id, NULL);
+
+        cs = CPU(cpuobj);
+        cs->cpu_index = n;
+
+        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
+                          &error_fatal);
+
+        object_property_set_int(cpuobj, "cntfrq", N2_REF_GTIMER_HZ,
+                                &error_abort);
+
+        /* No secure world: the guest runs at EL2 under QEMU's PSCI. */
+        object_property_set_bool(cpuobj, "has_el3", false, &error_abort);
+        object_property_set_bool(cpuobj, "has_el2", true, &error_abort);
+
+        object_property_set_link(cpuobj, "memory", OBJECT(sysmem),
+                                 &error_abort);
+
+        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+        object_unref(cpuobj);
+    }
+
+    s->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+
+    n2_ref_create_gic(s);
+    n2_ref_create_uart(s);
+    n2_ref_create_pcie(s);
+    n2_ref_create_fdt(s);
+
+    s->bootinfo.ram_size = machine->ram_size;
+    s->bootinfo.board_id = -1;
+    s->bootinfo.loader_start = N2_REF_RAM_BASE;
+    s->bootinfo.get_dtb = n2_ref_get_dtb;
+    arm_load_kernel(ARM_CPU(first_cpu), machine, &s->bootinfo);
+}
+
+static void n2_ref_class_init(ObjectClass *oc, const void *data)
+{
+    MachineClass *mc = MACHINE_CLASS(oc);
+    static const char * const valid_cpu_types[] = {
+        ARM_CPU_TYPE_NAME("neoverse-n2"),
+        NULL,
+    };
+
+    mc->init = n2_ref_init;
+    mc->desc = "Neoverse-N2 reference board (GIC-700, 8250, Xilinx PCIe)";
+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("neoverse-n2");
+    mc->valid_cpu_types = valid_cpu_types;
+    mc->default_ram_id = "n2-ref.ram";
+    mc->default_ram_size = N2_REF_RAM_SIZE_MAX;
+    mc->max_cpus = N2_REF_MAX_CPUS;
+    mc->default_cpus = 4;
+    mc->minimum_page_bits = 12;
+    mc->possible_cpu_arch_ids = n2_ref_possible_cpu_arch_ids;
+    mc->default_nic = "e1000e";
+}
+
+static const TypeInfo n2_ref_machine_typeinfo = {
+    .name = TYPE_N2_REF_MACHINE,
+    .parent = TYPE_MACHINE,
+    .class_init = n2_ref_class_init,
+    .instance_size = sizeof(N2RefMachineState),
+    .interfaces = aarch64_machine_interfaces,
+};
+
+static void n2_ref_machine_init(void)
+{
+    type_register_static(&n2_ref_machine_typeinfo);
+}
+
+type_init(n2_ref_machine_init);

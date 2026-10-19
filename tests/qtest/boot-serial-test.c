@@ -89,6 +89,13 @@ static const uint8_t kernel_aarch64[] = {
     0xff, 0xff, 0xff, 0x17,                 /*        b      -4              (loop) */
 };
 
+static const uint8_t kernel_n2ref[] = {
+    0x02, 0x80, 0xa1, 0xd2,                 /*        movz   x2, #0x0c00, lsl #16 */
+    0x81, 0x0a, 0x80, 0x52,                 /*        mov    w1, #'T' */
+    0x41, 0x00, 0x00, 0x39,                 /* loop:  strb   w1, [x2]        *THR = 'T' */
+    0x00, 0x00, 0x00, 0x14,                 /*        b      -4              (loop) */
+};
+
 static const uint8_t kernel_nrf51[] = {
     0x00, 0x00, 0x00, 0x00,                 /* Stack top address */
     0x09, 0x00, 0x00, 0x00,                 /* Reset handler address */
@@ -198,6 +205,7 @@ static const testdef_t tests[] = {
     { "arm", "raspi2b", "", "TT", sizeof(bios_raspi2), 0, bios_raspi2 },
     { "aarch64", "virt", "-cpu max", "TT", sizeof(kernel_aarch64),
       kernel_aarch64 },
+    { "aarch64", "n2-ref", "", "T", sizeof(kernel_n2ref), kernel_n2ref },
     { "arm", "microbit", "", "T", sizeof(kernel_nrf51), kernel_nrf51 },
     { "arm", "stm32vldiscovery", "", "T",
       sizeof(kernel_stm32vldiscovery), kernel_stm32vldiscovery },
