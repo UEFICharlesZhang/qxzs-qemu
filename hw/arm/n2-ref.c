@@ -19,7 +19,10 @@
 /*
  * Board layout (CPU physical addresses):
  *
- *   0x0C00_0000  8250 UART (8 bytes, regshift 0)
+ *   0x0000_0000  boot RAM (4 MiB, only with secure=on or -bios)
+ *   0x0400_0000  secure SRAM (512 KiB, secure=on only)
+ *   0x0600_0000  non-secure SRAM (512 KiB, secure=on only)
+ *   0x0C00_0000  8250 UART (0x100 bytes, regshift 2)
  *   0x0E00_0000  GIC distributor
  *   0x0E04_0000  GIC ITS
  *   0x0E08_0000  GIC redistributors (8 x GICv4 frames)
@@ -37,10 +40,12 @@
 #include "qemu/osdep.h"
 #include "qapi/error.h"
 #include "qemu/cutils.h"
+#include "qemu/datadir.h"
 #include "qemu/error-report.h"
 #include "qemu/units.h"
 #include "system/cpus.h"
 #include "system/device_tree.h"
+#include "system/kvm.h"
 #include "system/numa.h"
 #include "system/system.h"
 #include "exec/hwaddr.h"
@@ -51,6 +56,7 @@
 #include "hw/char/serial-mm.h"
 #include "hw/core/boards.h"
 #include "hw/core/irq.h"
+#include "hw/core/loader.h"
 #include "hw/core/qdev-properties.h"
 #include "hw/intc/arm_gicv3_common.h"
 #include "hw/intc/arm_gicv3_its_common.h"
@@ -68,6 +74,12 @@
 OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 
 /* Memory map. */
+#define N2_REF_BOOTRAM_BASE   0x00000000ULL
+#define N2_REF_BOOTRAM_SIZE   (4 * MiB)
+#define N2_REF_SRAM_BASE      0x04000000ULL
+#define N2_REF_SRAM_SIZE      (512 * KiB)
+#define N2_REF_NSRAM_BASE     0x06000000ULL
+#define N2_REF_NSRAM_SIZE     (512 * KiB)
 #define N2_REF_RAM_BASE       0x80000000ULL
 #define N2_REF_RAM_SIZE_MAX   (2 * GiB)
 #define N2_REF_UART_BASE      0x0C000000ULL
@@ -109,11 +121,27 @@ struct N2RefMachineState {
     uint32_t gic_phandle;
     uint32_t its_phandle;
     int fdt_size;
+    bool secure;
+    MemoryRegion bootram;
+    MemoryRegion sram;
+    MemoryRegion nsram;
 };
 
 static uint64_t n2_ref_cpu_mp_affinity(int idx)
 {
     return arm_build_mp_affinity(idx, ARM_DEFAULT_CPUS_PER_CLUSTER);
+}
+
+/* ---- Machine properties ----------------------------------------------- */
+
+static bool n2_ref_get_secure(Object *obj, Error **errp)
+{
+    return N2_REF_MACHINE(obj)->secure;
+}
+
+static void n2_ref_set_secure(Object *obj, bool value, Error **errp)
+{
+    N2_REF_MACHINE(obj)->secure = value;
 }
 
 /* ---- GIC and ITS ------------------------------------------------------ */
@@ -146,7 +174,7 @@ static void n2_ref_create_gic(N2RefMachineState *s)
     qdev_prop_set_uint32(s->gic, "revision", 4);
     qdev_prop_set_uint32(s->gic, "num-cpu", smp_cpus);
     qdev_prop_set_uint32(s->gic, "num-irq", N2_REF_GIC_NUM_IRQ);
-    qdev_prop_set_bit(s->gic, "has-security-extensions", false);
+    qdev_prop_set_bit(s->gic, "has-security-extensions", s->secure);
     qdev_prop_set_bit(s->gic, "has-lpi", true);
 
     /*
@@ -619,8 +647,57 @@ static void n2_ref_init(MachineState *machine)
         exit(1);
     }
 
+    if (s->secure && kvm_enabled()) {
+        error_report("n2-ref: secure mode requires TCG (KVM cannot "
+                     "provide EL3 to the guest)");
+        exit(1);
+    }
+
     /* RAM: one region at 0x8000_0000. */
     memory_region_add_subregion(sysmem, N2_REF_RAM_BASE, machine->ram);
+
+    /*
+     * EL3 firmware enters at the AArch64 reset vector, which is 0x0, so
+     * secure mode needs memory there.  The same window also gives a plain
+     * -bios image an entry point when the machine is not in secure mode.
+     */
+    if (s->secure || machine->firmware) {
+        memory_region_init_ram(&s->bootram, NULL, "n2-ref.boot-ram",
+                               N2_REF_BOOTRAM_SIZE, &error_fatal);
+        memory_region_add_subregion(sysmem, N2_REF_BOOTRAM_BASE, &s->bootram);
+    }
+
+    /*
+     * The TF-A rdn2 port links BL1's read-write data and BL2/BL31 at the
+     * trusted SRAM window and uses a separate non-secure SRAM.  Both
+     * windows are free in this memory map, so provide them in secure mode.
+     */
+    if (s->secure) {
+        memory_region_init_ram(&s->sram, NULL, "n2-ref.secure-sram",
+                               N2_REF_SRAM_SIZE, &error_fatal);
+        memory_region_add_subregion(sysmem, N2_REF_SRAM_BASE, &s->sram);
+
+        memory_region_init_ram(&s->nsram, NULL, "n2-ref.ns-sram",
+                               N2_REF_NSRAM_SIZE, &error_fatal);
+        memory_region_add_subregion(sysmem, N2_REF_NSRAM_BASE, &s->nsram);
+    }
+
+    if (machine->firmware) {
+        g_autofree char *fname = qemu_find_file(QEMU_FILE_TYPE_BIOS,
+                                                machine->firmware);
+
+        if (!fname) {
+            error_report("n2-ref: could not find firmware '%s'",
+                         machine->firmware);
+            exit(1);
+        }
+        if (load_image_targphys(fname, N2_REF_BOOTRAM_BASE,
+                                N2_REF_BOOTRAM_SIZE, NULL) < 0) {
+            error_report("n2-ref: could not load firmware '%s' at 0x%" PRIx64,
+                         machine->firmware, (uint64_t)N2_REF_BOOTRAM_BASE);
+            exit(1);
+        }
+    }
 
     /* CPUs must exist and be realized before the GIC is created. */
     possible_cpus = mc->possible_cpu_arch_ids(machine);
@@ -645,8 +722,11 @@ static void n2_ref_init(MachineState *machine)
         object_property_set_int(cpuobj, "cntfrq", N2_REF_GTIMER_HZ,
                                 &error_abort);
 
-        /* No secure world: the guest runs at EL2 under QEMU's PSCI. */
-        object_property_set_bool(cpuobj, "has_el3", false, &error_abort);
+        /*
+         * Secure mode gives the guest EL3 so external firmware (TF-A) can
+         * run.  Without it the guest starts at EL2 and uses QEMU's PSCI.
+         */
+        object_property_set_bool(cpuobj, "has_el3", s->secure, &error_abort);
         object_property_set_bool(cpuobj, "has_el2", true, &error_abort);
 
         object_property_set_link(cpuobj, "memory", OBJECT(sysmem),
@@ -656,7 +736,14 @@ static void n2_ref_init(MachineState *machine)
         object_unref(cpuobj);
     }
 
-    s->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+    /*
+     * In secure mode the firmware at EL3 owns PSCI, so QEMU must not trap
+     * SMC.  Leaving the conduit at SMC for a non-secure guest makes QEMU's
+     * PSCI implementation behave as an ersatz EL3.
+     */
+    s->bootinfo.psci_conduit = s->secure ? QEMU_PSCI_CONDUIT_DISABLED
+                                         : QEMU_PSCI_CONDUIT_SMC;
+    s->bootinfo.firmware_loaded = machine->firmware != NULL;
 
     n2_ref_create_gic(s);
     n2_ref_create_uart(s);
@@ -689,6 +776,12 @@ static void n2_ref_class_init(ObjectClass *oc, const void *data)
     mc->minimum_page_bits = 12;
     mc->possible_cpu_arch_ids = n2_ref_possible_cpu_arch_ids;
     mc->default_nic = "e1000e";
+
+    object_class_property_add_bool(oc, "secure", n2_ref_get_secure,
+                                   n2_ref_set_secure);
+    object_class_property_set_description(oc, "secure",
+        "Enable EL3 and GIC security extensions for external firmware; "
+        "QEMU's PSCI implementation is disabled");
 }
 
 static const TypeInfo n2_ref_machine_typeinfo = {

@@ -39,7 +39,9 @@ scope.
 ## 2. Target memory map
 
 ```
-0x0000_0000  (unmapped; no reset vector — see §9 on -bios)
+0x0000_0000  boot RAM        0x0040_0000   (4 MiB; only with secure=on or -bios)
+0x0400_0000  secure SRAM     0x0008_0000   (512 KiB; secure=on only)
+0x0600_0000  non-secure SRAM 0x0008_0000   (512 KiB; secure=on only)
 0x0C00_0000  8250 UART       0x0000_0100   (regshift=2, so 32 bytes are mapped)
 0x0E00_0000  GICD            0x0001_0000   (64 KiB)
 0x0E04_0000  GITS            0x0002_0000   (128 KiB)
@@ -281,6 +283,11 @@ The order matters; this is the sequence:
 2. **Map RAM**: `memory_region_add_subregion(get_system_memory(),
    N2_REF_RAM_BASE, machine->ram)`. `machine->ram` is already created by
    `machine_run_board_init()` before `mc->init` is called.
+   - If `secure=on` or `-bios` was given, also map 4 MiB of boot RAM at
+     `0x0` and load `machine->firmware` into it.  The AArch64 reset vector
+     is `0x0`, which is where EL3 firmware starts.
+   - If `secure=on`, additionally map the TF-A rdn2 SRAM windows: 512 KiB
+     at `0x0400_0000` (trusted) and 512 KiB at `0x0600_0000` (non-secure).
 3. **Create CPUs before the GIC**. `arm_gicv3_common_realize()` and
    `gicv3_init_cpuif()` call `qemu_get_cpu(first_cpu_idx + i)`; the CPUs must
    exist and be realized.
@@ -290,7 +297,8 @@ The order matters; this is the sequence:
    - `cs->cpu_index = n`, then
      `numa_cpu_pre_plug(&possible_cpus->cpus[n], DEVICE(cpuobj), &error_fatal)`
    - `cntfrq` = 1 GHz (N2/Armv8.6 mandate; sbsa uses `SBSA_GTIMER_HZ`)
-   - **`has_el3 = false`**, `has_el2 = true` — see §9 for why
+   - `has_el3 = secure` (machine property, default off), `has_el2 = true`
+     — see §9 for why
    - `memory` link = system memory
    - `qdev_realize()`, then `object_unref(cpuobj)`
 4. **GIC** (`arm-gicv3`, revision 4).
@@ -858,9 +866,18 @@ it in `tests/functional/aarch64/meson.build` under
 
 **EL3 / PSCI.** `neoverse-n2` sets `ARM_FEATURE_EL3` and `ARM_FEATURE_EL2`, and
 the CPU properties `has_el3`/`has_el2` both default to `true`
-(`target/arm/cpu.c`). Leaving `has_el3=true` gives the guest a secure world it
-has no firmware for, so set `has_el3 = false` and keep `has_el2 = true` in CPU
-realize. That also matches `has-security-extensions = false` on the GIC.
+(`target/arm/cpu.c`).  The `secure` machine property chooses between the two
+modes:
+
+- **`secure=off` (default)**: `has_el3=false`, `has_el2=true`, GIC
+  `has-security-extensions=false`.  The guest starts at EL2 and QEMU's PSCI
+  implementation acts as an ersatz EL3 behind the SMC conduit.
+- **`secure=on`**: `has_el3=true`, GIC `has-security-extensions=true`, and
+  `psci_conduit = DISABLED` because the EL3 firmware (TF-A) supplies PSCI
+  itself.  The FDT therefore has no `/psci` node and no `enable-method`;
+  firmware/U-Boot must add them before starting the OS.
+
+Secure mode requires TCG; KVM cannot provide EL3 to the guest.
 
 Then the **conduit must be SMC, not HVC**. `arm_load_kernel()` computes
 `boot_el` from the CPU features (2 when EL2 exists) and *silently disables* a
@@ -881,17 +898,28 @@ an ersatz EL3 (`target/arm/tcg/op_helper.c`, `helper_exception_with_syndrome`).
 The alternative is `has_el2 = false` + HVC, but that removes EL2 from the
 guest.
 
-Set `QEMU_PSCI_CONDUIT_DISABLED` when `-bios`/firmware is used (the firmware
-supplies PSCI). The GIC must then use `has-security-extensions = false`,
-because there is no secure state.
+In `secure=on` mode the board sets `QEMU_PSCI_CONDUIT_DISABLED` explicitly,
+because the EL3 firmware supplies PSCI; the GIC keeps
+`has-security-extensions = true` and the FDT omits `/psci` and
+`enable-method`.  `-bios` without `secure=on` still boots at EL2 with QEMU's
+PSCI, which is useful for a non-secure bootloader.
 
-**No `-bios` support in phase 1.** `arm_setup_firmware_boot()` does not load the
-firmware image itself; the board must. Firmware boot also expects the reset
-vector at `0x0` (QEMU leaves PC at reset for non-Linux firmware boot), and this
-map has nothing at `0x0`. If firmware boot is required, add a ROM/pflash window
-at `0x0000_0000` (e.g. 64 MiB) and load `machine->firmware` there, like
-`sbsa-ref` does with pflash. Until then, `-bios` is silently ignored — document
-that.
+Besides the boot RAM at `0x0`, secure mode maps the two SRAM windows the
+TF-A rdn2 port expects (512 KiB at `0x0400_0000` for trusted SRAM and 512 KiB
+at `0x0600_0000` for non-secure SRAM).  A custom TF-A port can use them as-is
+or the addresses can be changed to match the real platform.
+
+**`-bios` and firmware boot.** `arm_setup_firmware_boot()` does not load the
+firmware image itself; the board must.  The AArch64 reset vector is `0x0`
+(QEMU leaves PC at reset for non-Linux firmware boot), so the board maps 4 MiB
+of boot RAM at `0x0000_0000` whenever `secure=on` or `-bios` is given and loads
+`machine->firmware` there with `load_image_targphys()`.  Without `secure=on`
+the firmware starts at EL2 under QEMU's PSCI; with `secure=on` it starts at
+EL3 and owns PSCI.
+
+`bootinfo.firmware_loaded` is set when `-bios` is present, so combining `-bios`
+with `-kernel` is rejected (this board has no fw_cfg to hand the kernel to
+firmware) instead of silently ignoring the firmware.
 
 **ECAM base alignment.** `pcie_host_mmcfg_init()` does not check base alignment,
 but the ECAM decoding is offset-based; `0x40000000` is 256 MiB-aligned, so it is
@@ -960,8 +988,9 @@ driver that expects to find an XDMA function will not bind.
 4. **MIG** — no code: the RAM mapped in phase 1 is the region at `0x80000000`.
    Only document the absence of a register block. Add a real model later only if
    firmware needs one, at a base other than `0x80000000`.
-5. **Hardening** — optional `-bios` ROM at `0x0`, functional test with a real
-   rootfs, optional real MIG register model, docs + MAINTAINERS.
+5. **Hardening** — `secure=on` (EL3 + GIC security extensions) and `-bios`
+   boot are implemented; remaining work is a functional test with a real
+   rootfs, an optional real MIG register model, and docs + MAINTAINERS.
 
 Each phase should end with `scripts/checkpatch.pl --terse -f hw/arm/n2-ref.c`
 clean (warnings on copied code are acceptable, errors are not) and
