@@ -201,6 +201,7 @@ config N2_REF
     select DEVICE_TREE
     select PCI_EXPRESS
     select PCI_EXPRESS_XILINX
+    select PL031
     select SERIAL_MM
 
 config SABRELITE

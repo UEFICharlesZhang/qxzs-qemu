@@ -20,9 +20,10 @@
  * Board layout (CPU physical addresses):
  *
  *   0x0000_0000  boot RAM (4 MiB, only with secure=on or -bios)
- *   0x0400_0000  secure SRAM (512 KiB, secure=on only)
+ *   0x0400_0000  secure SRAM (1 MiB, secure=on only)
  *   0x0600_0000  non-secure SRAM (512 KiB, secure=on only)
  *   0x0C00_0000  8250 UART (0x100 bytes, regshift 2)
+ *   0x0C01_0000  PL031 RTC (4 KiB)
  *   0x0E00_0000  GIC distributor
  *   0x0E04_0000  GIC ITS
  *   0x0E08_0000  GIC redistributors (8 x GICv4 frames)
@@ -62,6 +63,7 @@
 #include "hw/intc/arm_gicv3_its_common.h"
 #include "hw/pci-host/xilinx-pcie.h"
 #include "hw/pci/pci.h"
+#include "hw/rtc/pl031.h"
 #include "net/net.h"
 #include "qobject/qlist.h"
 #include "qom/object.h"
@@ -77,7 +79,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 #define N2_REF_BOOTRAM_BASE   0x00000000ULL
 #define N2_REF_BOOTRAM_SIZE   (4 * MiB)
 #define N2_REF_SRAM_BASE      0x04000000ULL
-#define N2_REF_SRAM_SIZE      (512 * KiB)
+#define N2_REF_SRAM_SIZE      (1 * MiB)
 #define N2_REF_NSRAM_BASE     0x06000000ULL
 #define N2_REF_NSRAM_SIZE     (512 * KiB)
 #define N2_REF_RAM_BASE       0x80000000ULL
@@ -85,6 +87,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 #define N2_REF_UART_BASE      0x0C000000ULL
 #define N2_REF_UART_SIZE      0x00000100ULL
 #define N2_REF_UART_REGSHIFT  2
+#define N2_REF_RTC_BASE       0x0C010000ULL
+#define N2_REF_RTC_SIZE       0x00001000ULL
 #define N2_REF_GICD_BASE      0x0E000000ULL
 #define N2_REF_GICD_SIZE      0x00010000ULL
 #define N2_REF_GITS_BASE      0x0E040000ULL
@@ -101,8 +105,10 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
  * device tree and qdev_get_gpio_in() index SPIs, which is INTID - 32.
  */
 #define N2_REF_UART_INTID     33
+#define N2_REF_RTC_INTID      34
 #define N2_REF_PCIE_INTID     65
 #define N2_REF_UART_SPI       (N2_REF_UART_INTID - 32)
+#define N2_REF_RTC_SPI        (N2_REF_RTC_INTID - 32)
 #define N2_REF_PCIE_SPI       (N2_REF_PCIE_INTID - 32)
 
 #define N2_REF_GIC_NUM_SPI    256   /* SPIs 0..255 */
@@ -262,6 +268,17 @@ static void n2_ref_create_uart(N2RefMachineState *s)
                    115200, serial_hd(0), DEVICE_LITTLE_ENDIAN);
 }
 
+static void n2_ref_create_rtc(N2RefMachineState *s)
+{
+    /*
+     * UEFI's runtime services require an RTC arch protocol.  The PL031 is
+     * a simple MMIO device and is already supported by the ArmVirtPkg
+     * PL031 FDT client library used by the EDK2 build.
+     */
+    sysbus_create_simple(TYPE_PL031, N2_REF_RTC_BASE,
+                         qdev_get_gpio_in(s->gic, N2_REF_RTC_SPI));
+}
+
 static void n2_ref_create_pcie(N2RefMachineState *s)
 {
     MachineState *ms = MACHINE(s);
@@ -319,7 +336,10 @@ static void n2_ref_fdt_add_gic(N2RefMachineState *s)
     qemu_fdt_setprop_cell(fdt, gic_name, "#address-cells", 2);
     qemu_fdt_setprop_cell(fdt, gic_name, "#size-cells", 2);
     qemu_fdt_setprop(fdt, gic_name, "ranges", NULL, 0);
-    qemu_fdt_setprop_cell(fdt, gic_name, "#redistributor-regions", 1);
+    /*
+     * "#redistributor-regions" is optional and defaults to 1; leave it out
+     * so firmware that does not implement multiple GICR regions is happy.
+     */
     qemu_fdt_setprop_sized_cells(fdt, gic_name, "reg",
                                  2, (uint64_t)N2_REF_GICD_BASE,
                                  2, (uint64_t)N2_REF_GICD_SIZE,
@@ -482,6 +502,26 @@ static void n2_ref_fdt_add_uart(N2RefMachineState *s)
     g_free(nodename);
 }
 
+static void n2_ref_fdt_add_rtc(N2RefMachineState *s)
+{
+    MachineState *ms = MACHINE(s);
+    void *fdt = ms->fdt;
+    char *nodename = g_strdup_printf("/rtc@%" PRIx64,
+                                     (uint64_t)N2_REF_RTC_BASE);
+
+    qemu_fdt_add_subnode(fdt, nodename);
+    qemu_fdt_setprop_string(fdt, nodename, "compatible", "arm,pl031");
+    qemu_fdt_setprop_sized_cells(fdt, nodename, "reg",
+                                 2, (uint64_t)N2_REF_RTC_BASE,
+                                 2, (uint64_t)N2_REF_RTC_SIZE);
+    qemu_fdt_setprop_cells(fdt, nodename, "interrupts",
+                           GIC_FDT_IRQ_TYPE_SPI, N2_REF_RTC_SPI,
+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+    qemu_fdt_setprop_string(fdt, nodename, "status", "okay");
+
+    g_free(nodename);
+}
+
 static void n2_ref_fdt_add_pcie(N2RefMachineState *s)
 {
     MachineState *ms = MACHINE(s);
@@ -590,6 +630,7 @@ static void n2_ref_create_fdt(N2RefMachineState *s)
     n2_ref_fdt_add_pmu(s);
     n2_ref_fdt_add_gic(s);
     n2_ref_fdt_add_uart(s);
+    n2_ref_fdt_add_rtc(s);
     n2_ref_fdt_add_pcie(s);
 }
 
@@ -747,6 +788,7 @@ static void n2_ref_init(MachineState *machine)
 
     n2_ref_create_gic(s);
     n2_ref_create_uart(s);
+    n2_ref_create_rtc(s);
     n2_ref_create_pcie(s);
     n2_ref_create_fdt(s);
 
