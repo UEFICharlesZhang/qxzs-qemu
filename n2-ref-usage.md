@@ -24,9 +24,10 @@ If this tree is already configured, just run `make -C build -j"$(nproc)"`.
 | Region | Address | Size |
 |---|---|---|
 | Boot RAM (`secure=on` or `-bios`) | `0x0000_0000` | 4 MiB |
-| Secure SRAM (`secure=on`) | `0x0400_0000` | 512 KiB |
+| Secure SRAM (`secure=on`) | `0x0400_0000` | 1 MiB |
 | Non-secure SRAM (`secure=on`) | `0x0600_0000` | 512 KiB |
 | 8250 UART | `0x0C00_0000` | 256 B (reg-shift 2) |
+| PL031 RTC | `0x0C01_0000` | 4 KiB |
 | GIC distributor | `0x0E00_0000` | 64 KiB |
 | GIC ITS | `0x0E04_0000` | 128 KiB |
 | GIC redistributors | `0x0E08_0000` | 2 MiB |
@@ -34,7 +35,9 @@ If this tree is already configured, just run `make -C build -j"$(nproc)"`.
 | PCIe MMIO/BAR window | `0x6000_0000` | 512 MiB |
 | RAM | `0x8000_0000` | 2 GiB |
 
-Interrupts: UART INTID 33 (SPI 1), PCIe INTx INTID 65 (SPI 33).
+Interrupts: UART INTID 33 (SPI 1), PL031 RTC INTID 34 (SPI 2), PCIe INTx
+INTID 65 (SPI 33). The PL031 is included for UEFI runtime services, which
+require an RTC arch protocol; it also gives Linux a working `/dev/rtc0`.
 
 Limits: `-m` is at most 2 GiB and `-smp` at most 8. The default CPU is
 `neoverse-n2`.
@@ -187,46 +190,42 @@ Use `earlycon=uart8250,mmio32,...` (not `mmio`) because the UART has 32-bit
 registers. Do not add `secure=on` for direct Linux boot: without firmware there
 is nothing to supply PSCI.
 
-## 7. Boot TF-A / U-Boot
+## 7. Boot TF-A + UEFI
 
-A stock TF-A build will not run unmodified. The upstream `rdn2` port uses
-different addresses for the GIC and the console, and this board uses an 8250
-instead of a PL011. A small custom port is needed; the board gives it:
+The board is tested with TF-A v2.15.0 and EDK2 `edk2-stable202608`. The port
+and the full build recipe live in [`firmware/README.md`](firmware/README.md).
 
-| TF-A setting | Value on `n2-ref` |
-|---|---|
-| BL1 ROM base | `0x0` |
-| Trusted SRAM | `0x0400_0000`, 512 KiB |
-| Non-secure SRAM | `0x0600_0000`, 512 KiB |
-| DRAM | `0x8000_0000`, up to 2 GiB |
-| GICD | `0x0E00_0000` |
-| GICR | `0x0E08_0000`, frame size `0x40000` |
-| GITS | `0x0E04_0000` |
-| Console | 8250 at `0x0C00_0000`, reg-shift 2 |
-| PSCI conduit | SMC |
+The firmware sources shipped with this tree are:
 
-Build with the port's name substituted for `PLAT`:
+- `firmware/atf/plat/n2ref` - TF-A platform port (copy to `plat/n2ref`)
+- `firmware/edk2/ArmVirtPkg/ArmVirtN2Ref.dsc` and `.fdf` - EDK2 platform
+
+Build TF-A with the EDK2 BL33 image:
 
 ```sh
-make -C /path/to/arm-trusted-firmware \
-    CROSS_COMPILE=aarch64-none-elf- \
-    PLAT=n2ref \
-    BL33=/path/to/u-boot.bin \
-    all fip
+make -C trusted-firmware-a \
+    CROSS_COMPILE=aarch64-linux-gnu- \
+    PLAT=n2ref DEBUG=1 \
+    ENABLE_TRF_FOR_NS=0 \
+    ARM_LINUX_KERNEL_AS_BL33=1 \
+    BL33=/path/to/edk2/Build/ArmVirtN2Ref-AARCH64/RELEASE_GCC/FV/KVMTOOL_EFI.fd \
+    -j"$(nproc)" all
 ```
 
-`-bios` copies one file to `0x0`. If the port loads BL2/BL31 from a FIP at a
-fixed flash offset, assemble BL1 at offset 0 and the FIP at that offset into a
-single image, then boot it:
+Boot it:
 
 ```sh
 ./build/qemu-system-aarch64 \
-    -M n2-ref,secure=on -cpu neoverse-n2 -smp 4 -m 2G \
-    -nographic -bios /path/to/flash.bin
+    -M n2-ref,secure=on -cpu neoverse-n2 -smp 1 -m 2G \
+    -bios /path/to/trusted-firmware-a/build/n2ref/debug/qemu_fw.bios \
+    -display none -serial stdio
 ```
 
+`-m 2G` is required: TF-A loads BL33 at `0xA000_0000`. At the UEFI Boot
+Manager choose **Boot Manager** -> **UEFI Shell** to reach `Shell>`.
+
 The device tree QEMU places at `0x8000_0000` describes the non-secure world;
-firmware is responsible for finding it and handing it to the next stage.
+TF-A passes it to BL33.
 
 ## 8. Inspect the generated device tree
 

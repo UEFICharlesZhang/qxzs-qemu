@@ -1,6 +1,8 @@
 # Implementation plan: `n2-ref` — Neoverse-N2 + GIC-700 + MIG + 8250 + Xilinx AXI-PCIe
 
-Status: proposed (not implemented). Target tree: QEMU 11.1.2, `aarch64-softmmu`.
+Status: implemented. Target tree: QEMU 11.1.2, `aarch64-softmmu`. Board usage
+is in `n2-ref-usage.md`; the TF-A/EDK2 firmware port and build recipe are in
+`firmware/README.md`.
 
 ## 0. Memory map status
 
@@ -40,9 +42,10 @@ scope.
 
 ```
 0x0000_0000  boot RAM        0x0040_0000   (4 MiB; only with secure=on or -bios)
-0x0400_0000  secure SRAM     0x0008_0000   (512 KiB; secure=on only)
+0x0400_0000  secure SRAM     0x0010_0000   (1 MiB; secure=on only)
 0x0600_0000  non-secure SRAM 0x0008_0000   (512 KiB; secure=on only)
 0x0C00_0000  8250 UART       0x0000_0100   (regshift=2, so 32 bytes are mapped)
+0x0C01_0000  PL031 RTC       0x0000_1000   (4 KiB)
 0x0E00_0000  GICD            0x0001_0000   (64 KiB)
 0x0E04_0000  GITS            0x0002_0000   (128 KiB)
 0x0E08_0000  GICR            0x0020_0000   (2 MiB = 8 × 0x40000 GICv4 frames)
@@ -71,7 +74,7 @@ an overlap: the BAR window is sized to end exactly at the RAM base.
 
 **No separate MIG register window.** The MIG is the RAM region at `0x80000000`
 (see §0), so it is represented by `machine->ram` itself, not by a device. There
-is therefore no MIG SPI below; SPI 2 is left reserved and unused.
+is therefore no MIG SPI below; SPI 2 belongs to the PL031 RTC.
 
 Interrupt map. The board spec numbers lines by **INTID**; the FDT and the GIC
 qdev input lines are both indexed by **SPI** (`INTID - 32`):
@@ -79,7 +82,7 @@ qdev input lines are both indexed by **SPI** (`INTID - 32`):
 | SPI | INTID | Device |
 |---|---|---|
 | 1 | 33 | 8250 UART |
-| 2 | 34 | (reserved; unused) |
+| 2 | 34 | PL031 RTC |
 | 33 | 65 | Xilinx PCIe `interrupt_out` (single shared INTx line) |
 
 SPIs 3–32 are left unused. The PCIe line is **INTID 65** (SPI 33, `0x21`); in
@@ -286,8 +289,8 @@ The order matters; this is the sequence:
    - If `secure=on` or `-bios` was given, also map 4 MiB of boot RAM at
      `0x0` and load `machine->firmware` into it.  The AArch64 reset vector
      is `0x0`, which is where EL3 firmware starts.
-   - If `secure=on`, additionally map the TF-A rdn2 SRAM windows: 512 KiB
-     at `0x0400_0000` (trusted) and 512 KiB at `0x0600_0000` (non-secure).
+   - If `secure=on`, additionally map the TF-A SRAM windows: 1 MiB at
+     `0x0400_0000` (trusted) and 512 KiB at `0x0600_0000` (non-secure).
 3. **Create CPUs before the GIC**. `arm_gicv3_common_realize()` and
    `gicv3_init_cpuif()` call `qemu_get_cpu(first_cpu_idx + i)`; the CPUs must
    exist and be realized.
@@ -456,7 +459,7 @@ Consequences:
 - `machine->ram` occupies `0x80000000`–`0x1_0000_0000`; `ram_size` must be
   `<= 2 GiB`.
 - There is no MIG register block, so no `xlnx,mig-*` register window exists and
-  no MIG SPI is wired; SPI 2 stays reserved.
+  no MIG SPI is wired; SPI 2 belongs to the PL031 RTC.
 - Do not emit a `xlnx,mig-*` DT node: there is no device behind it, and Linux
   would try to probe a driver for absent registers.
 - If firmware insists on a MIG register block, add one later at a free
@@ -905,7 +908,7 @@ because the EL3 firmware supplies PSCI; the GIC keeps
 PSCI, which is useful for a non-secure bootloader.
 
 Besides the boot RAM at `0x0`, secure mode maps the two SRAM windows the
-TF-A rdn2 port expects (512 KiB at `0x0400_0000` for trusted SRAM and 512 KiB
+TF-A n2ref port expects (1 MiB at `0x0400_0000` for trusted SRAM and 512 KiB
 at `0x0600_0000` for non-secure SRAM).  A custom TF-A port can use them as-is
 or the addresses can be changed to match the real platform.
 
@@ -989,8 +992,10 @@ driver that expects to find an XDMA function will not bind.
    Only document the absence of a register block. Add a real model later only if
    firmware needs one, at a base other than `0x80000000`.
 5. **Hardening** — `secure=on` (EL3 + GIC security extensions) and `-bios`
-   boot are implemented; remaining work is a functional test with a real
-   rootfs, an optional real MIG register model, and docs + MAINTAINERS.
+   boot are implemented. TF-A v2.15.0 with the `n2ref` port plus EDK2
+   `ArmVirtN2Ref` boots to the UEFI Shell (see `firmware/README.md`). Remaining
+   work is a Linux rootfs test, an optional real MIG register model, and
+   MAINTAINERS.
 
 Each phase should end with `scripts/checkpatch.pl --terse -f hw/arm/n2-ref.c`
 clean (warnings on copied code are acceptable, errors are not) and
