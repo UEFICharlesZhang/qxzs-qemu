@@ -35,6 +35,7 @@ If this tree is already configured, just run `make -C build -j"$(nproc)"`.
 | PCIe MMIO/BAR window | `0x6000_0000` | 512 MiB |
 | RAM | `0x8000_0000` | 2 GiB |
 | High DRAM (opt-in via `highram-size`) | `0x9_0000_0000` | configured size |
+| Boot flash (opt-in via `bootflash-size`) | `0x0080_0000` | configured size |
 
 Interrupts: UART INTID 33 (SPI 1), PL031 RTC INTID 34 (SPI 2), PCIe INTx
 INTID 65 (SPI 33). The PL031 is included for UEFI runtime services, which
@@ -48,6 +49,14 @@ because it lies outside the 32-bit address space used by the low RAM and all
 MMIO. Use `-M n2-ref,highram-size=14G` to map it. It is intended for firmware
 that supplies its own device tree (the reference platform DTS describes the
 window); QEMU's generated DT only covers the 2 GiB at `0x8000_0000`.
+
+For firmware derived from the FVP/CX ports, `-M n2-ref,bootflash-size=8M` maps
+a RAM-backed flash window at `0x0080_0000` (where their BL1 looks for the FIP),
+`cx-wdt=on` maps a 4 KiB no-op watchdog at `0x0C00A000`, `fvp-sysregs=on`
+maps a 4 KiB no-op system-register block at `0x1C010000`, and `fvp-smmu=on`
+maps a 64 KiB no-op SMMUv3 block at `0x0D000000`, and `fvp-mem-protect=on`
+maps the flash memory-protect flag at `0x07FC0000` (reads as zero). The flash
+window must stay below the secure SRAM at `0x0400_0000` (at most 56 MiB).
 
 Two boot modes:
 
@@ -271,5 +280,9 @@ make check-qtest-aarch64
 - **KVM refuses to start in secure mode.** Expected: KVM cannot provide EL3.
 - **PCIe ECAM is 256 MiB.** That is QEMU's `pcie_host_mmcfg_init()` limit, so
   the reference's larger ECAM cannot be modelled.
+- **Firmware does not see a PCIe endpoint.** `-device` endpoints default to
+  the bus in front of the xilinx root port (`pcie0`). Firmware that scans
+  behind the root port, such as UEFI, needs them on the downstream bus:
+  `-device nvme,serial=...,drive=...,bus=pci.0`.
 - **The GIC identifies as a GIC-500.** GIC-700 is approximated with GICv3
   revision 4 plus ITS support; `GICD_IIDR` is not a GIC-700 value.

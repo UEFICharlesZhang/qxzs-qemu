@@ -79,6 +79,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 /* Memory map. */
 #define N2_REF_BOOTRAM_BASE   0x00000000ULL
 #define N2_REF_BOOTRAM_SIZE   (4 * MiB)
+#define N2_REF_BOOTFLASH_BASE 0x00800000ULL
 #define N2_REF_SRAM_BASE      0x04000000ULL
 #define N2_REF_SRAM_SIZE      (1 * MiB)
 #define N2_REF_NSRAM_BASE     0x06000000ULL
@@ -93,6 +94,14 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 #define N2_REF_UART_REGSHIFT  2
 #define N2_REF_RTC_BASE       0x0C010000ULL
 #define N2_REF_RTC_SIZE       0x00001000ULL
+#define N2_REF_CX_WDT_BASE    0x0C00A000ULL
+#define N2_REF_CX_WDT_SIZE    0x00001000ULL
+#define N2_REF_SYSREGS_BASE   0x1C010000ULL
+#define N2_REF_SYSREGS_SIZE   0x00001000ULL
+#define N2_REF_SMMU_BASE      0x0D000000ULL
+#define N2_REF_SMMU_SIZE      0x00010000ULL
+#define N2_REF_MEMPROTECT_BASE 0x07FC0000ULL
+#define N2_REF_MEMPROTECT_SIZE 0x00001000ULL
 #define N2_REF_GICD_BASE      0x0E000000ULL
 #define N2_REF_GICD_SIZE      0x00010000ULL
 #define N2_REF_GITS_BASE      0x0E040000ULL
@@ -132,11 +141,21 @@ struct N2RefMachineState {
     uint32_t its_phandle;
     int fdt_size;
     bool secure;
+    uint64_t bootflash_size;
+    bool cx_wdt;
+    bool fvp_sysregs;
+    bool fvp_smmu;
+    bool fvp_memprotect;
     uint64_t highram_size;
     MemoryRegion bootram;
+    MemoryRegion bootflash;
     MemoryRegion sram;
     MemoryRegion nsram;
     MemoryRegion highram;
+    MemoryRegion cx_wdt_reg;
+    MemoryRegion sysregs_reg;
+    MemoryRegion smmu_reg;
+    MemoryRegion memprotect_reg;
 };
 
 static uint64_t n2_ref_cpu_mp_affinity(int idx)
@@ -176,6 +195,97 @@ static void n2_ref_set_highram_size(Object *obj, Visitor *v,
     }
     N2_REF_MACHINE(obj)->highram_size = value;
 }
+
+static void n2_ref_get_bootflash_size(Object *obj, Visitor *v,
+                                      const char *name, void *opaque,
+                                      Error **errp)
+{
+    uint64_t value = N2_REF_MACHINE(obj)->bootflash_size;
+
+    visit_type_size(v, name, &value, errp);
+}
+
+static void n2_ref_set_bootflash_size(Object *obj, Visitor *v,
+                                      const char *name, void *opaque,
+                                      Error **errp)
+{
+    uint64_t value;
+
+    if (!visit_type_size(v, name, &value, errp)) {
+        return;
+    }
+    N2_REF_MACHINE(obj)->bootflash_size = value;
+}
+
+static bool n2_ref_get_cx_wdt(Object *obj, Error **errp)
+{
+    return N2_REF_MACHINE(obj)->cx_wdt;
+}
+
+static void n2_ref_set_cx_wdt(Object *obj, bool value, Error **errp)
+{
+    N2_REF_MACHINE(obj)->cx_wdt = value;
+}
+
+static bool n2_ref_get_fvp_sysregs(Object *obj, Error **errp)
+{
+    return N2_REF_MACHINE(obj)->fvp_sysregs;
+}
+
+static void n2_ref_set_fvp_sysregs(Object *obj, bool value, Error **errp)
+{
+    N2_REF_MACHINE(obj)->fvp_sysregs = value;
+}
+
+static bool n2_ref_get_fvp_smmu(Object *obj, Error **errp)
+{
+    return N2_REF_MACHINE(obj)->fvp_smmu;
+}
+
+static void n2_ref_set_fvp_smmu(Object *obj, bool value, Error **errp)
+{
+    N2_REF_MACHINE(obj)->fvp_smmu = value;
+}
+
+static bool n2_ref_get_fvp_memprotect(Object *obj, Error **errp)
+{
+    return N2_REF_MACHINE(obj)->fvp_memprotect;
+}
+
+static void n2_ref_set_fvp_memprotect(Object *obj, bool value, Error **errp)
+{
+    N2_REF_MACHINE(obj)->fvp_memprotect = value;
+}
+
+/*
+ * No-op MMIO block used to stand in for devices that firmware touches but
+ * that the board does not model.  Reads return zero and writes are ignored;
+ * this is enough to keep firmware that only performs write-only setup and
+ * does not poll status registers running.
+ */
+static uint64_t n2_ref_dummy_read(void *opaque, hwaddr offset, unsigned size)
+{
+    return 0;
+}
+
+static void n2_ref_dummy_write(void *opaque, hwaddr offset, uint64_t value,
+                               unsigned size)
+{
+}
+
+static const MemoryRegionOps n2_ref_dummy_ops = {
+    .read = n2_ref_dummy_read,
+    .write = n2_ref_dummy_write,
+    .endianness = DEVICE_LITTLE_ENDIAN,
+    .valid = {
+        .min_access_size = 1,
+        .max_access_size = 8,
+    },
+    .impl = {
+        .min_access_size = 1,
+        .max_access_size = 8,
+    },
+};
 
 /* ---- GIC and ITS ------------------------------------------------------ */
 
@@ -745,6 +855,57 @@ static void n2_ref_init(MachineState *machine)
     }
 
     /*
+     * FVP/CX-derived firmware reads its FIP from a flash window at
+     * 0x0080_0000.  Model it as RAM so that -device loader can populate it.
+     * Keep it below the secure SRAM window.
+     */
+    if (s->bootflash_size) {
+        if (s->bootflash_size > N2_REF_SRAM_BASE - N2_REF_BOOTFLASH_BASE) {
+            error_report("n2-ref: bootflash-size exceeds the window below "
+                         "the secure SRAM at 0x%" PRIx64,
+                         (uint64_t)N2_REF_SRAM_BASE);
+            exit(1);
+        }
+        memory_region_init_ram(&s->bootflash, NULL, "n2-ref.boot-flash",
+                               s->bootflash_size, &error_fatal);
+        memory_region_add_subregion(sysmem, N2_REF_BOOTFLASH_BASE,
+                                    &s->bootflash);
+    }
+
+    /*
+     * Compatibility stubs for firmware derived from the FVP/CX ports: a
+     * watchdog at 0x0C00A000 and the FVP system registers at 0x1C010000.
+     */
+    if (s->cx_wdt) {
+        memory_region_init_io(&s->cx_wdt_reg, NULL, &n2_ref_dummy_ops, NULL,
+                              "n2-ref.cx-wdt", N2_REF_CX_WDT_SIZE);
+        memory_region_add_subregion(sysmem, N2_REF_CX_WDT_BASE,
+                                    &s->cx_wdt_reg);
+    }
+
+    if (s->fvp_sysregs) {
+        memory_region_init_io(&s->sysregs_reg, NULL, &n2_ref_dummy_ops, NULL,
+                              "n2-ref.fvp-sysregs", N2_REF_SYSREGS_SIZE);
+        memory_region_add_subregion(sysmem, N2_REF_SYSREGS_BASE,
+                                    &s->sysregs_reg);
+    }
+
+    if (s->fvp_smmu) {
+        memory_region_init_io(&s->smmu_reg, NULL, &n2_ref_dummy_ops, NULL,
+                              "n2-ref.fvp-smmu", N2_REF_SMMU_SIZE);
+        memory_region_add_subregion(sysmem, N2_REF_SMMU_BASE,
+                                    &s->smmu_reg);
+    }
+
+    if (s->fvp_memprotect) {
+        memory_region_init_io(&s->memprotect_reg, NULL, &n2_ref_dummy_ops,
+                              NULL, "n2-ref.fvp-mem-protect",
+                              N2_REF_MEMPROTECT_SIZE);
+        memory_region_add_subregion(sysmem, N2_REF_MEMPROTECT_BASE,
+                                    &s->memprotect_reg);
+    }
+
+    /*
      * EL3 firmware enters at the AArch64 reset vector, which is 0x0, so
      * secure mode needs memory there.  The same window also gives a plain
      * -bios image an entry point when the machine is not in secure mode.
@@ -878,6 +1039,34 @@ static void n2_ref_class_init(ObjectClass *oc, const void *data)
     object_class_property_set_description(oc, "highram-size",
         "Size of the optional high DRAM region at 0x9_0000_0000, for "
         "firmware that supplies its own device tree (for example 14G)");
+
+    object_class_property_add(oc, "bootflash-size", "size",
+                              n2_ref_get_bootflash_size,
+                              n2_ref_set_bootflash_size, NULL, NULL);
+    object_class_property_set_description(oc, "bootflash-size",
+        "Size of the optional boot flash window at 0x0080_0000 "
+        "(for example 8M)");
+
+    object_class_property_add_bool(oc, "cx-wdt", n2_ref_get_cx_wdt,
+                                   n2_ref_set_cx_wdt);
+    object_class_property_set_description(oc, "cx-wdt",
+        "Map a no-op CX watchdog at 0x0C00A000");
+
+    object_class_property_add_bool(oc, "fvp-sysregs", n2_ref_get_fvp_sysregs,
+                                   n2_ref_set_fvp_sysregs);
+    object_class_property_set_description(oc, "fvp-sysregs",
+        "Map no-op FVP system registers at 0x1C010000");
+
+    object_class_property_add_bool(oc, "fvp-smmu", n2_ref_get_fvp_smmu,
+                                   n2_ref_set_fvp_smmu);
+    object_class_property_set_description(oc, "fvp-smmu",
+        "Map a no-op SMMUv3 register block at 0x0D000000");
+
+    object_class_property_add_bool(oc, "fvp-mem-protect",
+                                   n2_ref_get_fvp_memprotect,
+                                   n2_ref_set_fvp_memprotect);
+    object_class_property_set_description(oc, "fvp-mem-protect",
+        "Map a no-op memory-protect flag at 0x07FC0000");
 }
 
 static const TypeInfo n2_ref_machine_typeinfo = {

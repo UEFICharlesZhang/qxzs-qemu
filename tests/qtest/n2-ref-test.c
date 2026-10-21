@@ -24,12 +24,16 @@
 #define PCIE_MMIO_BASE  0x60000000ULL
 #define HIGHRAM_BASE    0x900000000ULL
 #define HIGHRAM_SIZE    (16 * MiB)
+#define BOOTFLASH_BASE  0x00800000ULL
+#define BOOTFLASH_SIZE  (8 * MiB)
 
 #define MACHINE_CMD "-machine n2-ref -m 2G -smp 4 -display none -serial none"
 #define SECURE_MACHINE_CMD \
     "-machine n2-ref,secure=on -m 2G -smp 4 -display none -serial none"
 #define HIGHRAM_MACHINE_CMD \
     "-machine n2-ref,highram-size=16M -m 2G -smp 4 -display none -serial none"
+#define BOOTFLASH_MACHINE_CMD \
+    "-machine n2-ref,bootflash-size=8M -m 2G -smp 4 -display none -serial none"
 
 static void test_ram(void)
 {
@@ -134,6 +138,22 @@ static void test_highram(void)
     qtest_quit(qts);
 }
 
+static void test_bootflash(void)
+{
+    QTestState *qts = qtest_init(BOOTFLASH_MACHINE_CMD);
+
+    qtest_writeq(qts, BOOTFLASH_BASE, 0x0123456789abcdefULL);
+    g_assert_cmphex(qtest_readq(qts, BOOTFLASH_BASE), ==,
+                    0x0123456789abcdefULL);
+
+    qtest_writeq(qts, BOOTFLASH_BASE + BOOTFLASH_SIZE - 8,
+                 0xa5a5a5a5a5a5a5a5ULL);
+    g_assert_cmphex(qtest_readq(qts, BOOTFLASH_BASE + BOOTFLASH_SIZE - 8), ==,
+                    0xa5a5a5a5a5a5a5a5ULL);
+
+    qtest_quit(qts);
+}
+
 static void test_pcie(void)
 {
     QTestState *qts = qtest_init(MACHINE_CMD);
@@ -177,6 +197,7 @@ int main(int argc, char **argv)
     qtest_add_func("n2-ref/gic", test_gic);
     qtest_add_func("n2-ref/secure", test_secure);
     qtest_add_func("n2-ref/highram", test_highram);
+    qtest_add_func("n2-ref/bootflash", test_bootflash);
     qtest_add_func("n2-ref/pcie", test_pcie);
     qtest_add_func("n2-ref/cpus", test_cpus);
 
