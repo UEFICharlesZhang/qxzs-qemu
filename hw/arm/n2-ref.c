@@ -96,6 +96,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 #define N2_REF_RTC_SIZE       0x00001000ULL
 #define N2_REF_CX_WDT_BASE    0x0C00A000ULL
 #define N2_REF_CX_WDT_SIZE    0x00001000ULL
+#define N2_REF_CX_GPIO_BASE   0x0C005000ULL
+#define N2_REF_CX_GPIO_SIZE   0x00001000ULL
 #define N2_REF_SYSREGS_BASE   0x1C010000ULL
 #define N2_REF_SYSREGS_SIZE   0x00001000ULL
 #define N2_REF_SMMU_BASE      0x0D000000ULL
@@ -143,6 +145,7 @@ struct N2RefMachineState {
     bool secure;
     uint64_t bootflash_size;
     bool cx_wdt;
+    bool cx_gpio;
     bool fvp_sysregs;
     bool fvp_smmu;
     bool fvp_memprotect;
@@ -153,6 +156,7 @@ struct N2RefMachineState {
     MemoryRegion nsram;
     MemoryRegion highram;
     MemoryRegion cx_wdt_reg;
+    MemoryRegion cx_gpio_reg;
     MemoryRegion sysregs_reg;
     MemoryRegion smmu_reg;
     MemoryRegion memprotect_reg;
@@ -225,6 +229,16 @@ static bool n2_ref_get_cx_wdt(Object *obj, Error **errp)
 static void n2_ref_set_cx_wdt(Object *obj, bool value, Error **errp)
 {
     N2_REF_MACHINE(obj)->cx_wdt = value;
+}
+
+static bool n2_ref_get_cx_gpio(Object *obj, Error **errp)
+{
+    return N2_REF_MACHINE(obj)->cx_gpio;
+}
+
+static void n2_ref_set_cx_gpio(Object *obj, bool value, Error **errp)
+{
+    N2_REF_MACHINE(obj)->cx_gpio = value;
 }
 
 static bool n2_ref_get_fvp_sysregs(Object *obj, Error **errp)
@@ -703,9 +717,12 @@ static void n2_ref_fdt_add_pcie(N2RefMachineState *s)
                            GIC_FDT_IRQ_TYPE_SPI, N2_REF_PCIE_SPI,
                            GIC_FDT_IRQ_FLAGS_LEVEL_HI);
 
-    /* Required for MSI/MSI-X: the ITS uses the BDF as the device ID. */
-    qemu_fdt_setprop_cells(fdt, nodename, "msi-map",
-                           0, s->its_phandle, 0, 0x10000);
+    /*
+     * Do not advertise msi-map: PCIe interrupts are delivered as INTx on
+     * the GIC SPI above.  Without an MSI map the guest does not enable
+     * MSI/MSI-X and falls back to INTx, which the xilinx-pcie model
+     * forwards through interrupt_out.
+     */
 
     /*
      * Downstream INTx lines.  The xilinx-pcie model collapses all four
@@ -883,6 +900,13 @@ static void n2_ref_init(MachineState *machine)
                                     &s->cx_wdt_reg);
     }
 
+    if (s->cx_gpio) {
+        memory_region_init_io(&s->cx_gpio_reg, NULL, &n2_ref_dummy_ops, NULL,
+                              "n2-ref.cx-gpio", N2_REF_CX_GPIO_SIZE);
+        memory_region_add_subregion(sysmem, N2_REF_CX_GPIO_BASE,
+                                    &s->cx_gpio_reg);
+    }
+
     if (s->fvp_sysregs) {
         memory_region_init_io(&s->sysregs_reg, NULL, &n2_ref_dummy_ops, NULL,
                               "n2-ref.fvp-sysregs", N2_REF_SYSREGS_SIZE);
@@ -1051,6 +1075,11 @@ static void n2_ref_class_init(ObjectClass *oc, const void *data)
                                    n2_ref_set_cx_wdt);
     object_class_property_set_description(oc, "cx-wdt",
         "Map a no-op CX watchdog at 0x0C00A000");
+
+    object_class_property_add_bool(oc, "cx-gpio", n2_ref_get_cx_gpio,
+                                   n2_ref_set_cx_gpio);
+    object_class_property_set_description(oc, "cx-gpio",
+        "Map a no-op CX GPIO/INTx control block at 0x0C005000");
 
     object_class_property_add_bool(oc, "fvp-sysregs", n2_ref_get_fvp_sysregs,
                                    n2_ref_set_fvp_sysregs);

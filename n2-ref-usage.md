@@ -38,7 +38,10 @@ If this tree is already configured, just run `make -C build -j"$(nproc)"`.
 | Boot flash (opt-in via `bootflash-size`) | `0x0080_0000` | configured size |
 
 Interrupts: UART INTID 33 (SPI 1), PL031 RTC INTID 34 (SPI 2), PCIe INTx
-INTID 65 (SPI 33). The PL031 is included for UEFI runtime services, which
+INTID 65 (SPI 33). PCIe endpoints are wired through the xilinx-pcie
+`interrupt_out` line to that SPI; the device tree does not advertise an MSI
+map, so guests fall back to INTx instead of MSI/MSI-X. The PL031 is included
+for UEFI runtime services, which
 require an RTC arch protocol; it also gives Linux a working `/dev/rtc0`.
 
 Limits: `-m` is at most 2 GiB and `-smp` at most 8. The default CPU is
@@ -52,8 +55,9 @@ window); QEMU's generated DT only covers the 2 GiB at `0x8000_0000`.
 
 For firmware derived from the FVP/CX ports, `-M n2-ref,bootflash-size=8M` maps
 a RAM-backed flash window at `0x0080_0000` (where their BL1 looks for the FIP),
-`cx-wdt=on` maps a 4 KiB no-op watchdog at `0x0C00A000`, `fvp-sysregs=on`
-maps a 4 KiB no-op system-register block at `0x1C010000`, and `fvp-smmu=on`
+`cx-wdt=on` maps a 4 KiB no-op watchdog at `0x0C00A000`, `cx-gpio=on` maps
+the 4 KiB CX GPIO/INTx control block at `0x0C005000`, `fvp-sysregs=on`
+maps a 4 KiB no-op system-register block at `0x1C010000`, `fvp-smmu=on`
 maps a 64 KiB no-op SMMUv3 block at `0x0D000000`, and `fvp-mem-protect=on`
 maps the flash memory-protect flag at `0x07FC0000` (reads as zero). The flash
 window must stay below the secure SRAM at `0x0400_0000` (at most 56 MiB).
