@@ -22,10 +22,14 @@
 #define GICR_BASE       0x0E080000ULL
 #define PCIE_ECAM_BASE  0x40000000ULL
 #define PCIE_MMIO_BASE  0x60000000ULL
+#define HIGHRAM_BASE    0x900000000ULL
+#define HIGHRAM_SIZE    (16 * MiB)
 
 #define MACHINE_CMD "-machine n2-ref -m 2G -smp 4 -display none -serial none"
 #define SECURE_MACHINE_CMD \
     "-machine n2-ref,secure=on -m 2G -smp 4 -display none -serial none"
+#define HIGHRAM_MACHINE_CMD \
+    "-machine n2-ref,highram-size=16M -m 2G -smp 4 -display none -serial none"
 
 static void test_ram(void)
 {
@@ -114,6 +118,22 @@ static void test_secure(void)
     qtest_quit(qts);
 }
 
+static void test_highram(void)
+{
+    QTestState *qts = qtest_init(HIGHRAM_MACHINE_CMD);
+
+    qtest_writeq(qts, HIGHRAM_BASE, 0x0123456789abcdefULL);
+    g_assert_cmphex(qtest_readq(qts, HIGHRAM_BASE), ==,
+                    0x0123456789abcdefULL);
+
+    qtest_writeq(qts, HIGHRAM_BASE + HIGHRAM_SIZE - 8,
+                 0xa5a5a5a5a5a5a5a5ULL);
+    g_assert_cmphex(qtest_readq(qts, HIGHRAM_BASE + HIGHRAM_SIZE - 8), ==,
+                    0xa5a5a5a5a5a5a5a5ULL);
+
+    qtest_quit(qts);
+}
+
 static void test_pcie(void)
 {
     QTestState *qts = qtest_init(MACHINE_CMD);
@@ -156,6 +176,7 @@ int main(int argc, char **argv)
     qtest_add_func("n2-ref/uart", test_uart);
     qtest_add_func("n2-ref/gic", test_gic);
     qtest_add_func("n2-ref/secure", test_secure);
+    qtest_add_func("n2-ref/highram", test_highram);
     qtest_add_func("n2-ref/pcie", test_pcie);
     qtest_add_func("n2-ref/cpus", test_cpus);
 

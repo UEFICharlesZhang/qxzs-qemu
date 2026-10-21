@@ -34,6 +34,7 @@ If this tree is already configured, just run `make -C build -j"$(nproc)"`.
 | PCIe ECAM | `0x4000_0000` | 256 MiB |
 | PCIe MMIO/BAR window | `0x6000_0000` | 512 MiB |
 | RAM | `0x8000_0000` | 2 GiB |
+| High DRAM (opt-in via `highram-size`) | `0x9_0000_0000` | configured size |
 
 Interrupts: UART INTID 33 (SPI 1), PL031 RTC INTID 34 (SPI 2), PCIe INTx
 INTID 65 (SPI 33). The PL031 is included for UEFI runtime services, which
@@ -41,6 +42,12 @@ require an RTC arch protocol; it also gives Linux a working `/dev/rtc0`.
 
 Limits: `-m` is at most 2 GiB and `-smp` at most 8. The default CPU is
 `neoverse-n2`.
+
+The reference platform's high DRAM window at `0x9_0000_0000` is opt-in
+because it lies outside the 32-bit address space used by the low RAM and all
+MMIO. Use `-M n2-ref,highram-size=14G` to map it. It is intended for firmware
+that supplies its own device tree (the reference platform DTS describes the
+window); QEMU's generated DT only covers the 2 GiB at `0x8000_0000`.
 
 Two boot modes:
 

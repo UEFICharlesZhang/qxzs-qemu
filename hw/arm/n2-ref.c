@@ -40,6 +40,7 @@
 
 #include "qemu/osdep.h"
 #include "qapi/error.h"
+#include "qapi/visitor.h"
 #include "qemu/cutils.h"
 #include "qemu/datadir.h"
 #include "qemu/error-report.h"
@@ -84,6 +85,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(N2RefMachineState, N2_REF_MACHINE)
 #define N2_REF_NSRAM_SIZE     (512 * KiB)
 #define N2_REF_RAM_BASE       0x80000000ULL
 #define N2_REF_RAM_SIZE_MAX   (2 * GiB)
+
+/* Optional high DRAM window described by the reference platform DTS. */
+#define N2_REF_HIGHRAM_BASE   0x900000000ULL
 #define N2_REF_UART_BASE      0x0C000000ULL
 #define N2_REF_UART_SIZE      0x00000100ULL
 #define N2_REF_UART_REGSHIFT  2
@@ -128,9 +132,11 @@ struct N2RefMachineState {
     uint32_t its_phandle;
     int fdt_size;
     bool secure;
+    uint64_t highram_size;
     MemoryRegion bootram;
     MemoryRegion sram;
     MemoryRegion nsram;
+    MemoryRegion highram;
 };
 
 static uint64_t n2_ref_cpu_mp_affinity(int idx)
@@ -148,6 +154,27 @@ static bool n2_ref_get_secure(Object *obj, Error **errp)
 static void n2_ref_set_secure(Object *obj, bool value, Error **errp)
 {
     N2_REF_MACHINE(obj)->secure = value;
+}
+
+static void n2_ref_get_highram_size(Object *obj, Visitor *v,
+                                    const char *name, void *opaque,
+                                    Error **errp)
+{
+    uint64_t value = N2_REF_MACHINE(obj)->highram_size;
+
+    visit_type_size(v, name, &value, errp);
+}
+
+static void n2_ref_set_highram_size(Object *obj, Visitor *v,
+                                    const char *name, void *opaque,
+                                    Error **errp)
+{
+    uint64_t value;
+
+    if (!visit_type_size(v, name, &value, errp)) {
+        return;
+    }
+    N2_REF_MACHINE(obj)->highram_size = value;
 }
 
 /* ---- GIC and ITS ------------------------------------------------------ */
@@ -632,6 +659,14 @@ static void n2_ref_create_fdt(N2RefMachineState *s)
     n2_ref_fdt_add_uart(s);
     n2_ref_fdt_add_rtc(s);
     n2_ref_fdt_add_pcie(s);
+
+    /*
+     * Note: arm_load_dtb() discards every /memory* node and regenerates
+     * them from machine->ram, so the high DRAM window cannot be described
+     * here.  It is mapped for firmware that supplies its own device tree
+     * (as the reference platform firmware does); the generated QEMU DT
+     * only covers machine->ram.
+     */
 }
 
 static void *n2_ref_get_dtb(const struct arm_boot_info *info, int *size)
@@ -696,6 +731,18 @@ static void n2_ref_init(MachineState *machine)
 
     /* RAM: one region at 0x8000_0000. */
     memory_region_add_subregion(sysmem, N2_REF_RAM_BASE, machine->ram);
+
+    /*
+     * The reference platform also has a high DRAM window at 0x9_0000_0000.
+     * It is opt-in because it lies outside the 32-bit address space used by
+     * the default 2 GiB RAM region and by all the MMIO devices.
+     */
+    if (s->highram_size) {
+        memory_region_init_ram(&s->highram, NULL, "n2-ref.high-ram",
+                               s->highram_size, &error_fatal);
+        memory_region_add_subregion(sysmem, N2_REF_HIGHRAM_BASE,
+                                    &s->highram);
+    }
 
     /*
      * EL3 firmware enters at the AArch64 reset vector, which is 0x0, so
@@ -824,6 +871,13 @@ static void n2_ref_class_init(ObjectClass *oc, const void *data)
     object_class_property_set_description(oc, "secure",
         "Enable EL3 and GIC security extensions for external firmware; "
         "QEMU's PSCI implementation is disabled");
+
+    object_class_property_add(oc, "highram-size", "size",
+                              n2_ref_get_highram_size,
+                              n2_ref_set_highram_size, NULL, NULL);
+    object_class_property_set_description(oc, "highram-size",
+        "Size of the optional high DRAM region at 0x9_0000_0000, for "
+        "firmware that supplies its own device tree (for example 14G)");
 }
 
 static const TypeInfo n2_ref_machine_typeinfo = {
