@@ -1,0 +1,2415 @@
+I am ATF
+NOTICE:  Booting Trusted Firmware
+NOTICE:  BL1: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL1: Built : 22:40:01, Aug 27 2026
+INFO:    BL1: RAM 0x84033000 - 0x8403a000
+INFO:    Loading image id=32 at address 0x84001010
+INFO:    Image id=32 loaded: 0x84001010 - 0x84001213
+INFO:    FCONF: Config file with image ID:32 loaded at address = 0x84001010
+INFO:    Loading image id=24 at address 0x84001300
+INFO:    Image id=24 loaded: 0x84001300 - 0x840015e4
+INFO:    FCONF: Config file with image ID:24 loaded at address = 0x84001300
+INFO:    BL1: Loading BL2
+INFO:    Loading image id=1 at address 0x8401f000
+INFO:    Image id=1 loaded: 0x8401f000 - 0x84027824
+NOTICE:  BL1: Booting BL2
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+ENABLE_PAUTH is 0
+ENABLE_RME is 0
+INFO:    FCONF: Reading FW_CONFIG firmware configuration file from: 0x84001010
+INFO:    FCONF: Reading firmware configuration information for: dyn_cfg
+INFO:    FCONF: Reading TB_FW firmware configuration file from: 0x84001300
+NOTICE:  BL2: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL2: Built : 22:40:03, Aug 27 2026
+INFO:    BL2: Doing platform setup
+INFO:    BL2: Loading image id 3
+INFO:    Loading image id=3 at address 0x84003000
+INFO:    Image id=3 loaded: 0x84003000 - 0x840151b4
+INFO:    BL2: Loading image id 23
+INFO:    Loading image id=23 at address 0x87f00000
+INFO:    Image id=23 loaded: 0x87f00000 - 0x87f0257c
+INFO:    BL2: Loading image id 25
+INFO:    Loading image id=25 at address 0x84001300
+INFO:    Image id=25 loaded: 0x84001300 - 0x84001348
+INFO:    BL2: Loading image id 5
+INFO:    Loading image id=5 at address 0x88200000
+INFO:    Image id=5 loaded: 0x88200000 - 0x88400000
+INFO:    BL2: Loading image id 27
+INFO:    Loading image id=27 at address 0x88000000
+INFO:    Image id=27 loaded: 0x88000000 - 0x88000048
+INFO:    BL31 FCONF: FW_CONFIG address = 84001010
+INFO:    FCONF: Reading FW_CONFIG firmware configuration file from: 0x84001010
+INFO:    FCONF: Reading firmware configuration information for: dyn_cfg
+d0 0d fe ed 00 00 00 48 00 00 00 38 00 00 00 48 
+d0 0d fe ed 00 00 25 7c 00 00 00 48 00 00 22 20 
+INFO:    FCONF: Reading HW_CONFIG firmware configuration file from: 0x87f00000
+INFO:    FCONF: Reading firmware configuration information for: pci_props
+WARNING: FCONF: Unable to locate 'pci' node
+INFO:    FCONF: Reading firmware configuration information for: dram_layout
+INFO:    FCONF: Reading firmware configuration information for: cpu_timer
+INFO:    FCONF: Reading firmware configuration information for: uart_config
+INFO:    FCONF: Reading firmware configuration information for: topology
+INFO:    FCONF: Reading firmware configuration information for: gicv3_config
+NOTICE:  BL31: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL31: Built : 22:40:04, Aug 27 2026
+INFO:    GICv4 without legacy support detected.
+INFO:    ARM GICv4 driver initialized in EL3
+INFO:    Maximum SPI INTID supported: 287
+INFO:    BL31: Initializing runtime services
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+NOTICE:  FINISH bl31_main. Time to start UEFI
+UEFI firmware (version V1.0 built at 22:09:45 on Jun 12 2026)
+SecMain: line:108,PcdSystemMemoryBase:0x88200000
+SecMain: line:109,PcdSystemMemorySize:0x70000000
+SecMain: line:110,PcdFdBaseAddress:0x88200000
+SecMain: line:111,PcdFdSize:0x400000
+SecMain: line:113
+SecMain: line:114,UefiMemoryBase:0xF0200000
+SecMain: line:115,PcdSystemMemoryUefiRegionSize:0x8000000
+SecMain: line:116,StackBase:0xF81F0000
+PhysicalBase     80000000 VirtualBase     80000000 Length     80000000 Attributes            1
+PhysicalBase            0 VirtualBase            0 Length      8000000 Attributes            6
+PhysicalBase      8000000 VirtualBase      8000000 Length      4000000 Attributes            6
+PhysicalBase      C000000 VirtualBase      C000000 Length      1000000 Attributes            6
+PhysicalBase      D000000 VirtualBase      D000000 Length      1000000 Attributes            6
+PhysicalBase      E000000 VirtualBase      E000000 Length      1000000 Attributes            6
+PhysicalBase      F000000 VirtualBase      F000000 Length      1000000 Attributes            6
+PhysicalBase     40000000 VirtualBase     40000000 Length     20000000 Attributes            6
+PhysicalBase     60000000 VirtualBase     60000000 Length     10000000 Attributes            6
+PhysicalBase     70000000 VirtualBase     70000000 Length     10000000 Attributes            6
+PhysicalBase    900000000 VirtualBase    900000000 Length    380000000 Attributes            1
+Loading DxeCore at 0x00F79E4000 EntryPoint=0x00F79ED2C8
+CoreInitializeMemoryServices:
+  BaseAddress - 0xF0201000 Length - 0x77E3000 MinimalMemorySizeNeeded - 0xA1000
+DxeMain: MemoryBaseAddress=0xF0201000 MemoryLength=0x77E3000
+HOBLIST address in DXE = 0xF793E018
+Memory Allocation 0x00000004 0xF81EF000 - 0xF81EFFFF
+Memory Allocation 0x00000004 0x88200000 - 0x885FFFFF
+Memory Allocation 0x00000004 0xF81EE000 - 0xF81EEFFF
+Memory Allocation 0x00000004 0xF81ED000 - 0xF81EDFFF
+Memory Allocation 0x00000004 0xF81EC000 - 0xF81ECFFF
+Memory Allocation 0x00000004 0xF81EB000 - 0xF81EBFFF
+Memory Allocation 0x00000004 0xF81EA000 - 0xF81EAFFF
+Memory Allocation 0x00000004 0xF81E9000 - 0xF81E9FFF
+Memory Allocation 0x00000004 0xF81F0000 - 0xF81FFFFF
+Memory Allocation 0x00000004 0xF81D9000 - 0xF81E8FFF
+Memory Allocation 0x00000004 0xF7E02000 - 0xF81D8FFF
+Memory Allocation 0x00000004 0xF7A2B000 - 0xF7E01FFF
+Memory Allocation 0x00000003 0xF79E4000 - 0xF7A2AFFF
+Memory Allocation 0x00000003 0xF79E4000 - 0xF7A2AFFF
+FV Hob            0x88200000 - 0x883FFFFF
+FV Hob            0xF7A2B000 - 0xF7E007FF
+FV2 Hob           0xF7A2B000 - 0xF7E007FF
+                  00000000-0000-0000-0000-000000000000 - 9E21FD93-9C72-4C15-8C4B-E77F1DB2D792
+Loading driver 80CF7257-87AB-47F9-A3FE-D50B76D89541
+Loading driver at 0x000F75A5000 EntryPoint=0x000F75AA0E8 PcdDxe.efi
+Loading driver B601F8C4-43B7-4784-95B1-F4226CB40CEE
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7970000 EntryPoint=0x000F7972B54 RuntimeDxe.efi
+Loading driver F80697E9-7FD6-4665-8646-88E33EF71DFC
+Loading driver at 0x000F7401000 EntryPoint=0x000F7404174 SecurityStubDxe.efi
+Warning: This BaseRngTimerLib implementation will be deprecated. Please use the MdeModulePkg implementation equivalent.
+Loading driver 4B28E4C7-FF36-4E10-93CF-A82159E777C5
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7960000 EntryPoint=0x000F7962E1C ResetSystemRuntimeDxe.efi
+Loading driver 4C6E0267-C77D-410D-8100-1495911A989D
+Loading driver at 0x000F75AF000 EntryPoint=0x000F75B10EC MetronomeDxe.efi
+Loading driver B8D9777E-D72A-451F-9BDB-BAFB52A68415
+Loading driver at 0x000F758A000 EntryPoint=0x000F758E67C ArmCpuDxe.efi
+MemoryProtectionCpuArchProtocolNotify:
+SetUefiImageMemoryAttributes - 0x00000000F79E4000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F79E5000 - 0x0000000000028000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F7A0D000 - 0x000000000001E000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F75A5000 - 0x0000000000001000 (0x0000000000004000)
+ReplaceTableEntry: splitting block entry with MMU disabled
+SetUefiImageMemoryAttributes - 0x00000000F75A6000 - 0x0000000000006000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F75AC000 - 0x0000000000002000 (0x0000000000004000)
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+SetUefiImageMemoryAttributes - 0x00000000F7401000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F7402000 - 0x00000000000CA000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F74CC000 - 0x0000000000006000 (0x0000000000004000)
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+SetUefiImageMemoryAttributes - 0x00000000F75AF000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F75B0000 - 0x0000000000002000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F75B2000 - 0x0000000000002000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F758A000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F758B000 - 0x0000000000007000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F7592000 - 0x0000000000004000 (0x0000000000004000)
+Loading driver CBD2E4D5-7068-4FF5-B462-9822B4AD8D60
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7950000 EntryPoint=0x000F7958C84 VariableRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+VarCheckLibRegisterSetVariableCheckHandler - 0xF7954AF8 Success
+Variable driver will work at emulated non-volatile variable mode!
+Variable driver will work with auth variable format!
+NOTICE - AuthVariableLibInitialize() returns Unsupported!
+Variable driver will continue to work without auth variable support!
+RecordSecureBootPolicyVarData GetVariable SecureBoot Status E
+VarCheckLibRegisterSetVariableCheckHandler - 0xF7954118 Success
+Loading driver 348C4D62-BFBD-4882-9ECE-C80BB1C4783B
+Loading driver at 0x000F7521000 EntryPoint=0x000F75257CC HiiDatabase.efi
+SetUefiImageMemoryAttributes - 0x00000000F7521000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7522000 - 0x000000000001C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F753E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 9622E42C-8E38-4A08-9E8F-54F784652F6B
+Loading driver at 0x000F7549000 EntryPoint=0x000F754EB20 AcpiTableDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7549000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F754A000 - 0x0000000000007000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7551000 - 0x0000000000003000 (0x0000000000004008)
+Fail to locate AcpiSiliconHob!!
+Loading driver 9A5163E7-5C29-453F-825C-837A46A81E15
+Loading driver at 0x000F755A000 EntryPoint=0x000F755C6F4 SerialDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F755A000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F755B000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F755E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver F9D88642-0737-49BC-81B5-6889CD57D9EA
+Loading driver at 0x000F7541000 EntryPoint=0x000F75454B0 SmbiosDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7541000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7542000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7547000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 168D1A6E-F4A5-448A-9E95-795661BB3067
+Loading driver at 0x000F7554000 EntryPoint=0x000F75566C8 ArmPciCpuIo2Dxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7554000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7555000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7558000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 9B680FCE-AD6B-4F3A-B60B-F59899003443
+Loading driver at 0x000F7502000 EntryPoint=0x000F750B36C DevicePathDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7502000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7503000 - 0x000000000000C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F750F000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver B336F62D-4135-4A55-AE4E-4971BBF0885D
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7940000 EntryPoint=0x000F7942C9C RealTimeClock.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+InitializeRealTimeClock: using default timezone/daylight settings
+Loading driver 42857F0A-13F2-4B21-8A23-53D3F714B840
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F74F0000 EntryPoint=0x000F74F2514 CapsuleRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+Loading driver AD608272-D07F-4964-801E-7BD3B7888652
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F74E0000 EntryPoint=0x000F74E2308 MonotonicCounterRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+Loading driver 953FF472-9B9E-4058-84CF-227DAF89DC82
+Loading driver at 0x000F751B000 EntryPoint=0x000F751D848 ArmGicV3Dxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F751B000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F751C000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F751F000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver FE5CEA76-4F72-49E8-986F-2CD899DFFE5D
+Loading driver at 0x000F74D8000 EntryPoint=0x000F74DD3B4 FaultTolerantWriteDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F74D8000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F74D9000 - 0x0000000000006000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F74DF000 - 0x0000000000001000 (0x0000000000004008)
+Loading driver FC097B3C-2EBD-4A75-A3DA-121DCAB365CC
+Loading driver at 0x000F7516000 EntryPoint=0x000F75187C4 DtPlatformDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7516000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7517000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F751A000 - 0x0000000000001000 (0x0000000000004008)
+DtPlatformDxeEntryPoint: no DT/ACPI preference found, defaulting to DT
+Loading driver 128FB770-5E79-4176-9E51-9BB268A17DD1
+Loading driver at 0x000F73D1000 EntryPoint=0x000F73D94C0 PciHostBridgeDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73D1000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73D2000 - 0x000000000000C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73DE000 - 0x0000000000002000 (0x0000000000004008)
+PCIe Link Up
+SMMU_GBPA:0x0
+RootBridge: PciRoot(0x0)
+  Support/Attr: 0 / 0
+    DmaAbove4G: No
+NoExtConfSpace: No
+     AllocAttr: 0 ()
+           Bus: 0 - 10 Translation=0
+            Io: FFFFFFFF - 0 Translation=0
+           Mem: 60000000 - 6FFFFFFF Translation=0
+    MemAbove4G: FFFFFFFFFFFFFFFF - 0 Translation=0
+          PMem: FFFFFFFF - 0 Translation=0
+   PMemAbove4G: FFFFFFFFFFFFFFFF - 0 Translation=0
+Loading driver EBF342FE-B1D3-4EF8-957C-8048606FF671
+Loading driver at 0x000F739A000 EntryPoint=0x000F739BD10 SetupBrowser.efi
+SetUefiImageMemoryAttributes - 0x00000000F739A000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F739B000 - 0x0000000000018000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73B3000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 6D33944A-EC75-4855-A54D-809C75241F6C
+Loading driver at 0x000F7380000 EntryPoint=0x000F73823AC BdsDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7380000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7381000 - 0x0000000000017000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7398000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 49EA041E-6752-42CA-B0B1-7344FE2546B7
+Loading driver at 0x000F7511000 EntryPoint=0x000F7513288 ArmTimerDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7511000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7512000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7514000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 0619F5C2-4858-4CAA-A86A-73A21A18DF6B
+Loading driver at 0x000F73EB000 EntryPoint=0x000F73ED3F4 GenericWatchdogDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73EB000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73EC000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73EE000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver E660EA85-058E-4B55-A54B-F02F83A24707
+Loading driver at 0x000F7369000 EntryPoint=0x000F736AA9C DisplayEngine.efi
+SetUefiImageMemoryAttributes - 0x00000000F7369000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F736A000 - 0x0000000000012000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F737C000 - 0x0000000000004000 (0x0000000000004008)
+Loading driver 51CCF399-4FDF-4E55-A45B-E123F84D456A
+Loading driver at 0x000F73CA000 EntryPoint=0x000F73CDEE0 ConPlatformDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73CA000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73CB000 - 0x0000000000004000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73CF000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 408EDCEC-CF6D-477C-A5A8-B4844E3DE281
+Loading driver at 0x000F73E0000 EntryPoint=0x000F73E723C ConSplitterDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73E0000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73E1000 - 0x0000000000008000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73E9000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver CCCB0C28-4B24-11D5-9A5A-0090273FC14D
+Loading driver at 0x000F7360000 EntryPoint=0x000F7364828 GraphicsConsoleDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7360000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7361000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7366000 - 0x0000000000003000 (0x0000000000004008)
+Loading driver 9E863906-A40F-4875-977F-5B93FF237FC6
+Loading driver at 0x000F7355000 EntryPoint=0x000F735C500 TerminalDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7355000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7356000 - 0x0000000000008000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F735E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 6B38F7B4-AD98-40E9-9093-ACA2B5A253C4
+Loading driver at 0x000F734D000 EntryPoint=0x000F7351670 DiskIoDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F734D000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F734E000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7353000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 1FA1F39E-FEFF-4AAE-BD7B-38A070A3B609
+Loading driver at 0x000F7343000 EntryPoint=0x000F734920C PartitionDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7343000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7344000 - 0x0000000000007000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F734B000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 961578FE-B6B7-44C3-AF35-6BC705CD2B1F
+Loading driver at 0x000F7328000 EntryPoint=0x000F73316BC Fat.efi
+SetUefiImageMemoryAttributes - 0x00000000F7328000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7329000 - 0x000000000000A000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7333000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver CD3BAFB6-50FB-4FE8-8E4E-AB74D2C1A600
+Loading driver at 0x000F73B6000 EntryPoint=0x000F73B8384 EnglishDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73B6000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73B7000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73B9000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 93B80004-9FB3-11D4-9A3A-0090273FC14D
+Loading driver at 0x000F7301000 EntryPoint=0x000F73088E8 PciBusDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7301000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7302000 - 0x0000000000010000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7312000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 5BE3BDF4-53CF-46A3-A6A9-73C34A6E5EE3
+Loading driver at 0x000F7335000 EntryPoint=0x000F733E5DC NvmExpressDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7335000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7336000 - 0x000000000000B000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7341000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver FE3542FE-C1D3-4EF8-657C-8048606FF671
+Loading driver at 0x000F72CE000 EntryPoint=0x000F72D83A4 DriverSample.efi
+SetUefiImageMemoryAttributes - 0x00000000F72CE000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F72CF000 - 0x000000000000E000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F72DD000 - 0x000000000000A000 (0x0000000000004008)
+[Bds] Entry...
+[BdsDxe] Locate Variable Policy protocol - Success
+[Variable]END_OF_DXE is signaled
+Initialize variable error flag (FF)
+PCI Bus First Scanning
+PciBus: Discovered PPB @ [00|00|00]  [VID = 0x10EE, DID = 0x7021]
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x10,bit4 should be 1
+PciBus: Discovered PCI @ [01|00|00]  [VID = 0x1B36, DID = 0x10]
+LocatePciExpressCapabilityRegBlock: [01|00|00] failed to access config space at offset 0x100
+   BAR[0]: Type =  Mem64; Alignment = 0x3FFF;	Length = 0x4000;	Offset = 0x10
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x0,bit4 should be 1
+PciBus: Discovered PPB @ [00|00|00]  [VID = 0x10EE, DID = 0x7021]
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x10
+New DeviceControl2 = 0x10,bit4 should be 1
+PciBus: Discovered PCI @ [01|00|00]  [VID = 0x1B36, DID = 0x10]
+LocatePciExpressCapabilityRegBlock: [01|00|00] failed to access config space at offset 0x100
+   BAR[0]: Type =  Mem64; Alignment = 0x3FFF;	Length = 0x4000;	Offset = 0x10
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x0,bit4 should be 1
+PciHostBridge: SubmitResources for PciRoot(0x0)
+ Mem: Granularity/SpecificFlag = 32 / 00
+      Length/Alignment = 0x100000 / 0xFFFFF
+PciBus: HostBridge->SubmitResources() - Success
+PciHostBridge: NotifyPhase (AllocateResources)
+ RootBridge: PciRoot(0x0)
+  Mem: Base/Length/Alignment = 60000000/100000/FFFFF - Success
+PciBus: HostBridge->NotifyPhase(AllocateResources) - Success
+Process Option ROM: BAR Base/Length = 0/0
+PciBus: Resource Map for Root Bridge PciRoot(0x0)
+Type =  Mem32; Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF
+   Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF;	Owner = PPB [00|00|00:**]
+
+PciBus: Resource Map for Bridge [00|00|00]
+Type =  Mem32; Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF
+   Base = 0x60000000;	Length = 0x4000;	Alignment = 0x3FFF;	Owner = PCI [01|00|00:10]
+
+PciTestSupportedAttribute: line:1034
+PciTestSupportedAttribute: line:1037,OldTpl:4
+PciTestSupportedAttribute: line:1064
+PciTestSupportedAttribute: line:1067,OldTpl:4
+PciTestSupportedAttribute: line:1034
+PciTestSupportedAttribute: line:1037,OldTpl:4
+[Bds]RegisterKeyNotify: 000C/0000 80000000/00 Success
+[Bds]RegisterKeyNotify: 0017/0000 80000000/00 Success
+[Bds]RegisterKeyNotify: 0000/000D 80000000/00 Success
+Terminal - Mode 0, Column = 80, Row = 25
+Terminal - Mode 1, Column = 80, Row = 50
+Terminal - Mode 2, Column = 100, Row = 31
+[2J[04D[=3h[2J[09DTianocore/EDK2 firmware version V1.0
+Press ESCAPE for boot options BootDiscoveryPolicyHandler - Failed to locate gEfiBootManagerPolicyProtocolGuid.Driver connect will be skipped.
+HandleCapsules: processing capsules ...
+[Bds]RegisterKeyNotify: 0000/0073 80000000/00 Success
+[Bds]OsIndication: 0000000000000000
+[Bds]=============Begin Load Options Dumping ...=============
+  Driver Options:
+  SysPrep Options:
+  Boot Options:
+    Boot0000: UiApp 		 0x0109
+    Boot0001: UEFI Shell 		 0x0000
+  PlatformRecovery Options:
+    PlatformRecovery0000: Default PlatformRecovery 		 0x0001
+[Bds]=============End Load Options Dumping=============
+[Bds]BdsWait ...Zzzzzzzzzzzz...
+[Bds]Exit the waiting!
+[Bds]Stop Hotkey Service!
+[Bds]UnregisterKeyNotify: 000C/0000 Success
+[Bds]UnregisterKeyNotify: 0017/0000 Success
+[Bds]UnregisterKeyNotify: 0000/000D Success
+[Bds]UnregisterKeyNotify: 0000/0073 Success
+Process PlatformRecovery0000 (Default PlatformRecovery) ...
+NvmExpressDriverBindingStart: start
+Cc.En: 0
+Cc.Css: 0
+Cc.Mps: 0
+Cc.Ams: 0
+Cc.Shn: 0
+Cc.Iosqes: 0
+Cc.Iocqes: 0
+NVMe controller is disabled with status [Success].
+Private->Buffer = [00000000F72F5000]
+Admin     Submission Queue size (Aqa.Asqs) = [00000001]
+Admin     Completion Queue size (Aqa.Acqs) = [00000001]
+Admin     Submission Queue (SqBuffer[0]) = [00000000F72F5000]
+Admin     Completion Queue (CqBuffer[0]) = [00000000F72F6000]
+Sync  I/O Submission Queue (SqBuffer[1]) = [00000000F72F7000]
+Sync  I/O Completion Queue (CqBuffer[1]) = [00000000F72F8000]
+Async I/O Submission Queue (SqBuffer[2]) = [00000000F72F9000]
+Async I/O Completion Queue (CqBuffer[2]) = [00000000F72FA000]
+Aqa.Asqs: 1
+Aqa.Acqs: 1
+Asq: F72F5000
+Acq: F72F6000h
+Cc.En: 1
+Cc.Css: 0
+Cc.Mps: 0
+Cc.Ams: 0
+Cc.Shn: 0
+Cc.Iosqes: 6
+Cc.Iocqes: 4
+NVMe controller is enabled with status [Success].
+ == NVME IDENTIFY CONTROLLER DATA ==
+    PCI VID   : 0x1B36
+    PCI SSVID : 0x1AF4
+    SN        : deadbeef            
+    MN        : QEMU NVMe Ctrl                          
+    FR        : 0x312E3131
+    TNVMCAP (high 8-byte) : 0x0
+    TNVMCAP (low 8-byte)  : 0x0
+    RAB       : 0x6
+    IEEE      : 0x525400
+    AERL      : 0x3
+    SQES      : 0x66
+    CQES      : 0x44
+    NN        : 0x100
+ == NVME IDENTIFY NAMESPACE [1] DATA ==
+    NSZE        : 0x20000
+    NCAP        : 0x20000
+    NUSE        : 0x20000
+    LBAF0.LBADS : 0x9
+NvmExpressDriverBindingStart: end successfully
+ BlockSize : 512 
+ LastBlock : 1FFFF 
+NvmExpressDriverBindingStart: start
+NvmExpressDriverBindingStart: end successfully
+FSOpen: Open '\EFI\BOOT\BOOTAA64.EFI' Success
+[Bds] Expand \EFI\BOOT\BOOTAA64.EFI -> PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\EFI\BOOT\BOOTAA64.EFI
+[Security] 3rd party image[0] can be loaded after EndOfDxe: PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\EFI\BOOT\BOOTAA64.EFI.
+Loading driver at 0x000F6BDE000 EntryPoint=0x000F6BE61A4 Shell.efi
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[2J[01;01HUEFI Interactive Shell v2.2
+EDK II
+UEFI v2.70 (ArmSample Platform, 0x00010000)
+[1m[33m[40mMapping table[0m[37m[40m
+[1m[33m[40m      FS0:[0m[37m[40m [1m[37m[40mAlias(s):[0m[37m[40mF0:;BLK0:
+          PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-0
+0)
+Press [1m[37m[40mESC[0m[37m[40m in 5 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 4 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 3 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 2 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 1 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+[Security] 3rd party image[0] can be loaded after EndOfDxe: PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\Image.efi.
+Loading driver at 0x000F5980000 EntryPoint=0x000F6133FA4 
+EFI stub: Booting Linux Kernel...
+SetMemoryAttributes: BaseAddress == 0xF5000000, Length == 0x7D0000, Attributes == 0x20000
+SetMemoryAttributes: BaseAddress == 0xF57D0000, Length == 0x140000, Attributes == 0x4000
+FSOpen: Open 'initrd.img' Success
+EFI stub: Loaded initrd from command line option
+FSOpen: Open 'n2-ref.dtb' Success
+EFI stub: Using DTB from command line
+EFI stub: Exiting boot services...
+SetUefiImageMemoryAttributes - 0x00000000F7970000 - 0x0000000000006000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7960000 - 0x0000000000006000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7950000 - 0x000000000000F000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7940000 - 0x0000000000005000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F74F0000 - 0x0000000000005000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F74E0000 - 0x0000000000004000 (0x0000000000000008)
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd493]
+[    0.000000] Linux version 6.6.0 (charles@ubu-2404-pve) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #1 SMP Fri Sep 18 16:16:49 CST 2026
+[    0.000000] Machine model: arm-v9 compliant core with pcie
+[    0.000000] earlycon: uart8250 at MMIO32 0x000000000c000000 (options '')
+[    0.000000] printk: bootconsole [uart8250] enabled
+[    0.000000] efi: EFI v2.7 by ArmSample Platform
+[    0.000000] efi: INITRD=0xf6dd6f18 MEMRESERVE=0xf6dd6f98 
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000088200000-0x0000000c7fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000088200000-0x00000000f6b4ffff]
+[    0.000000]   node   0: [mem 0x00000000f6b50000-0x00000000f6bcffff]
+[    0.000000]   node   0: [mem 0x00000000f6bd0000-0x00000000f74dffff]
+[    0.000000]   node   0: [mem 0x00000000f74e0000-0x00000000f74fffff]
+[    0.000000]   node   0: [mem 0x00000000f7500000-0x00000000f755ffff]
+[    0.000000]   node   0: [mem 0x00000000f7560000-0x00000000f757ffff]
+[    0.000000]   node   0: [mem 0x00000000f7580000-0x00000000f793ffff]
+[    0.000000]   node   0: [mem 0x00000000f7940000-0x00000000f797ffff]
+[    0.000000]   node   0: [mem 0x00000000f7980000-0x00000000f799ffff]
+[    0.000000]   node   0: [mem 0x00000000f79a0000-0x00000000f79dffff]
+[    0.000000]   node   0: [mem 0x00000000f79e0000-0x00000000f81fffff]
+[    0.000000]   node   0: [mem 0x0000000900000000-0x0000000c7fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000088200000-0x0000000c7fffffff]
+[    0.000000] On node 0, zone Normal: 512 pages in unavailable ranges
+[    0.000000] On node 0, zone Normal: 32256 pages in unavailable ranges
+[    0.000000] percpu: Embedded 20 pages/cpu s44200 r8192 d29528 u81920
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Virtualization Host Extensions
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: fs0:\Image.efi console=ttyS0,115200 earlycon=uart8250,mmio32,0x0C000000 initrd=\initrd.img dtb=\n2-ref.dtb rdinit=/init
+[    0.000000] Unknown kernel command line parameters "dtb=\n2-ref.dtb", will be passed to user space.
+[    0.000000] random: crng init done
+[    0.000000] Dentry cache hash table entries: 2097152 (order: 12, 16777216 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 4064256
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x0000000c6a800000-0x0000000c6e800000] (64MB)
+[    0.000000] Memory: 16151344K/16515072K available (5760K kernel code, 788K rwdata, 1804K rodata, 448K init, 347K bss, 363728K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-1, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: GICv4 features: 
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x000000000e080000
+[    0.000000] ITS: No ITS available, not enabling LPIs
+[    0.000000] GICv3: === GICD Registers ===
+[    0.000000] GICv3: GICD_CTLR     (0x0000): 0x00000012
+[    0.000000] GICv3: GICD_TYPER    (0x0004): 0x037e0408
+[    0.000000] GICv3: GICD_IIDR     (0x0008): 0x0000043b
+[    0.000000] GICv3: GICD_TYPER2   (0x000c): 0x00000000
+[    0.000000] GICv3: GICD_STATUSR  (0x0010): 0x00000000
+[    0.000000] GICv3: GICD SPI 64-95 Debug:
+[    0.000000] GICv3:   GICD_IGROUPR[2] (0x88): 0x00000000
+[    0.000000] GICv3:   GICD_ISENABLER[2] (0x108): 0x00000000
+[    0.000000] GICv3:   GICD_ICENABLER[2] (0x188): 0x00000000
+[    0.000000] GICv3:   GICD_ISPENDR[2] (0x208): 0x00000000
+[    0.000000] GICv3:   GICD_ICPENDR[2] (0x288): 0x00000000
+[    0.000000] GICv3:   GICD_ISACTIVER[2] (0x308): 0x00000000
+[    0.000000] GICv3:   GICD_ICACTIVER[2] (0x388): 0x00000000
+[    0.000000] GICv3:   GICD_IPRIORITYR[16] (0x440): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[17] (0x444): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[18] (0x448): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[19] (0x44c): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[20] (0x450): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[21] (0x454): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[22] (0x458): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[23] (0x45c): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_ICFGR[32] (0xc80): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[33] (0xc84): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[34] (0xc88): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[35] (0xc8c): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[36] (0xc90): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[37] (0xc94): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[38] (0xc98): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[39] (0xc9c): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[40] (0xca0): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[41] (0xca4): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[42] (0xca8): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[43] (0xcac): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[44] (0xcb0): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[45] (0xcb4): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[46] (0xcb8): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[47] (0xcbc): 0x00000000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 100.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x171024e7e0, max_idle_ns: 440795205315 ns
+[    0.000559] sched_clock: 57 bits at 100MHz, resolution 10ns, wraps every 4398046511100ns
+[    0.066581] Calibrating delay loop (skipped), value calculated using timer frequency.. 200.00 BogoMIPS (lpj=400000)
+[    0.069251] pid_max: default: 32768 minimum: 301
+[    0.092548] Mount-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.094180] Mountpoint-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.269626] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0.352942] rcu: Hierarchical SRCU implementation.
+[    0.353805] rcu: 	Max phase no-delay instances is 1000.
+[    0.379238] ITS-PCI-MSI: starting initialization
+[    0.384412] Remapping and enabling EFI services.
+[    0.394171] smp: Bringing up secondary CPUs ...
+[    0.395894] smp: Brought up 1 node, 1 CPU
+[    0.396483] SMP: Total of 1 processors activated.
+[    0.397336] CPU features: detected: 32-bit EL0 Support
+[    0.397933] CPU features: detected: ARMv8.4 Translation Table Level
+[    0.398627] CPU features: detected: Instruction cache invalidation not required for I/D coherence
+[    0.399747] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[    0.400565] CPU features: detected: CRC32 instructions
+[    0.401075] CPU features: detected: Data independent timing control (DIT)
+[    0.401720] CPU features: detected: Enhanced Virtualization Traps
+[    0.402319] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.402909] CPU features: detected: Random Number Generator
+[    0.403441] CPU features: detected: Speculation barrier (SB)
+[    0.404166] CPU features: detected: Stage-2 Force Write-Back
+[    0.404778] CPU features: detected: TLB range maintenance instructions
+[    0.405530] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+[    0.412285] spectre-bhb mitigation disabled by compile time option
+[    0.416529] CPU: All CPU(s) started at EL2
+[    0.417076] alternatives: applying system-wide alternatives
+[    0.508181] devtmpfs: initialized
+[    0.557146] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.559044] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.588094] DMI not present or invalid.
+[    0.598328] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.631928] DMA: preallocated 2048 KiB GFP_KERNEL pool for atomic allocations
+[    0.651466] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.655226] ASID allocator initialised with 65536 entries
+[    0.660008] Serial: AMBA PL011 UART driver
+[    0.703837] Modules: 30448 pages in range for non-PLT usage
+[    0.704027] Modules: 521968 pages in range for PLT usage
+[    0.728491] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.730073] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.730854] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.731515] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.732134] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.732785] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.733403] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.734048] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.782347] efivars: Registered efivars operations
+[    0.883654] vgaarb: loaded
+[    0.889958] clocksource: Switched to clocksource arch_sys_counter
+[    0.933539] NET: Registered PF_INET protocol family
+[    0.951104] IP idents hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    1.004635] tcp_listen_portaddr_hash hash table entries: 8192 (order: 5, 131072 bytes, linear)
+[    1.006425] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    1.007557] TCP established hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    1.013758] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    1.022130] TCP: Hash tables configured (established 131072 bind 65536)
+[    1.036057] UDP hash table entries: 8192 (order: 6, 262144 bytes, linear)
+[    1.039326] UDP-Lite hash table entries: 8192 (order: 6, 262144 bytes, linear)
+[    1.047672] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.051429] PCI: CLS 0 bytes, default 64
+[    1.089871] workingset: timestamp_bits=46 max_order=22 bucket_order=0
+[    1.102741] ntfs: driver 2.1.32 [Flags: R/W DEBUG].
+[    1.105468] ntfs3: Max link count 4000
+[    1.105945] ntfs3: Enabled Linux POSIX ACLs support
+[    1.106460] ntfs3: Warning: Activated 64 bits per cluster. Windows does not support this
+[    1.107256] ntfs3: Read-only LZX/Xpress compression included
+[    1.111458] io scheduler mq-deadline registered
+[    1.112530] io scheduler kyber registered
+[    1.126066] Unpacking initramfs...
+[    1.155953] xilinx-pcie 40000000.pci: host bridge /soc/pci@40000000 ranges:
+[    1.162679] xilinx-pcie 40000000.pci:       IO 0x0070000000..0x0070ffffff -> 0x0000000000
+[    1.167273] xilinx-pcie 40000000.pci:      MEM 0x0060000000..0x006fffffff -> 0x0060000000
+[    1.196058] GICv3: IRQ 65: unmask
+[    1.200125] GICv3: IRQ 65: mask
+[    1.201240] GICv3: IRQ 65: unmask
+[    1.204556] xilinx-pcie 40000000.pci: PCIe Link is UP
+[   22.136811] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[   22.139698] rcu: 	(detected by 0, t=5252 jiffies, g=-1183, q=2 ncpus=1)
+[   22.140688] rcu: All QSes seen, last rcu_sched kthread activity 5252 (4294897794-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[   22.143358] rcu: rcu_sched kthread starved for 5252 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[   22.144476] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[   22.145392] rcu: RCU grace-period kthread stack dump:
+[   22.146496] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[   22.149903] Call trace:
+[   22.150759]  __switch_to+0xb4/0xf4
+[   22.152256]  __schedule+0x24c/0x510
+[   22.152798]  schedule+0x4c/0xa0
+[   22.153165]  schedule_timeout+0x6c/0xd0
+[   22.153600]  rcu_gp_fqs_loop+0xd4/0x33c
+[   22.154045]  rcu_gp_kthread+0xd8/0xec
+[   22.154451]  kthread+0xd8/0xdc
+[   22.154826]  ret_from_fork+0x10/0x20
+[   22.155945] rcu: Stack dump where RCU GP kthread last ran:
+[   22.157555] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[   22.158637] Hardware name: arm-v9 compliant core with pcie (DT)
+[   22.159817] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   22.160702] pc : __do_softirq+0x9c/0x274
+[   22.161349] lr : __do_softirq+0x68/0x274
+[   22.161846] sp : ffff000bfffca2b0
+[   22.162251] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[   22.163291] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[   22.164070] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[   22.164844] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[   22.165629] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[   22.166403] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[   22.167191] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[   22.167999] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[   22.168768] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[   22.169538] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[   22.170520] Call trace:
+[   22.171137]  __do_softirq+0x9c/0x274
+[   22.171648]  ____do_softirq+0xc/0x14
+[   22.172042]  call_on_irq_stack+0x24/0x34
+[   22.172469]  do_softirq_own_stack+0x18/0x24
+[   22.172918]  irq_exit_rcu+0xd4/0xec
+[   22.173328]  el1_interrupt+0x34/0x4c
+[   22.173750]  el1h_64_irq_handler+0x14/0x1c
+[   22.174202]  el1h_64_irq+0x64/0x68
+[   22.174574]  xilinx_pcie_probe+0x17c/0x42c
+[   22.175032]  platform_probe+0x50/0x90
+[   22.175468]  really_probe+0xa8/0x2d0
+[   22.175870]  __driver_probe_device+0xc4/0xe8
+[   22.176339]  driver_probe_device+0x3c/0x110
+[   22.176793]  __driver_attach+0x88/0x18c
+[   22.177334]  bus_for_each_dev+0x60/0xa0
+[   22.177814]  driver_attach+0x20/0x28
+[   22.178214]  bus_add_driver+0xe0/0x1ec
+[   22.178626]  driver_register+0x58/0x114
+[   22.179055]  __platform_driver_register+0x24/0x2c
+[   22.179565]  xilinx_pcie_driver_init+0x18/0x20
+[   22.180057]  do_one_initcall+0x54/0x16c
+[   22.180475]  kernel_init_freeable+0x174/0x234
+[   22.180942]  kernel_init+0x20/0x1cc
+[   22.181326]  ret_from_fork+0x10/0x20
+[   85.156334] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[   85.157728] rcu: 	(detected by 0, t=21007 jiffies, g=-1183, q=2 ncpus=1)
+[   85.158470] rcu: All QSes seen, last rcu_sched kthread activity 21007 (4294913549-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[   85.159735] rcu: rcu_sched kthread starved for 21007 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[   85.160758] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[   85.161634] rcu: RCU grace-period kthread stack dump:
+[   85.162149] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[   85.163310] Call trace:
+[   85.163595]  __switch_to+0xb4/0xf4
+[   85.164118]  __schedule+0x24c/0x510
+[   85.164562]  schedule+0x4c/0xa0
+[   85.164972]  schedule_timeout+0x6c/0xd0
+[   85.165480]  rcu_gp_fqs_loop+0xd4/0x33c
+[   85.165989]  rcu_gp_kthread+0xd8/0xec
+[   85.166435]  kthread+0xd8/0xdc
+[   85.166822]  ret_from_fork+0x10/0x20
+[   85.167244] rcu: Stack dump where RCU GP kthread last ran:
+[   85.167897] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[   85.168541] Hardware name: arm-v9 compliant core with pcie (DT)
+[   85.169143] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   85.169865] pc : __do_softirq+0x9c/0x274
+[   85.170316] lr : __do_softirq+0x68/0x274
+[   85.170749] sp : ffff000bfffca2b0
+[   85.171103] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[   85.171921] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[   85.172729] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[   85.173530] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[   85.174321] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[   85.175112] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[   85.175915] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[   85.176717] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[   85.177516] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[   85.178360] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[   85.179165] Call trace:
+[   85.179442]  __do_softirq+0x9c/0x274
+[   85.179843]  ____do_softirq+0xc/0x14
+[   85.180245]  call_on_irq_stack+0x24/0x34
+[   85.180679]  do_softirq_own_stack+0x18/0x24
+[   85.181137]  irq_exit_rcu+0xd4/0xec
+[   85.181555]  el1_interrupt+0x34/0x4c
+[   85.181976]  el1h_64_irq_handler+0x14/0x1c
+[   85.182448]  el1h_64_irq+0x64/0x68
+[   85.182829]  xilinx_pcie_probe+0x17c/0x42c
+[   85.183294]  platform_probe+0x50/0x90
+[   85.183735]  really_probe+0xa8/0x2d0
+[   85.184145]  __driver_probe_device+0xc4/0xe8
+[   85.184620]  driver_probe_device+0x3c/0x110
+[   85.185090]  __driver_attach+0x88/0x18c
+[   85.185522]  bus_for_each_dev+0x60/0xa0
+[   85.185984]  driver_attach+0x20/0x28
+[   85.186395]  bus_add_driver+0xe0/0x1ec
+[   85.186819]  driver_register+0x58/0x114
+[   85.187256]  __platform_driver_register+0x24/0x2c
+[   85.187853]  xilinx_pcie_driver_init+0x18/0x20
+[   85.188355]  do_one_initcall+0x54/0x16c
+[   85.188779]  kernel_init_freeable+0x174/0x234
+[   85.189264]  kernel_init+0x20/0x1cc
+[   85.189671]  ret_from_fork+0x10/0x20
+[  148.176297] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  148.177593] rcu: 	(detected by 0, t=36762 jiffies, g=-1183, q=2 ncpus=1)
+[  148.178341] rcu: All QSes seen, last rcu_sched kthread activity 36762 (4294929304-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  148.179713] rcu: rcu_sched kthread starved for 36762 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  148.180745] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  148.181611] rcu: RCU grace-period kthread stack dump:
+[  148.182133] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  148.183281] Call trace:
+[  148.183563]  __switch_to+0xb4/0xf4
+[  148.184071]  __schedule+0x24c/0x510
+[  148.184475]  schedule+0x4c/0xa0
+[  148.184843]  schedule_timeout+0x6c/0xd0
+[  148.185287]  rcu_gp_fqs_loop+0xd4/0x33c
+[  148.185725]  rcu_gp_kthread+0xd8/0xec
+[  148.186138]  kthread+0xd8/0xdc
+[  148.186521]  ret_from_fork+0x10/0x20
+[  148.186940] rcu: Stack dump where RCU GP kthread last ran:
+[  148.187530] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  148.188187] Hardware name: arm-v9 compliant core with pcie (DT)
+[  148.188777] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  148.189498] pc : __do_softirq+0x9c/0x274
+[  148.189938] lr : __do_softirq+0x68/0x274
+[  148.190361] sp : ffff000bfffca2b0
+[  148.190709] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  148.191536] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  148.192341] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  148.193128] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  148.193919] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  148.194716] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  148.195507] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  148.196293] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  148.197086] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  148.197893] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  148.198681] Call trace:
+[  148.198957]  __do_softirq+0x9c/0x274
+[  148.199358]  ____do_softirq+0xc/0x14
+[  148.199763]  call_on_irq_stack+0x24/0x34
+[  148.200200]  do_softirq_own_stack+0x18/0x24
+[  148.200664]  irq_exit_rcu+0xd4/0xec
+[  148.201080]  el1_interrupt+0x34/0x4c
+[  148.201498]  el1h_64_irq_handler+0x14/0x1c
+[  148.201969]  el1h_64_irq+0x64/0x68
+[  148.202350]  xilinx_pcie_probe+0x17c/0x42c
+[  148.202805]  platform_probe+0x50/0x90
+[  148.203247]  really_probe+0xa8/0x2d0
+[  148.203662]  __driver_probe_device+0xc4/0xe8
+[  148.204135]  driver_probe_device+0x3c/0x110
+[  148.204601]  __driver_attach+0x88/0x18c
+[  148.205037]  bus_for_each_dev+0x60/0xa0
+[  148.205470]  driver_attach+0x20/0x28
+[  148.205875]  bus_add_driver+0xe0/0x1ec
+[  148.206297]  driver_register+0x58/0x114
+[  148.206731]  __platform_driver_register+0x24/0x2c
+[  148.207250]  xilinx_pcie_driver_init+0x18/0x20
+[  148.207774]  do_one_initcall+0x54/0x16c
+[  148.208197]  kernel_init_freeable+0x174/0x234
+[  148.208687]  kernel_init+0x20/0x1cc
+[  148.209074]  ret_from_fork+0x10/0x20
+[  211.196220] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  211.197676] rcu: 	(detected by 0, t=52517 jiffies, g=-1183, q=2 ncpus=1)
+[  211.198433] rcu: All QSes seen, last rcu_sched kthread activity 52517 (4294945059-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  211.199706] rcu: rcu_sched kthread starved for 52517 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  211.200748] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  211.201643] rcu: RCU grace-period kthread stack dump:
+[  211.202218] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  211.203420] Call trace:
+[  211.203712]  __switch_to+0xb4/0xf4
+[  211.204215]  __schedule+0x24c/0x510
+[  211.204627]  schedule+0x4c/0xa0
+[  211.205005]  schedule_timeout+0x6c/0xd0
+[  211.205472]  rcu_gp_fqs_loop+0xd4/0x33c
+[  211.205934]  rcu_gp_kthread+0xd8/0xec
+[  211.206371]  kthread+0xd8/0xdc
+[  211.206763]  ret_from_fork+0x10/0x20
+[  211.207311] rcu: Stack dump where RCU GP kthread last ran:
+[  211.207955] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  211.208604] Hardware name: arm-v9 compliant core with pcie (DT)
+[  211.209221] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  211.209961] pc : __do_softirq+0x9c/0x274
+[  211.210407] lr : __do_softirq+0x68/0x274
+[  211.210842] sp : ffff000bfffca2b0
+[  211.211199] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  211.212042] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  211.212865] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  211.213685] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  211.214515] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  211.215326] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  211.216142] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  211.216955] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  211.217790] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  211.218598] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  211.219417] Call trace:
+[  211.219701]  __do_softirq+0x9c/0x274
+[  211.220114]  ____do_softirq+0xc/0x14
+[  211.220528]  call_on_irq_stack+0x24/0x34
+[  211.220975]  do_softirq_own_stack+0x18/0x24
+[  211.221444]  irq_exit_rcu+0xd4/0xec
+[  211.221875]  el1_interrupt+0x34/0x4c
+[  211.222310]  el1h_64_irq_handler+0x14/0x1c
+[  211.222795]  el1h_64_irq+0x64/0x68
+[  211.223202]  xilinx_pcie_probe+0x17c/0x42c
+[  211.223684]  platform_probe+0x50/0x90
+[  211.224157]  really_probe+0xa8/0x2d0
+[  211.224600]  __driver_probe_device+0xc4/0xe8
+[  211.225101]  driver_probe_device+0x3c/0x110
+[  211.225589]  __driver_attach+0x88/0x18c
+[  211.226044]  bus_for_each_dev+0x60/0xa0
+[  211.226498]  driver_attach+0x20/0x28
+[  211.226927]  bus_add_driver+0xe0/0x1ec
+[  211.227375]  driver_register+0x58/0x114
+[  211.227912]  __platform_driver_register+0x24/0x2c
+[  211.228465]  xilinx_pcie_driver_init+0x18/0x20
+[  211.228992]  do_one_initcall+0x54/0x16c
+[  211.229436]  kernel_init_freeable+0x174/0x234
+[  211.229945]  kernel_init+0x20/0x1cc
+[  211.230352]  ret_from_fork+0x10/0x20
+[  274.216360] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  274.217855] rcu: 	(detected by 0, t=68272 jiffies, g=-1183, q=2 ncpus=1)
+[  274.218603] rcu: All QSes seen, last rcu_sched kthread activity 68272 (4294960814-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  274.219870] rcu: rcu_sched kthread starved for 68272 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  274.220888] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  274.221772] rcu: RCU grace-period kthread stack dump:
+[  274.222295] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  274.223456] Call trace:
+[  274.223741]  __switch_to+0xb4/0xf4
+[  274.224255]  __schedule+0x24c/0x510
+[  274.224664]  schedule+0x4c/0xa0
+[  274.225033]  schedule_timeout+0x6c/0xd0
+[  274.225477]  rcu_gp_fqs_loop+0xd4/0x33c
+[  274.225930]  rcu_gp_kthread+0xd8/0xec
+[  274.226343]  kthread+0xd8/0xdc
+[  274.226719]  ret_from_fork+0x10/0x20
+[  274.227135] rcu: Stack dump where RCU GP kthread last ran:
+[  274.227744] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  274.228374] Hardware name: arm-v9 compliant core with pcie (DT)
+[  274.228967] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  274.229685] pc : __do_softirq+0x9c/0x274
+[  274.230117] lr : __do_softirq+0x68/0x274
+[  274.230545] sp : ffff000bfffca2b0
+[  274.230897] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  274.231723] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  274.232545] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  274.233341] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  274.234141] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  274.235035] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  274.235829] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  274.236623] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  274.237413] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  274.238220] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  274.239020] Call trace:
+[  274.239298]  __do_softirq+0x9c/0x274
+[  274.239700]  ____do_softirq+0xc/0x14
+[  274.240104]  call_on_irq_stack+0x24/0x34
+[  274.240546]  do_softirq_own_stack+0x18/0x24
+[  274.241004]  irq_exit_rcu+0xd4/0xec
+[  274.241431]  el1_interrupt+0x34/0x4c
+[  274.241853]  el1h_64_irq_handler+0x14/0x1c
+[  274.242327]  el1h_64_irq+0x64/0x68
+[  274.242718]  xilinx_pcie_probe+0x17c/0x42c
+[  274.243176]  platform_probe+0x50/0x90
+[  274.243615]  really_probe+0xa8/0x2d0
+[  274.244030]  __driver_probe_device+0xc4/0xe8
+[  274.244503]  driver_probe_device+0x3c/0x110
+[  274.244967]  __driver_attach+0x88/0x18c
+[  274.245400]  bus_for_each_dev+0x60/0xa0
+[  274.245833]  driver_attach+0x20/0x28
+[  274.246246]  bus_add_driver+0xe0/0x1ec
+[  274.246669]  driver_register+0x58/0x114
+[  274.247107]  __platform_driver_register+0x24/0x2c
+[  274.247652]  xilinx_pcie_driver_init+0x18/0x20
+[  274.248156]  do_one_initcall+0x54/0x16c
+[  274.248582]  kernel_init_freeable+0x174/0x234
+[  274.249066]  kernel_init+0x20/0x1cc
+[  274.249456]  ret_from_fork+0x10/0x20
+[  337.236240] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  337.237816] rcu: 	(detected by 0, t=84027 jiffies, g=-1183, q=2 ncpus=1)
+[  337.238802] rcu: All QSes seen, last rcu_sched kthread activity 84027 (4294976569-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  337.240518] rcu: rcu_sched kthread starved for 84027 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  337.241917] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  337.243109] rcu: RCU grace-period kthread stack dump:
+[  337.243833] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  337.245363] Call trace:
+[  337.245741]  __switch_to+0xb4/0xf4
+[  337.246374]  __schedule+0x24c/0x510
+[  337.246904]  schedule+0x4c/0xa0
+[  337.247390]  schedule_timeout+0x6c/0xd0
+[  337.248007]  rcu_gp_fqs_loop+0xd4/0x33c
+[  337.248600]  rcu_gp_kthread+0xd8/0xec
+[  337.249147]  kthread+0xd8/0xdc
+[  337.249647]  ret_from_fork+0x10/0x20
+[  337.250205] rcu: Stack dump where RCU GP kthread last ran:
+[  337.251001] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  337.251845] Hardware name: arm-v9 compliant core with pcie (DT)
+[  337.252657] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  337.253641] pc : __do_softirq+0x9c/0x274
+[  337.254230] lr : __do_softirq+0x68/0x274
+[  337.254801] sp : ffff000bfffca2b0
+[  337.255277] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  337.256376] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  337.257449] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  337.258539] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  337.259596] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  337.260652] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  337.261725] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  337.262786] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  337.263838] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  337.264889] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  337.265952] Call trace:
+[  337.266319]  __do_softirq+0x9c/0x274
+[  337.266853]  ____do_softirq+0xc/0x14
+[  337.267393]  call_on_irq_stack+0x24/0x34
+[  337.267993]  do_softirq_own_stack+0x18/0x24
+[  337.268609]  irq_exit_rcu+0xd4/0xec
+[  337.269158]  el1_interrupt+0x34/0x4c
+[  337.269771]  el1h_64_irq_handler+0x14/0x1c
+[  337.270259]  el1h_64_irq+0x64/0x68
+[  337.270663]  xilinx_pcie_probe+0x17c/0x42c
+[  337.271150]  platform_probe+0x50/0x90
+[  337.271629]  really_probe+0xa8/0x2d0
+[  337.272063]  __driver_probe_device+0xc4/0xe8
+[  337.272567]  driver_probe_device+0x3c/0x110
+[  337.273060]  __driver_attach+0x88/0x18c
+[  337.273522]  bus_for_each_dev+0x60/0xa0
+[  337.273979]  driver_attach+0x20/0x28
+[  337.274410]  bus_add_driver+0xe0/0x1ec
+[  337.274857]  driver_register+0x58/0x114
+[  337.275321]  __platform_driver_register+0x24/0x2c
+[  337.275873]  xilinx_pcie_driver_init+0x18/0x20
+[  337.276400]  do_one_initcall+0x54/0x16c
+[  337.276848]  kernel_init_freeable+0x174/0x234
+[  337.277366]  kernel_init+0x20/0x1cc
+[  337.277808]  ret_from_fork+0x10/0x20
+[  400.256264] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  400.257592] rcu: 	(detected by 0, t=99782 jiffies, g=-1183, q=2 ncpus=1)
+[  400.258412] rcu: All QSes seen, last rcu_sched kthread activity 99782 (4294992324-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  400.259686] rcu: rcu_sched kthread starved for 99782 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  400.260705] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  400.261575] rcu: RCU grace-period kthread stack dump:
+[  400.262094] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  400.263253] Call trace:
+[  400.263537]  __switch_to+0xb4/0xf4
+[  400.264037]  __schedule+0x24c/0x510
+[  400.264443]  schedule+0x4c/0xa0
+[  400.264809]  schedule_timeout+0x6c/0xd0
+[  400.265253]  rcu_gp_fqs_loop+0xd4/0x33c
+[  400.265697]  rcu_gp_kthread+0xd8/0xec
+[  400.266113]  kthread+0xd8/0xdc
+[  400.266494]  ret_from_fork+0x10/0x20
+[  400.266912] rcu: Stack dump where RCU GP kthread last ran:
+[  400.267497] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  400.268198] Hardware name: arm-v9 compliant core with pcie (DT)
+[  400.268795] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  400.269531] pc : __do_softirq+0x9c/0x274
+[  400.269963] lr : __do_softirq+0x68/0x274
+[  400.270390] sp : ffff000bfffca2b0
+[  400.270743] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  400.271560] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  400.272356] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  400.273153] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  400.273943] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  400.274740] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  400.275547] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  400.276340] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  400.277125] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  400.277950] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  400.278760] Call trace:
+[  400.279038]  __do_softirq+0x9c/0x274
+[  400.279440]  ____do_softirq+0xc/0x14
+[  400.279845]  call_on_irq_stack+0x24/0x34
+[  400.280282]  do_softirq_own_stack+0x18/0x24
+[  400.280742]  irq_exit_rcu+0xd4/0xec
+[  400.281156]  el1_interrupt+0x34/0x4c
+[  400.281584]  el1h_64_irq_handler+0x14/0x1c
+[  400.282047]  el1h_64_irq+0x64/0x68
+[  400.282430]  xilinx_pcie_probe+0x17c/0x42c
+[  400.282889]  platform_probe+0x50/0x90
+[  400.283330]  really_probe+0xa8/0x2d0
+[  400.283743]  __driver_probe_device+0xc4/0xe8
+[  400.284225]  driver_probe_device+0x3c/0x110
+[  400.284696]  __driver_attach+0x88/0x18c
+[  400.285131]  bus_for_each_dev+0x60/0xa0
+[  400.285567]  driver_attach+0x20/0x28
+[  400.285978]  bus_add_driver+0xe0/0x1ec
+[  400.286404]  driver_register+0x58/0x114
+[  400.286850]  __platform_driver_register+0x24/0x2c
+[  400.287380]  xilinx_pcie_driver_init+0x18/0x20
+[  400.287911]  do_one_initcall+0x54/0x16c
+[  400.288334]  kernel_init_freeable+0x174/0x234
+[  400.288926]  kernel_init+0x20/0x1cc
+[  400.289322]  ret_from_fork+0x10/0x20
+[  463.276305] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  463.277699] rcu: 	(detected by 0, t=115537 jiffies, g=-1183, q=2 ncpus=1)
+[  463.278478] rcu: All QSes seen, last rcu_sched kthread activity 115537 (4295008079-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  463.279814] rcu: rcu_sched kthread starved for 115537 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  463.280889] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  463.281790] rcu: RCU grace-period kthread stack dump:
+[  463.282329] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  463.283524] Call trace:
+[  463.283821]  __switch_to+0xb4/0xf4
+[  463.284341]  __schedule+0x24c/0x510
+[  463.284761]  schedule+0x4c/0xa0
+[  463.285145]  schedule_timeout+0x6c/0xd0
+[  463.285607]  rcu_gp_fqs_loop+0xd4/0x33c
+[  463.286078]  rcu_gp_kthread+0xd8/0xec
+[  463.286510]  kthread+0xd8/0xdc
+[  463.286906]  ret_from_fork+0x10/0x20
+[  463.287344] rcu: Stack dump where RCU GP kthread last ran:
+[  463.288054] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  463.288716] Hardware name: arm-v9 compliant core with pcie (DT)
+[  463.289343] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  463.290118] pc : __do_softirq+0x9c/0x274
+[  463.290579] lr : __do_softirq+0x68/0x274
+[  463.291044] sp : ffff000bfffca2b0
+[  463.291412] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  463.292259] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  463.293092] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  463.293927] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  463.294761] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  463.295594] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  463.296427] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  463.297262] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  463.298102] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  463.298933] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  463.299764] Call trace:
+[  463.300055]  __do_softirq+0x9c/0x274
+[  463.300486]  ____do_softirq+0xc/0x14
+[  463.300911]  call_on_irq_stack+0x24/0x34
+[  463.301372]  do_softirq_own_stack+0x18/0x24
+[  463.301856]  irq_exit_rcu+0xd4/0xec
+[  463.302304]  el1_interrupt+0x34/0x4c
+[  463.302754]  el1h_64_irq_handler+0x14/0x1c
+[  463.303236]  el1h_64_irq+0x64/0x68
+[  463.303640]  xilinx_pcie_probe+0x17c/0x42c
+[  463.304124]  platform_probe+0x50/0x90
+[  463.304592]  really_probe+0xa8/0x2d0
+[  463.305029]  __driver_probe_device+0xc4/0xe8
+[  463.305523]  driver_probe_device+0x3c/0x110
+[  463.306016]  __driver_attach+0x88/0x18c
+[  463.306474]  bus_for_each_dev+0x60/0xa0
+[  463.306930]  driver_attach+0x20/0x28
+[  463.307356]  bus_add_driver+0xe0/0x1ec
+[  463.307825]  driver_register+0x58/0x114
+[  463.308285]  __platform_driver_register+0x24/0x2c
+[  463.308833]  xilinx_pcie_driver_init+0x18/0x20
+[  463.309364]  do_one_initcall+0x54/0x16c
+[  463.309810]  kernel_init_freeable+0x174/0x234
+[  463.310325]  kernel_init+0x20/0x1cc
+[  463.310746]  ret_from_fork+0x10/0x20
+[  526.296292] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  526.297681] rcu: 	(detected by 0, t=131292 jiffies, g=-1183, q=2 ncpus=1)
+[  526.298496] rcu: All QSes seen, last rcu_sched kthread activity 131292 (4295023834-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  526.299894] rcu: rcu_sched kthread starved for 131292 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  526.301049] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  526.302010] rcu: RCU grace-period kthread stack dump:
+[  526.302587] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  526.303973] Call trace:
+[  526.304288]  __switch_to+0xb4/0xf4
+[  526.304835]  __schedule+0x24c/0x510
+[  526.305288]  schedule+0x4c/0xa0
+[  526.305694]  schedule_timeout+0x6c/0xd0
+[  526.306191]  rcu_gp_fqs_loop+0xd4/0x33c
+[  526.306682]  rcu_gp_kthread+0xd8/0xec
+[  526.307142]  kthread+0xd8/0xdc
+[  526.307557]  ret_from_fork+0x10/0x20
+[  526.308038] rcu: Stack dump where RCU GP kthread last ran:
+[  526.308681] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  526.309377] Hardware name: arm-v9 compliant core with pcie (DT)
+[  526.310044] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  526.310846] pc : __do_softirq+0x9c/0x274
+[  526.311332] lr : __do_softirq+0x68/0x274
+[  526.311814] sp : ffff000bfffca2b0
+[  526.312205] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  526.313111] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  526.313995] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  526.314878] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  526.315760] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  526.316643] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  526.317522] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  526.318419] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  526.319300] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  526.320171] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  526.321043] Call trace:
+[  526.321355]  __do_softirq+0x9c/0x274
+[  526.321803]  ____do_softirq+0xc/0x14
+[  526.322258]  call_on_irq_stack+0x24/0x34
+[  526.322745]  do_softirq_own_stack+0x18/0x24
+[  526.323256]  irq_exit_rcu+0xd4/0xec
+[  526.323718]  el1_interrupt+0x34/0x4c
+[  526.324187]  el1h_64_irq_handler+0x14/0x1c
+[  526.324704]  el1h_64_irq+0x64/0x68
+[  526.325126]  xilinx_pcie_probe+0x17c/0x42c
+[  526.325636]  platform_probe+0x50/0x90
+[  526.326124]  really_probe+0xa8/0x2d0
+[  526.326583]  __driver_probe_device+0xc4/0xe8
+[  526.327107]  driver_probe_device+0x3c/0x110
+[  526.327648]  __driver_attach+0x88/0x18c
+[  526.328126]  bus_for_each_dev+0x60/0xa0
+[  526.328601]  driver_attach+0x20/0x28
+[  526.329053]  bus_add_driver+0xe0/0x1ec
+[  526.329523]  driver_register+0x58/0x114
+[  526.330006]  __platform_driver_register+0x24/0x2c
+[  526.330589]  xilinx_pcie_driver_init+0x18/0x20
+[  526.331147]  do_one_initcall+0x54/0x16c
+[  526.331614]  kernel_init_freeable+0x174/0x234
+[  526.332149]  kernel_init+0x20/0x1cc
+[  526.332591]  ret_from_fork+0x10/0x20
+[  589.316256] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  589.317602] rcu: 	(detected by 0, t=147047 jiffies, g=-1183, q=2 ncpus=1)
+[  589.318380] rcu: All QSes seen, last rcu_sched kthread activity 147047 (4295039589-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  589.319675] rcu: rcu_sched kthread starved for 147047 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  589.320723] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  589.321624] rcu: RCU grace-period kthread stack dump:
+[  589.322155] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  589.323331] Call trace:
+[  589.323622]  __switch_to+0xb4/0xf4
+[  589.324136]  __schedule+0x24c/0x510
+[  589.324554]  schedule+0x4c/0xa0
+[  589.324931]  schedule_timeout+0x6c/0xd0
+[  589.325386]  rcu_gp_fqs_loop+0xd4/0x33c
+[  589.325847]  rcu_gp_kthread+0xd8/0xec
+[  589.326287]  kthread+0xd8/0xdc
+[  589.326674]  ret_from_fork+0x10/0x20
+[  589.327099] rcu: Stack dump where RCU GP kthread last ran:
+[  589.327742] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  589.328387] Hardware name: arm-v9 compliant core with pcie (DT)
+[  589.329002] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  589.329750] pc : __do_softirq+0x9c/0x274
+[  589.330200] lr : __do_softirq+0x68/0x274
+[  589.330642] sp : ffff000bfffca2b0
+[  589.331113] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  589.331957] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  589.332793] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  589.333610] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  589.334423] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  589.335242] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  589.336052] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  589.336871] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  589.337711] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  589.338522] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  589.339339] Call trace:
+[  589.339625]  __do_softirq+0x9c/0x274
+[  589.340040]  ____do_softirq+0xc/0x14
+[  589.340453]  call_on_irq_stack+0x24/0x34
+[  589.340904]  do_softirq_own_stack+0x18/0x24
+[  589.341377]  irq_exit_rcu+0xd4/0xec
+[  589.341808]  el1_interrupt+0x34/0x4c
+[  589.342241]  el1h_64_irq_handler+0x14/0x1c
+[  589.342717]  el1h_64_irq+0x64/0x68
+[  589.343109]  xilinx_pcie_probe+0x17c/0x42c
+[  589.343581]  platform_probe+0x50/0x90
+[  589.344035]  really_probe+0xa8/0x2d0
+[  589.344459]  __driver_probe_device+0xc4/0xe8
+[  589.344951]  driver_probe_device+0x3c/0x110
+[  589.345427]  __driver_attach+0x88/0x18c
+[  589.345867]  bus_for_each_dev+0x60/0xa0
+[  589.346307]  driver_attach+0x20/0x28
+[  589.346723]  bus_add_driver+0xe0/0x1ec
+[  589.347166]  driver_register+0x58/0x114
+[  589.347646]  __platform_driver_register+0x24/0x2c
+[  589.348192]  xilinx_pcie_driver_init+0x18/0x20
+[  589.348705]  do_one_initcall+0x54/0x16c
+[  589.349138]  kernel_init_freeable+0x174/0x234
+[  589.349632]  kernel_init+0x20/0x1cc
+[  589.350029]  ret_from_fork+0x10/0x20
+[  652.336354] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  652.337931] rcu: 	(detected by 0, t=162802 jiffies, g=-1183, q=2 ncpus=1)
+[  652.338872] rcu: All QSes seen, last rcu_sched kthread activity 162802 (4295055344-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  652.340508] rcu: rcu_sched kthread starved for 162802 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  652.341836] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  652.342980] rcu: RCU grace-period kthread stack dump:
+[  652.343649] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  652.345097] Call trace:
+[  652.345455]  __switch_to+0xb4/0xf4
+[  652.346068]  __schedule+0x24c/0x510
+[  652.346572]  schedule+0x4c/0xa0
+[  652.347048]  schedule_timeout+0x6c/0xd0
+[  652.347640]  rcu_gp_fqs_loop+0xd4/0x33c
+[  652.348202]  rcu_gp_kthread+0xd8/0xec
+[  652.348725]  kthread+0xd8/0xdc
+[  652.349197]  ret_from_fork+0x10/0x20
+[  652.349726] rcu: Stack dump where RCU GP kthread last ran:
+[  652.350472] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  652.351275] Hardware name: arm-v9 compliant core with pcie (DT)
+[  652.352051] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  652.352982] pc : __do_softirq+0x9c/0x274
+[  652.353538] lr : __do_softirq+0x68/0x274
+[  652.354081] sp : ffff000bfffca2b0
+[  652.354530] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  652.355557] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  652.356591] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  652.357598] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  652.358639] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  652.359643] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  652.360676] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  652.361679] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  652.362703] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  652.363898] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  652.364703] Call trace:
+[  652.364983]  __do_softirq+0x9c/0x274
+[  652.365388]  ____do_softirq+0xc/0x14
+[  652.365795]  call_on_irq_stack+0x24/0x34
+[  652.366231]  do_softirq_own_stack+0x18/0x24
+[  652.366701]  irq_exit_rcu+0xd4/0xec
+[  652.367133]  el1_interrupt+0x34/0x4c
+[  652.367556]  el1h_64_irq_handler+0x14/0x1c
+[  652.368057]  el1h_64_irq+0x64/0x68
+[  652.368438]  xilinx_pcie_probe+0x17c/0x42c
+[  652.368903]  platform_probe+0x50/0x90
+[  652.369342]  really_probe+0xa8/0x2d0
+[  652.369755]  __driver_probe_device+0xc4/0xe8
+[  652.370230]  driver_probe_device+0x3c/0x110
+[  652.370706]  __driver_attach+0x88/0x18c
+[  652.371142]  bus_for_each_dev+0x60/0xa0
+[  652.371572]  driver_attach+0x20/0x28
+[  652.371981]  bus_add_driver+0xe0/0x1ec
+[  652.372407]  driver_register+0x58/0x114
+[  652.372846]  __platform_driver_register+0x24/0x2c
+[  652.373371]  xilinx_pcie_driver_init+0x18/0x20
+[  652.373874]  do_one_initcall+0x54/0x16c
+[  652.374296]  kernel_init_freeable+0x174/0x234
+[  652.374793]  kernel_init+0x20/0x1cc
+[  652.375196]  ret_from_fork+0x10/0x20
+[  715.356338] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  715.357663] rcu: 	(detected by 0, t=178557 jiffies, g=-1183, q=2 ncpus=1)
+[  715.358371] rcu: All QSes seen, last rcu_sched kthread activity 178557 (4295071099-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  715.359576] rcu: rcu_sched kthread starved for 178557 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  715.360560] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  715.361379] rcu: RCU grace-period kthread stack dump:
+[  715.361875] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  715.362979] Call trace:
+[  715.363247]  __switch_to+0xb4/0xf4
+[  715.363724]  __schedule+0x24c/0x510
+[  715.364116]  schedule+0x4c/0xa0
+[  715.364472]  schedule_timeout+0x6c/0xd0
+[  715.364897]  rcu_gp_fqs_loop+0xd4/0x33c
+[  715.365329]  rcu_gp_kthread+0xd8/0xec
+[  715.365723]  kthread+0xd8/0xdc
+[  715.366088]  ret_from_fork+0x10/0x20
+[  715.366483] rcu: Stack dump where RCU GP kthread last ran:
+[  715.367040] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  715.367659] Hardware name: arm-v9 compliant core with pcie (DT)
+[  715.368232] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  715.368925] pc : __do_softirq+0x9c/0x274
+[  715.369336] lr : __do_softirq+0x68/0x274
+[  715.369739] sp : ffff000bfffca2b0
+[  715.370072] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  715.370851] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  715.371615] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  715.372374] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  715.373131] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  715.373884] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  715.374639] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  715.375407] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  715.376161] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  715.376922] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  715.377714] Call trace:
+[  715.377980]  __do_softirq+0x9c/0x274
+[  715.378364]  ____do_softirq+0xc/0x14
+[  715.378748]  call_on_irq_stack+0x24/0x34
+[  715.379166]  do_softirq_own_stack+0x18/0x24
+[  715.379606]  irq_exit_rcu+0xd4/0xec
+[  715.380005]  el1_interrupt+0x34/0x4c
+[  715.380407]  el1h_64_irq_handler+0x14/0x1c
+[  715.380848]  el1h_64_irq+0x64/0x68
+[  715.381206]  xilinx_pcie_probe+0x17c/0x42c
+[  715.381638]  platform_probe+0x50/0x90
+[  715.382061]  really_probe+0xa8/0x2d0
+[  715.382452]  __driver_probe_device+0xc4/0xe8
+[  715.382915]  driver_probe_device+0x3c/0x110
+[  715.383359]  __driver_attach+0x88/0x18c
+[  715.383774]  bus_for_each_dev+0x60/0xa0
+[  715.384293]  driver_attach+0x20/0x28
+[  715.384680]  bus_add_driver+0xe0/0x1ec
+[  715.385084]  driver_register+0x58/0x114
+[  715.385510]  __platform_driver_register+0x24/0x2c
+[  715.386020]  xilinx_pcie_driver_init+0x18/0x20
+[  715.386497]  do_one_initcall+0x54/0x16c
+[  715.386902]  kernel_init_freeable+0x174/0x234
+[  715.387366]  kernel_init+0x20/0x1cc
+[  715.387757]  ret_from_fork+0x10/0x20
+[  778.376253] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  778.377563] rcu: 	(detected by 0, t=194312 jiffies, g=-1183, q=2 ncpus=1)
+[  778.378292] rcu: All QSes seen, last rcu_sched kthread activity 194312 (4295086854-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  778.379489] rcu: rcu_sched kthread starved for 194312 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  778.380463] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  778.381294] rcu: RCU grace-period kthread stack dump:
+[  778.381807] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  778.382905] Call trace:
+[  778.383176]  __switch_to+0xb4/0xf4
+[  778.383654]  __schedule+0x24c/0x510
+[  778.384042]  schedule+0x4c/0xa0
+[  778.384392]  schedule_timeout+0x6c/0xd0
+[  778.384819]  rcu_gp_fqs_loop+0xd4/0x33c
+[  778.385241]  rcu_gp_kthread+0xd8/0xec
+[  778.385634]  kthread+0xd8/0xdc
+[  778.385995]  ret_from_fork+0x10/0x20
+[  778.386397] rcu: Stack dump where RCU GP kthread last ran:
+[  778.386968] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  778.387573] Hardware name: arm-v9 compliant core with pcie (DT)
+[  778.388168] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  778.388861] pc : __do_softirq+0x9c/0x274
+[  778.389274] lr : __do_softirq+0x68/0x274
+[  778.389686] sp : ffff000bfffca2b0
+[  778.390017] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  778.390795] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  778.391550] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  778.392302] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  778.393066] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  778.393827] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  778.394584] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  778.395342] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  778.396090] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  778.396838] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  778.397604] Call trace:
+[  778.397904]  __do_softirq+0x9c/0x274
+[  778.398288]  ____do_softirq+0xc/0x14
+[  778.398673]  call_on_irq_stack+0x24/0x34
+[  778.399092]  do_softirq_own_stack+0x18/0x24
+[  778.399534]  irq_exit_rcu+0xd4/0xec
+[  778.399937]  el1_interrupt+0x34/0x4c
+[  778.400344]  el1h_64_irq_handler+0x14/0x1c
+[  778.400787]  el1h_64_irq+0x64/0x68
+[  778.401148]  xilinx_pcie_probe+0x17c/0x42c
+[  778.401584]  platform_probe+0x50/0x90
+[  778.402006]  really_probe+0xa8/0x2d0
+[  778.402399]  __driver_probe_device+0xc4/0xe8
+[  778.402850]  driver_probe_device+0x3c/0x110
+[  778.403295]  __driver_attach+0x88/0x18c
+[  778.403709]  bus_for_each_dev+0x60/0xa0
+[  778.404126]  driver_attach+0x20/0x28
+[  778.404514]  bus_add_driver+0xe0/0x1ec
+[  778.404915]  driver_register+0x58/0x114
+[  778.405331]  __platform_driver_register+0x24/0x2c
+[  778.405837]  xilinx_pcie_driver_init+0x18/0x20
+[  778.406314]  do_one_initcall+0x54/0x16c
+[  778.406719]  kernel_init_freeable+0x174/0x234
+[  778.407184]  kernel_init+0x20/0x1cc
+[  778.407558]  ret_from_fork+0x10/0x20
+[  841.396293] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  841.397648] rcu: 	(detected by 0, t=210067 jiffies, g=-1183, q=2 ncpus=1)
+[  841.398365] rcu: All QSes seen, last rcu_sched kthread activity 210067 (4295102609-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  841.399586] rcu: rcu_sched kthread starved for 210067 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  841.400672] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  841.401509] rcu: RCU grace-period kthread stack dump:
+[  841.402022] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  841.403127] Call trace:
+[  841.403401]  __switch_to+0xb4/0xf4
+[  841.403886]  __schedule+0x24c/0x510
+[  841.404270]  schedule+0x4c/0xa0
+[  841.404620]  schedule_timeout+0x6c/0xd0
+[  841.405050]  rcu_gp_fqs_loop+0xd4/0x33c
+[  841.405476]  rcu_gp_kthread+0xd8/0xec
+[  841.405873]  kthread+0xd8/0xdc
+[  841.406246]  ret_from_fork+0x10/0x20
+[  841.406652] rcu: Stack dump where RCU GP kthread last ran:
+[  841.407206] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  841.407831] Hardware name: arm-v9 compliant core with pcie (DT)
+[  841.408403] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  841.409088] pc : __do_softirq+0x9c/0x274
+[  841.409498] lr : __do_softirq+0x68/0x274
+[  841.409906] sp : ffff000bfffca2b0
+[  841.410256] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  841.411038] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  841.411800] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  841.412558] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  841.413313] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  841.414066] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  841.414823] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  841.415575] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  841.416333] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  841.417086] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  841.417864] Call trace:
+[  841.418127]  __do_softirq+0x9c/0x274
+[  841.418512]  ____do_softirq+0xc/0x14
+[  841.418899]  call_on_irq_stack+0x24/0x34
+[  841.419318]  do_softirq_own_stack+0x18/0x24
+[  841.419751]  irq_exit_rcu+0xd4/0xec
+[  841.420150]  el1_interrupt+0x34/0x4c
+[  841.420566]  el1h_64_irq_handler+0x14/0x1c
+[  841.421008]  el1h_64_irq+0x64/0x68
+[  841.421373]  xilinx_pcie_probe+0x17c/0x42c
+[  841.421808]  platform_probe+0x50/0x90
+[  841.422228]  really_probe+0xa8/0x2d0
+[  841.422623]  __driver_probe_device+0xc4/0xe8
+[  841.423077]  driver_probe_device+0x3c/0x110
+[  841.423527]  __driver_attach+0x88/0x18c
+[  841.423940]  bus_for_each_dev+0x60/0xa0
+[  841.424352]  driver_attach+0x20/0x28
+[  841.424742]  bus_add_driver+0xe0/0x1ec
+[  841.425149]  driver_register+0x58/0x114
+[  841.425563]  __platform_driver_register+0x24/0x2c
+[  841.426067]  xilinx_pcie_driver_init+0x18/0x20
+[  841.426547]  do_one_initcall+0x54/0x16c
+[  841.426947]  kernel_init_freeable+0x174/0x234
+[  841.427409]  kernel_init+0x20/0x1cc
+[  841.427808]  ret_from_fork+0x10/0x20
+[  904.416298] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  904.417724] rcu: 	(detected by 0, t=225822 jiffies, g=-1183, q=2 ncpus=1)
+[  904.418454] rcu: All QSes seen, last rcu_sched kthread activity 225822 (4295118364-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  904.419688] rcu: rcu_sched kthread starved for 225822 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  904.420681] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  904.421533] rcu: RCU grace-period kthread stack dump:
+[  904.422043] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  904.423174] Call trace:
+[  904.423453]  __switch_to+0xb4/0xf4
+[  904.423953]  __schedule+0x24c/0x510
+[  904.424344]  schedule+0x4c/0xa0
+[  904.424707]  schedule_timeout+0x6c/0xd0
+[  904.425141]  rcu_gp_fqs_loop+0xd4/0x33c
+[  904.425582]  rcu_gp_kthread+0xd8/0xec
+[  904.426001]  kthread+0xd8/0xdc
+[  904.426372]  ret_from_fork+0x10/0x20
+[  904.426783] rcu: Stack dump where RCU GP kthread last ran:
+[  904.427634] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  904.428252] Hardware name: arm-v9 compliant core with pcie (DT)
+[  904.428839] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  904.429551] pc : __do_softirq+0x9c/0x274
+[  904.429975] lr : __do_softirq+0x68/0x274
+[  904.430388] sp : ffff000bfffca2b0
+[  904.430730] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  904.431528] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  904.432304] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  904.433078] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  904.433853] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  904.434625] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  904.435399] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  904.436174] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  904.436957] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  904.437746] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  904.438517] Call trace:
+[  904.438791]  __do_softirq+0x9c/0x274
+[  904.439183]  ____do_softirq+0xc/0x14
+[  904.439577]  call_on_irq_stack+0x24/0x34
+[  904.440007]  do_softirq_own_stack+0x18/0x24
+[  904.440454]  irq_exit_rcu+0xd4/0xec
+[  904.440866]  el1_interrupt+0x34/0x4c
+[  904.441277]  el1h_64_irq_handler+0x14/0x1c
+[  904.441734]  el1h_64_irq+0x64/0x68
+[  904.442101]  xilinx_pcie_probe+0x17c/0x42c
+[  904.442546]  platform_probe+0x50/0x90
+[  904.442973]  really_probe+0xa8/0x2d0
+[  904.443374]  __driver_probe_device+0xc4/0xe8
+[  904.443838]  driver_probe_device+0x3c/0x110
+[  904.444292]  __driver_attach+0x88/0x18c
+[  904.444719]  bus_for_each_dev+0x60/0xa0
+[  904.445135]  driver_attach+0x20/0x28
+[  904.445533]  bus_add_driver+0xe0/0x1ec
+[  904.445950]  driver_register+0x58/0x114
+[  904.446375]  __platform_driver_register+0x24/0x2c
+[  904.446884]  xilinx_pcie_driver_init+0x18/0x20
+[  904.447385]  do_one_initcall+0x54/0x16c
+[  904.447822]  kernel_init_freeable+0x174/0x234
+[  904.448300]  kernel_init+0x20/0x1cc
+[  904.448681]  ret_from_fork+0x10/0x20
+[  967.436309] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  967.437599] rcu: 	(detected by 0, t=241577 jiffies, g=-1183, q=2 ncpus=1)
+[  967.438371] rcu: All QSes seen, last rcu_sched kthread activity 241577 (4295134119-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  967.439664] rcu: rcu_sched kthread starved for 241577 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  967.440713] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  967.441604] rcu: RCU grace-period kthread stack dump:
+[  967.442131] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  967.443319] Call trace:
+[  967.443609]  __switch_to+0xb4/0xf4
+[  967.444120]  __schedule+0x24c/0x510
+[  967.444545]  schedule+0x4c/0xa0
+[  967.444920]  schedule_timeout+0x6c/0xd0
+[  967.445385]  rcu_gp_fqs_loop+0xd4/0x33c
+[  967.445845]  rcu_gp_kthread+0xd8/0xec
+[  967.446271]  kthread+0xd8/0xdc
+[  967.446658]  ret_from_fork+0x10/0x20
+[  967.447083] rcu: Stack dump where RCU GP kthread last ran:
+[  967.447719] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  967.448367] Hardware name: arm-v9 compliant core with pcie (DT)
+[  967.448981] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  967.449726] pc : __do_softirq+0x9c/0x274
+[  967.450170] lr : __do_softirq+0x68/0x274
+[  967.450606] sp : ffff000bfffca2b0
+[  967.450963] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  967.451810] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[  967.452625] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  967.453460] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  967.454274] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  967.455232] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[  967.456045] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[  967.456864] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[  967.457700] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[  967.458515] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  967.459322] Call trace:
+[  967.459607]  __do_softirq+0x9c/0x274
+[  967.460020]  ____do_softirq+0xc/0x14
+[  967.460433]  call_on_irq_stack+0x24/0x34
+[  967.460882]  do_softirq_own_stack+0x18/0x24
+[  967.461355]  irq_exit_rcu+0xd4/0xec
+[  967.461784]  el1_interrupt+0x34/0x4c
+[  967.462218]  el1h_64_irq_handler+0x14/0x1c
+[  967.462690]  el1h_64_irq+0x64/0x68
+[  967.463085]  xilinx_pcie_probe+0x17c/0x42c
+[  967.463553]  platform_probe+0x50/0x90
+[  967.464010]  really_probe+0xa8/0x2d0
+[  967.464431]  __driver_probe_device+0xc4/0xe8
+[  967.464926]  driver_probe_device+0x3c/0x110
+[  967.465411]  __driver_attach+0x88/0x18c
+[  967.465868]  bus_for_each_dev+0x60/0xa0
+[  967.466309]  driver_attach+0x20/0x28
+[  967.466731]  bus_add_driver+0xe0/0x1ec
+[  967.467165]  driver_register+0x58/0x114
+[  967.467633]  __platform_driver_register+0x24/0x2c
+[  967.468179]  xilinx_pcie_driver_init+0x18/0x20
+[  967.468697]  do_one_initcall+0x54/0x16c
+[  967.469132]  kernel_init_freeable+0x174/0x234
+[  967.469627]  kernel_init+0x20/0x1cc
+[  967.470026]  ret_from_fork+0x10/0x20
+[ 1030.456338] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1030.457899] rcu: 	(detected by 0, t=257332 jiffies, g=-1183, q=2 ncpus=1)
+[ 1030.458839] rcu: All QSes seen, last rcu_sched kthread activity 257332 (4295149874-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1030.460479] rcu: rcu_sched kthread starved for 257332 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1030.461805] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1030.462935] rcu: RCU grace-period kthread stack dump:
+[ 1030.463608] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1030.465059] Call trace:
+[ 1030.465417]  __switch_to+0xb4/0xf4
+[ 1030.466018]  __schedule+0x24c/0x510
+[ 1030.466539]  schedule+0x4c/0xa0
+[ 1030.467000]  schedule_timeout+0x6c/0xd0
+[ 1030.467573]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1030.468163]  rcu_gp_kthread+0xd8/0xec
+[ 1030.468686]  kthread+0xd8/0xdc
+[ 1030.469157]  ret_from_fork+0x10/0x20
+[ 1030.469684] rcu: Stack dump where RCU GP kthread last ran:
+[ 1030.470433] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1030.471237] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1030.472008] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1030.472936] pc : __do_softirq+0x9c/0x274
+[ 1030.473490] lr : __do_softirq+0x68/0x274
+[ 1030.474030] sp : ffff000bfffca2b0
+[ 1030.474480] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1030.475515] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1030.476522] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1030.477553] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1030.478575] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1030.479579] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1030.480586] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1030.481591] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1030.482586] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1030.483586] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1030.484586] Call trace:
+[ 1030.484935]  __do_softirq+0x9c/0x274
+[ 1030.485448]  ____do_softirq+0xc/0x14
+[ 1030.485956]  call_on_irq_stack+0x24/0x34
+[ 1030.486513]  do_softirq_own_stack+0x18/0x24
+[ 1030.487101]  irq_exit_rcu+0xd4/0xec
+[ 1030.487655]  el1_interrupt+0x34/0x4c
+[ 1030.488272]  el1h_64_irq_handler+0x14/0x1c
+[ 1030.488742]  el1h_64_irq+0x64/0x68
+[ 1030.489130]  xilinx_pcie_probe+0x17c/0x42c
+[ 1030.489585]  platform_probe+0x50/0x90
+[ 1030.490025]  really_probe+0xa8/0x2d0
+[ 1030.490438]  __driver_probe_device+0xc4/0xe8
+[ 1030.490912]  driver_probe_device+0x3c/0x110
+[ 1030.491377]  __driver_attach+0x88/0x18c
+[ 1030.491810]  bus_for_each_dev+0x60/0xa0
+[ 1030.492247]  driver_attach+0x20/0x28
+[ 1030.492657]  bus_add_driver+0xe0/0x1ec
+[ 1030.493082]  driver_register+0x58/0x114
+[ 1030.493515]  __platform_driver_register+0x24/0x2c
+[ 1030.494039]  xilinx_pcie_driver_init+0x18/0x20
+[ 1030.494542]  do_one_initcall+0x54/0x16c
+[ 1030.494967]  kernel_init_freeable+0x174/0x234
+[ 1030.495449]  kernel_init+0x20/0x1cc
+[ 1030.495838]  ret_from_fork+0x10/0x20
+[ 1093.476260] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1093.477703] rcu: 	(detected by 0, t=273087 jiffies, g=-1183, q=2 ncpus=1)
+[ 1093.478462] rcu: All QSes seen, last rcu_sched kthread activity 273087 (4295165629-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1093.479724] rcu: rcu_sched kthread starved for 273087 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1093.480751] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1093.481618] rcu: RCU grace-period kthread stack dump:
+[ 1093.482155] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1093.483316] Call trace:
+[ 1093.483601]  __switch_to+0xb4/0xf4
+[ 1093.484101]  __schedule+0x24c/0x510
+[ 1093.484504]  schedule+0x4c/0xa0
+[ 1093.484873]  schedule_timeout+0x6c/0xd0
+[ 1093.485316]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1093.485758]  rcu_gp_kthread+0xd8/0xec
+[ 1093.486171]  kthread+0xd8/0xdc
+[ 1093.486549]  ret_from_fork+0x10/0x20
+[ 1093.486966] rcu: Stack dump where RCU GP kthread last ran:
+[ 1093.487553] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1093.488214] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1093.488815] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1093.489555] pc : __do_softirq+0x9c/0x274
+[ 1093.489990] lr : __do_softirq+0x68/0x274
+[ 1093.490412] sp : ffff000bfffca2b0
+[ 1093.490763] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1093.491585] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1093.492381] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1093.493172] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1093.493970] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1093.494765] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1093.495550] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1093.496338] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1093.497121] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1093.497932] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1093.498726] Call trace:
+[ 1093.499004]  __do_softirq+0x9c/0x274
+[ 1093.499413]  ____do_softirq+0xc/0x14
+[ 1093.499822]  call_on_irq_stack+0x24/0x34
+[ 1093.500258]  do_softirq_own_stack+0x18/0x24
+[ 1093.500720]  irq_exit_rcu+0xd4/0xec
+[ 1093.501136]  el1_interrupt+0x34/0x4c
+[ 1093.501563]  el1h_64_irq_handler+0x14/0x1c
+[ 1093.502024]  el1h_64_irq+0x64/0x68
+[ 1093.502404]  xilinx_pcie_probe+0x17c/0x42c
+[ 1093.502858]  platform_probe+0x50/0x90
+[ 1093.503301]  really_probe+0xa8/0x2d0
+[ 1093.503711]  __driver_probe_device+0xc4/0xe8
+[ 1093.504187]  driver_probe_device+0x3c/0x110
+[ 1093.504658]  __driver_attach+0x88/0x18c
+[ 1093.505089]  bus_for_each_dev+0x60/0xa0
+[ 1093.505519]  driver_attach+0x20/0x28
+[ 1093.505929]  bus_add_driver+0xe0/0x1ec
+[ 1093.506359]  driver_register+0x58/0x114
+[ 1093.506796]  __platform_driver_register+0x24/0x2c
+[ 1093.507320]  xilinx_pcie_driver_init+0x18/0x20
+[ 1093.507843]  do_one_initcall+0x54/0x16c
+[ 1093.508276]  kernel_init_freeable+0x174/0x234
+[ 1093.508761]  kernel_init+0x20/0x1cc
+[ 1093.509264]  ret_from_fork+0x10/0x20
+[ 1156.496289] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1156.497720] rcu: 	(detected by 0, t=288842 jiffies, g=-1183, q=2 ncpus=1)
+[ 1156.498520] rcu: All QSes seen, last rcu_sched kthread activity 288842 (4295181384-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1156.499836] rcu: rcu_sched kthread starved for 288842 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1156.500889] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1156.501790] rcu: RCU grace-period kthread stack dump:
+[ 1156.502321] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1156.503507] Call trace:
+[ 1156.503794]  __switch_to+0xb4/0xf4
+[ 1156.504310]  __schedule+0x24c/0x510
+[ 1156.504726]  schedule+0x4c/0xa0
+[ 1156.505108]  schedule_timeout+0x6c/0xd0
+[ 1156.505567]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1156.506027]  rcu_gp_kthread+0xd8/0xec
+[ 1156.506461]  kthread+0xd8/0xdc
+[ 1156.506850]  ret_from_fork+0x10/0x20
+[ 1156.507283] rcu: Stack dump where RCU GP kthread last ran:
+[ 1156.507926] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1156.508576] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1156.509196] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1156.509949] pc : __do_softirq+0x9c/0x274
+[ 1156.510397] lr : __do_softirq+0x68/0x274
+[ 1156.510839] sp : ffff000bfffca2b0
+[ 1156.511197] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1156.512035] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1156.512855] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1156.513666] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1156.514482] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1156.515299] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1156.516115] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1156.516942] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1156.517790] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1156.518602] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1156.519420] Call trace:
+[ 1156.519706]  __do_softirq+0x9c/0x274
+[ 1156.520116]  ____do_softirq+0xc/0x14
+[ 1156.520528]  call_on_irq_stack+0x24/0x34
+[ 1156.520982]  do_softirq_own_stack+0x18/0x24
+[ 1156.521454]  irq_exit_rcu+0xd4/0xec
+[ 1156.521885]  el1_interrupt+0x34/0x4c
+[ 1156.522318]  el1h_64_irq_handler+0x14/0x1c
+[ 1156.522800]  el1h_64_irq+0x64/0x68
+[ 1156.523196]  xilinx_pcie_probe+0x17c/0x42c
+[ 1156.523666]  platform_probe+0x50/0x90
+[ 1156.524121]  really_probe+0xa8/0x2d0
+[ 1156.524540]  __driver_probe_device+0xc4/0xe8
+[ 1156.525030]  driver_probe_device+0x3c/0x110
+[ 1156.525508]  __driver_attach+0x88/0x18c
+[ 1156.525950]  bus_for_each_dev+0x60/0xa0
+[ 1156.526390]  driver_attach+0x20/0x28
+[ 1156.526811]  bus_add_driver+0xe0/0x1ec
+[ 1156.527260]  driver_register+0x58/0x114
+[ 1156.527745]  __platform_driver_register+0x24/0x2c
+[ 1156.528279]  xilinx_pcie_driver_init+0x18/0x20
+[ 1156.528794]  do_one_initcall+0x54/0x16c
+[ 1156.529226]  kernel_init_freeable+0x174/0x234
+[ 1156.529720]  kernel_init+0x20/0x1cc
+[ 1156.530120]  ret_from_fork+0x10/0x20
+[ 1219.516264] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1219.517711] rcu: 	(detected by 0, t=304597 jiffies, g=-1183, q=2 ncpus=1)
+[ 1219.518458] rcu: All QSes seen, last rcu_sched kthread activity 304597 (4295197139-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1219.519737] rcu: rcu_sched kthread starved for 304597 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1219.520766] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1219.521639] rcu: RCU grace-period kthread stack dump:
+[ 1219.522165] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1219.523469] Call trace:
+[ 1219.523753]  __switch_to+0xb4/0xf4
+[ 1219.524264]  __schedule+0x24c/0x510
+[ 1219.524669]  schedule+0x4c/0xa0
+[ 1219.525036]  schedule_timeout+0x6c/0xd0
+[ 1219.525487]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1219.525933]  rcu_gp_kthread+0xd8/0xec
+[ 1219.526350]  kthread+0xd8/0xdc
+[ 1219.526730]  ret_from_fork+0x10/0x20
+[ 1219.527149] rcu: Stack dump where RCU GP kthread last ran:
+[ 1219.527768] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1219.528400] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1219.528994] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1219.529721] pc : __do_softirq+0x9c/0x274
+[ 1219.530155] lr : __do_softirq+0x68/0x274
+[ 1219.530578] sp : ffff000bfffca2b0
+[ 1219.530931] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1219.531746] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1219.532546] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1219.533341] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1219.534145] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1219.534934] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1219.535738] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1219.536528] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1219.537313] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1219.538133] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1219.538932] Call trace:
+[ 1219.539210]  __do_softirq+0x9c/0x274
+[ 1219.539609]  ____do_softirq+0xc/0x14
+[ 1219.540014]  call_on_irq_stack+0x24/0x34
+[ 1219.540450]  do_softirq_own_stack+0x18/0x24
+[ 1219.540909]  irq_exit_rcu+0xd4/0xec
+[ 1219.541334]  el1_interrupt+0x34/0x4c
+[ 1219.541755]  el1h_64_irq_handler+0x14/0x1c
+[ 1219.542218]  el1h_64_irq+0x64/0x68
+[ 1219.542598]  xilinx_pcie_probe+0x17c/0x42c
+[ 1219.543056]  platform_probe+0x50/0x90
+[ 1219.543498]  really_probe+0xa8/0x2d0
+[ 1219.543909]  __driver_probe_device+0xc4/0xe8
+[ 1219.544395]  driver_probe_device+0x3c/0x110
+[ 1219.544873]  __driver_attach+0x88/0x18c
+[ 1219.545304]  bus_for_each_dev+0x60/0xa0
+[ 1219.545734]  driver_attach+0x20/0x28
+[ 1219.546147]  bus_add_driver+0xe0/0x1ec
+[ 1219.546574]  driver_register+0x58/0x114
+[ 1219.547011]  __platform_driver_register+0x24/0x2c
+[ 1219.547537]  xilinx_pcie_driver_init+0x18/0x20
+[ 1219.548062]  do_one_initcall+0x54/0x16c
+[ 1219.548491]  kernel_init_freeable+0x174/0x234
+[ 1219.548975]  kernel_init+0x20/0x1cc
+[ 1219.549367]  ret_from_fork+0x10/0x20
+[ 1282.536366] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1282.537672] rcu: 	(detected by 0, t=320352 jiffies, g=-1183, q=2 ncpus=1)
+[ 1282.538370] rcu: All QSes seen, last rcu_sched kthread activity 320352 (4295212894-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1282.539558] rcu: rcu_sched kthread starved for 320352 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1282.540519] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1282.541341] rcu: RCU grace-period kthread stack dump:
+[ 1282.541824] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1282.542915] Call trace:
+[ 1282.543179]  __switch_to+0xb4/0xf4
+[ 1282.543646]  __schedule+0x24c/0x510
+[ 1282.544028]  schedule+0x4c/0xa0
+[ 1282.544372]  schedule_timeout+0x6c/0xd0
+[ 1282.544797]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1282.545213]  rcu_gp_kthread+0xd8/0xec
+[ 1282.545602]  kthread+0xd8/0xdc
+[ 1282.545957]  ret_from_fork+0x10/0x20
+[ 1282.546346] rcu: Stack dump where RCU GP kthread last ran:
+[ 1282.546898] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1282.547486] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1282.548068] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1282.548747] pc : __do_softirq+0x9c/0x274
+[ 1282.549150] lr : __do_softirq+0x68/0x274
+[ 1282.549548] sp : ffff000bfffca2b0
+[ 1282.549981] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1282.550742] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1282.551492] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1282.552238] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1282.552981] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1282.553722] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1282.554465] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1282.555213] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1282.555956] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1282.556690] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1282.557430] Call trace:
+[ 1282.557707]  __do_softirq+0x9c/0x274
+[ 1282.558082]  ____do_softirq+0xc/0x14
+[ 1282.558469]  call_on_irq_stack+0x24/0x34
+[ 1282.558876]  do_softirq_own_stack+0x18/0x24
+[ 1282.559306]  irq_exit_rcu+0xd4/0xec
+[ 1282.559694]  el1_interrupt+0x34/0x4c
+[ 1282.560092]  el1h_64_irq_handler+0x14/0x1c
+[ 1282.560525]  el1h_64_irq+0x64/0x68
+[ 1282.560880]  xilinx_pcie_probe+0x17c/0x42c
+[ 1282.561308]  platform_probe+0x50/0x90
+[ 1282.561729]  really_probe+0xa8/0x2d0
+[ 1282.562124]  __driver_probe_device+0xc4/0xe8
+[ 1282.562568]  driver_probe_device+0x3c/0x110
+[ 1282.563004]  __driver_attach+0x88/0x18c
+[ 1282.563412]  bus_for_each_dev+0x60/0xa0
+[ 1282.563814]  driver_attach+0x20/0x28
+[ 1282.564194]  bus_add_driver+0xe0/0x1ec
+[ 1282.564589]  driver_register+0x58/0x114
+[ 1282.564995]  __platform_driver_register+0x24/0x2c
+[ 1282.565480]  xilinx_pcie_driver_init+0x18/0x20
+[ 1282.565948]  do_one_initcall+0x54/0x16c
+[ 1282.566350]  kernel_init_freeable+0x174/0x234
+[ 1282.566799]  kernel_init+0x20/0x1cc
+[ 1282.567164]  ret_from_fork+0x10/0x20
+[ 1345.556348] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1345.557844] rcu: 	(detected by 0, t=336107 jiffies, g=-1183, q=2 ncpus=1)
+[ 1345.558806] rcu: All QSes seen, last rcu_sched kthread activity 336107 (4295228649-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1345.560449] rcu: rcu_sched kthread starved for 336107 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1345.561775] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1345.562912] rcu: RCU grace-period kthread stack dump:
+[ 1345.563575] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1345.565018] Call trace:
+[ 1345.565374]  __switch_to+0xb4/0xf4
+[ 1345.565973]  __schedule+0x24c/0x510
+[ 1345.566476]  schedule+0x4c/0xa0
+[ 1345.566936]  schedule_timeout+0x6c/0xd0
+[ 1345.567492]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1345.568087]  rcu_gp_kthread+0xd8/0xec
+[ 1345.568613]  kthread+0xd8/0xdc
+[ 1345.569087]  ret_from_fork+0x10/0x20
+[ 1345.569619] rcu: Stack dump where RCU GP kthread last ran:
+[ 1345.570366] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1345.571169] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1345.571943] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1345.572884] pc : __do_softirq+0x9c/0x274
+[ 1345.573435] lr : __do_softirq+0x68/0x274
+[ 1345.573975] sp : ffff000bfffca2b0
+[ 1345.574423] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1345.575458] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1345.576465] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1345.577469] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1345.578496] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1345.579501] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1345.580510] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1345.581512] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1345.582507] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1345.583590] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1345.584388] Call trace:
+[ 1345.584663]  __do_softirq+0x9c/0x274
+[ 1345.585064]  ____do_softirq+0xc/0x14
+[ 1345.585466]  call_on_irq_stack+0x24/0x34
+[ 1345.585902]  do_softirq_own_stack+0x18/0x24
+[ 1345.586361]  irq_exit_rcu+0xd4/0xec
+[ 1345.586776]  el1_interrupt+0x34/0x4c
+[ 1345.587199]  el1h_64_irq_handler+0x14/0x1c
+[ 1345.587691]  el1h_64_irq+0x64/0x68
+[ 1345.588075]  xilinx_pcie_probe+0x17c/0x42c
+[ 1345.588534]  platform_probe+0x50/0x90
+[ 1345.588978]  really_probe+0xa8/0x2d0
+[ 1345.589389]  __driver_probe_device+0xc4/0xe8
+[ 1345.589862]  driver_probe_device+0x3c/0x110
+[ 1345.590329]  __driver_attach+0x88/0x18c
+[ 1345.590778]  bus_for_each_dev+0x60/0xa0
+[ 1345.591207]  driver_attach+0x20/0x28
+[ 1345.591616]  bus_add_driver+0xe0/0x1ec
+[ 1345.592037]  driver_register+0x58/0x114
+[ 1345.592472]  __platform_driver_register+0x24/0x2c
+[ 1345.592994]  xilinx_pcie_driver_init+0x18/0x20
+[ 1345.593496]  do_one_initcall+0x54/0x16c
+[ 1345.593928]  kernel_init_freeable+0x174/0x234
+[ 1345.594410]  kernel_init+0x20/0x1cc
+[ 1345.594800]  ret_from_fork+0x10/0x20
+[ 1408.576338] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1408.577680] rcu: 	(detected by 0, t=351862 jiffies, g=-1183, q=2 ncpus=1)
+[ 1408.578378] rcu: All QSes seen, last rcu_sched kthread activity 351862 (4295244404-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1408.579570] rcu: rcu_sched kthread starved for 351862 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1408.580526] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1408.581340] rcu: RCU grace-period kthread stack dump:
+[ 1408.581825] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1408.582903] Call trace:
+[ 1408.583168]  __switch_to+0xb4/0xf4
+[ 1408.583641]  __schedule+0x24c/0x510
+[ 1408.584014]  schedule+0x4c/0xa0
+[ 1408.584359]  schedule_timeout+0x6c/0xd0
+[ 1408.584772]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1408.585199]  rcu_gp_kthread+0xd8/0xec
+[ 1408.585588]  kthread+0xd8/0xdc
+[ 1408.585953]  ret_from_fork+0x10/0x20
+[ 1408.586343] rcu: Stack dump where RCU GP kthread last ran:
+[ 1408.586886] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1408.587479] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1408.588316] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1408.588997] pc : __do_softirq+0x9c/0x274
+[ 1408.589405] lr : __do_softirq+0x68/0x274
+[ 1408.589798] sp : ffff000bfffca2b0
+[ 1408.590125] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1408.590882] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1408.591620] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1408.592362] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1408.593098] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1408.593838] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1408.594577] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1408.595315] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1408.596058] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1408.596821] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1408.597562] Call trace:
+[ 1408.597895]  __do_softirq+0x9c/0x274
+[ 1408.598271]  ____do_softirq+0xc/0x14
+[ 1408.598652]  call_on_irq_stack+0x24/0x34
+[ 1408.599056]  do_softirq_own_stack+0x18/0x24
+[ 1408.599486]  irq_exit_rcu+0xd4/0xec
+[ 1408.599874]  el1_interrupt+0x34/0x4c
+[ 1408.600264]  el1h_64_irq_handler+0x14/0x1c
+[ 1408.600698]  el1h_64_irq+0x64/0x68
+[ 1408.601052]  xilinx_pcie_probe+0x17c/0x42c
+[ 1408.601484]  platform_probe+0x50/0x90
+[ 1408.601903]  really_probe+0xa8/0x2d0
+[ 1408.602284]  __driver_probe_device+0xc4/0xe8
+[ 1408.602730]  driver_probe_device+0x3c/0x110
+[ 1408.603166]  __driver_attach+0x88/0x18c
+[ 1408.603575]  bus_for_each_dev+0x60/0xa0
+[ 1408.604119]  driver_attach+0x20/0x28
+[ 1408.604504]  bus_add_driver+0xe0/0x1ec
+[ 1408.604895]  driver_register+0x58/0x114
+[ 1408.605299]  __platform_driver_register+0x24/0x2c
+[ 1408.605793]  xilinx_pcie_driver_init+0x18/0x20
+[ 1408.606259]  do_one_initcall+0x54/0x16c
+[ 1408.606655]  kernel_init_freeable+0x174/0x234
+[ 1408.607126]  kernel_init+0x20/0x1cc
+[ 1408.607492]  ret_from_fork+0x10/0x20
+[ 1471.596314] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1471.597669] rcu: 	(detected by 0, t=367617 jiffies, g=-1183, q=2 ncpus=1)
+[ 1471.598435] rcu: All QSes seen, last rcu_sched kthread activity 367617 (4295260159-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1471.599734] rcu: rcu_sched kthread starved for 367617 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1471.600792] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1471.601703] rcu: RCU grace-period kthread stack dump:
+[ 1471.602235] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1471.603425] Call trace:
+[ 1471.603718]  __switch_to+0xb4/0xf4
+[ 1471.604234]  __schedule+0x24c/0x510
+[ 1471.604647]  schedule+0x4c/0xa0
+[ 1471.605029]  schedule_timeout+0x6c/0xd0
+[ 1471.605489]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1471.605951]  rcu_gp_kthread+0xd8/0xec
+[ 1471.606379]  kthread+0xd8/0xdc
+[ 1471.606775]  ret_from_fork+0x10/0x20
+[ 1471.607207] rcu: Stack dump where RCU GP kthread last ran:
+[ 1471.607838] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1471.608487] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1471.609107] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1471.609857] pc : __do_softirq+0x9c/0x274
+[ 1471.610305] lr : __do_softirq+0x68/0x274
+[ 1471.610740] sp : ffff000bfffca2b0
+[ 1471.611104] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1471.611949] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1471.612772] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1471.613593] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1471.614439] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1471.615256] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1471.616073] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1471.616885] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1471.617729] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1471.618549] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1471.619368] Call trace:
+[ 1471.619654]  __do_softirq+0x9c/0x274
+[ 1471.620066]  ____do_softirq+0xc/0x14
+[ 1471.620484]  call_on_irq_stack+0x24/0x34
+[ 1471.620934]  do_softirq_own_stack+0x18/0x24
+[ 1471.621410]  irq_exit_rcu+0xd4/0xec
+[ 1471.621837]  el1_interrupt+0x34/0x4c
+[ 1471.622267]  el1h_64_irq_handler+0x14/0x1c
+[ 1471.622745]  el1h_64_irq+0x64/0x68
+[ 1471.623138]  xilinx_pcie_probe+0x17c/0x42c
+[ 1471.623612]  platform_probe+0x50/0x90
+[ 1471.624076]  really_probe+0xa8/0x2d0
+[ 1471.624516]  __driver_probe_device+0xc4/0xe8
+[ 1471.625004]  driver_probe_device+0x3c/0x110
+[ 1471.625485]  __driver_attach+0x88/0x18c
+[ 1471.625941]  bus_for_each_dev+0x60/0xa0
+[ 1471.626386]  driver_attach+0x20/0x28
+[ 1471.626809]  bus_add_driver+0xe0/0x1ec
+[ 1471.627247]  driver_register+0x58/0x114
+[ 1471.627731]  __platform_driver_register+0x24/0x2c
+[ 1471.628270]  xilinx_pcie_driver_init+0x18/0x20
+[ 1471.628789]  do_one_initcall+0x54/0x16c
+[ 1471.629224]  kernel_init_freeable+0x174/0x234
+[ 1471.629721]  kernel_init+0x20/0x1cc
+[ 1471.630123]  ret_from_fork+0x10/0x20
+[ 1534.616310] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1534.617658] rcu: 	(detected by 0, t=383372 jiffies, g=-1183, q=2 ncpus=1)
+[ 1534.618366] rcu: All QSes seen, last rcu_sched kthread activity 383372 (4295275914-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1534.619563] rcu: rcu_sched kthread starved for 383372 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1534.620636] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1534.621463] rcu: RCU grace-period kthread stack dump:
+[ 1534.621974] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1534.623087] Call trace:
+[ 1534.623359]  __switch_to+0xb4/0xf4
+[ 1534.623844]  __schedule+0x24c/0x510
+[ 1534.624233]  schedule+0x4c/0xa0
+[ 1534.624582]  schedule_timeout+0x6c/0xd0
+[ 1534.625012]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1534.625435]  rcu_gp_kthread+0xd8/0xec
+[ 1534.625829]  kthread+0xd8/0xdc
+[ 1534.626191]  ret_from_fork+0x10/0x20
+[ 1534.626592] rcu: Stack dump where RCU GP kthread last ran:
+[ 1534.627160] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1534.627789] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1534.628360] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1534.629051] pc : __do_softirq+0x9c/0x274
+[ 1534.629465] lr : __do_softirq+0x68/0x274
+[ 1534.629877] sp : ffff000bfffca2b0
+[ 1534.630219] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1534.631006] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1534.631767] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1534.632521] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1534.633277] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1534.634031] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1534.634787] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1534.635539] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1534.636281] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1534.637028] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1534.637813] Call trace:
+[ 1534.638078]  __do_softirq+0x9c/0x274
+[ 1534.638463]  ____do_softirq+0xc/0x14
+[ 1534.638858]  call_on_irq_stack+0x24/0x34
+[ 1534.639273]  do_softirq_own_stack+0x18/0x24
+[ 1534.639708]  irq_exit_rcu+0xd4/0xec
+[ 1534.640107]  el1_interrupt+0x34/0x4c
+[ 1534.640513]  el1h_64_irq_handler+0x14/0x1c
+[ 1534.640959]  el1h_64_irq+0x64/0x68
+[ 1534.641329]  xilinx_pcie_probe+0x17c/0x42c
+[ 1534.641776]  platform_probe+0x50/0x90
+[ 1534.642201]  really_probe+0xa8/0x2d0
+[ 1534.642594]  __driver_probe_device+0xc4/0xe8
+[ 1534.643050]  driver_probe_device+0x3c/0x110
+[ 1534.643495]  __driver_attach+0x88/0x18c
+[ 1534.643910]  bus_for_each_dev+0x60/0xa0
+[ 1534.644321]  driver_attach+0x20/0x28
+[ 1534.644711]  bus_add_driver+0xe0/0x1ec
+[ 1534.645118]  driver_register+0x58/0x114
+[ 1534.645534]  __platform_driver_register+0x24/0x2c
+[ 1534.646027]  xilinx_pcie_driver_init+0x18/0x20
+[ 1534.646502]  do_one_initcall+0x54/0x16c
+[ 1534.646907]  kernel_init_freeable+0x174/0x234
+[ 1534.647368]  kernel_init+0x20/0x1cc
+[ 1534.648275]  ret_from_fork+0x10/0x20
+[ 1597.636259] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1597.637560] rcu: 	(detected by 0, t=399127 jiffies, g=-1183, q=2 ncpus=1)
+[ 1597.638323] rcu: All QSes seen, last rcu_sched kthread activity 399127 (4295291669-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1597.639567] rcu: rcu_sched kthread starved for 399127 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1597.640574] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1597.641424] rcu: RCU grace-period kthread stack dump:
+[ 1597.641928] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1597.643065] Call trace:
+[ 1597.643345]  __switch_to+0xb4/0xf4
+[ 1597.643841]  __schedule+0x24c/0x510
+[ 1597.644235]  schedule+0x4c/0xa0
+[ 1597.644593]  schedule_timeout+0x6c/0xd0
+[ 1597.645024]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1597.645453]  rcu_gp_kthread+0xd8/0xec
+[ 1597.645858]  kthread+0xd8/0xdc
+[ 1597.646236]  ret_from_fork+0x10/0x20
+[ 1597.646641] rcu: Stack dump where RCU GP kthread last ran:
+[ 1597.647316] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1597.647962] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1597.648550] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1597.649255] pc : __do_softirq+0x9c/0x274
+[ 1597.649677] lr : __do_softirq+0x68/0x274
+[ 1597.650092] sp : ffff000bfffca2b0
+[ 1597.650434] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1597.651234] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1597.652019] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1597.652794] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1597.653573] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1597.654345] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1597.655113] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1597.655889] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1597.656657] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1597.657430] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1597.658222] Call trace:
+[ 1597.658501]  __do_softirq+0x9c/0x274
+[ 1597.658907]  ____do_softirq+0xc/0x14
+[ 1597.659298]  call_on_irq_stack+0x24/0x34
+[ 1597.659724]  do_softirq_own_stack+0x18/0x24
+[ 1597.660171]  irq_exit_rcu+0xd4/0xec
+[ 1597.660584]  el1_interrupt+0x34/0x4c
+[ 1597.660999]  el1h_64_irq_handler+0x14/0x1c
+[ 1597.661453]  el1h_64_irq+0x64/0x68
+[ 1597.661823]  xilinx_pcie_probe+0x17c/0x42c
+[ 1597.662268]  platform_probe+0x50/0x90
+[ 1597.662700]  really_probe+0xa8/0x2d0
+[ 1597.663100]  __driver_probe_device+0xc4/0xe8
+[ 1597.663569]  driver_probe_device+0x3c/0x110
+[ 1597.664026]  __driver_attach+0x88/0x18c
+[ 1597.664453]  bus_for_each_dev+0x60/0xa0
+[ 1597.664874]  driver_attach+0x20/0x28
+[ 1597.665271]  bus_add_driver+0xe0/0x1ec
+[ 1597.665686]  driver_register+0x58/0x114
+[ 1597.666112]  __platform_driver_register+0x24/0x2c
+[ 1597.666622]  xilinx_pcie_driver_init+0x18/0x20
+[ 1597.667113]  do_one_initcall+0x54/0x16c
+[ 1597.667527]  kernel_init_freeable+0x174/0x234
+[ 1597.668017]  kernel_init+0x20/0x1cc
+[ 1597.668396]  ret_from_fork+0x10/0x20
+[ 1660.656285] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1660.657905] rcu: 	(detected by 0, t=414882 jiffies, g=-1183, q=2 ncpus=1)
+[ 1660.658854] rcu: All QSes seen, last rcu_sched kthread activity 414882 (4295307424-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1660.660474] rcu: rcu_sched kthread starved for 414882 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1660.661807] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1660.662928] rcu: RCU grace-period kthread stack dump:
+[ 1660.663609] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1660.665066] Call trace:
+[ 1660.665424]  __switch_to+0xb4/0xf4
+[ 1660.666025]  __schedule+0x24c/0x510
+[ 1660.666534]  schedule+0x4c/0xa0
+[ 1660.666996]  schedule_timeout+0x6c/0xd0
+[ 1660.667551]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1660.668140]  rcu_gp_kthread+0xd8/0xec
+[ 1660.668682]  kthread+0xd8/0xdc
+[ 1660.669163]  ret_from_fork+0x10/0x20
+[ 1660.669691] rcu: Stack dump where RCU GP kthread last ran:
+[ 1660.670436] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1660.671239] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1660.672015] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1660.672943] pc : __do_softirq+0x9c/0x274
+[ 1660.673490] lr : __do_softirq+0x68/0x274
+[ 1660.674030] sp : ffff000bfffca2b0
+[ 1660.674485] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1660.675517] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1660.676529] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1660.677530] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1660.678556] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1660.679565] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1660.680360] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1660.681154] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1660.681945] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1660.682734] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1660.683530] Call trace:
+[ 1660.683807]  __do_softirq+0x9c/0x274
+[ 1660.684206]  ____do_softirq+0xc/0x14
+[ 1660.684607]  call_on_irq_stack+0x24/0x34
+[ 1660.685044]  do_softirq_own_stack+0x18/0x24
+[ 1660.685501]  irq_exit_rcu+0xd4/0xec
+[ 1660.685919]  el1_interrupt+0x34/0x4c
+[ 1660.686342]  el1h_64_irq_handler+0x14/0x1c
+[ 1660.686803]  el1h_64_irq+0x64/0x68
+[ 1660.687188]  xilinx_pcie_probe+0x17c/0x42c
+[ 1660.687687]  platform_probe+0x50/0x90
+[ 1660.688133]  really_probe+0xa8/0x2d0
+[ 1660.688547]  __driver_probe_device+0xc4/0xe8
+[ 1660.689024]  driver_probe_device+0x3c/0x110
+[ 1660.689490]  __driver_attach+0x88/0x18c
+[ 1660.689929]  bus_for_each_dev+0x60/0xa0
+[ 1660.690374]  driver_attach+0x20/0x28
+[ 1660.690786]  bus_add_driver+0xe0/0x1ec
+[ 1660.691210]  driver_register+0x58/0x114
+[ 1660.691648]  __platform_driver_register+0x24/0x2c
+[ 1660.692174]  xilinx_pcie_driver_init+0x18/0x20
+[ 1660.692670]  do_one_initcall+0x54/0x16c
+[ 1660.693106]  kernel_init_freeable+0x174/0x234
+[ 1660.693590]  kernel_init+0x20/0x1cc
+[ 1660.693981]  ret_from_fork+0x10/0x20
+[ 1723.676186] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[ 1723.677461] rcu: 	(detected by 0, t=430637 jiffies, g=-1183, q=2 ncpus=1)
+[ 1723.678215] rcu: All QSes seen, last rcu_sched kthread activity 430637 (4295323179-4294892542), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[ 1723.679460] rcu: rcu_sched kthread starved for 430637 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[ 1723.680455] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[ 1723.681307] rcu: RCU grace-period kthread stack dump:
+[ 1723.681808] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[ 1723.682941] Call trace:
+[ 1723.683218]  __switch_to+0xb4/0xf4
+[ 1723.683715]  __schedule+0x24c/0x510
+[ 1723.684108]  schedule+0x4c/0xa0
+[ 1723.684466]  schedule_timeout+0x6c/0xd0
+[ 1723.684896]  rcu_gp_fqs_loop+0xd4/0x33c
+[ 1723.685330]  rcu_gp_kthread+0xd8/0xec
+[ 1723.685734]  kthread+0xd8/0xdc
+[ 1723.686103]  ret_from_fork+0x10/0x20
+[ 1723.686507] rcu: Stack dump where RCU GP kthread last ran:
+[ 1723.687076] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[ 1723.687717] Hardware name: arm-v9 compliant core with pcie (DT)
+[ 1723.688299] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[ 1723.689012] pc : __do_softirq+0x9c/0x274
+[ 1723.689435] lr : __do_softirq+0x68/0x274
+[ 1723.689864] sp : ffff000bfffca2b0
+[ 1723.690215] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[ 1723.691010] x26: ffff8000807800a0 x25: 00000000fffedc12 x24: 0000000000000000
+[ 1723.691788] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[ 1723.692558] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[ 1723.693332] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[ 1723.694113] x14: 27b88d43e1514d20 x13: 09f76977453bab16 x12: 0000000009f76977
+[ 1723.694890] x11: 00000000fa83b2da x10: 000000000000b67e x9 : 0000000000000004
+[ 1723.695657] x8 : 000000003f6b5a00 x7 : 7fffffffffffffff x6 : 00000000582457d1
+[ 1723.696427] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 000000000000141e
+[ 1723.697198] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[ 1723.697993] Call trace:
+[ 1723.698262]  __do_softirq+0x9c/0x274
+[ 1723.698653]  ____do_softirq+0xc/0x14
+[ 1723.699046]  call_on_irq_stack+0x24/0x34
+[ 1723.699468]  do_softirq_own_stack+0x18/0x24
+[ 1723.699921]  irq_exit_rcu+0xd4/0xec
+[ 1723.700331]  el1_interrupt+0x34/0x4c
+[ 1723.700757]  el1h_64_irq_handler+0x14/0x1c
+[ 1723.701304]  el1h_64_irq+0x64/0x68
+[ 1723.701678]  xilinx_pcie_probe+0x17c/0x42c
+[ 1723.702127]  platform_probe+0x50/0x90
+[ 1723.702560]  really_probe+0xa8/0x2d0
+[ 1723.702963]  __driver_probe_device+0xc4/0xe8
+[ 1723.703434]  driver_probe_device+0x3c/0x110
+[ 1723.703893]  __driver_attach+0x88/0x18c
+[ 1723.704318]  bus_for_each_dev+0x60/0xa0
+[ 1723.704760]  driver_attach+0x20/0x28
+[ 1723.705161]  bus_add_driver+0xe0/0x1ec
+[ 1723.705578]  driver_register+0x58/0x114
+[ 1723.706004]  __platform_driver_register+0x24/0x2c
+[ 1723.706511]  xilinx_pcie_driver_init+0x18/0x20
+[ 1723.707001]  do_one_initcall+0x54/0x16c
+[ 1723.707411]  kernel_init_freeable+0x174/0x234
+[ 1723.707915]  kernel_init+0x20/0x1cc
+[ 1723.708301]  ret_from_fork+0x10/0x20

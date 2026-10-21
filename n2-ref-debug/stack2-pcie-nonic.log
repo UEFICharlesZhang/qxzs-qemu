@@ -1,0 +1,1313 @@
+I am ATF
+NOTICE:  Booting Trusted Firmware
+NOTICE:  BL1: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL1: Built : 22:40:01, Aug 27 2026
+INFO:    BL1: RAM 0x84033000 - 0x8403a000
+INFO:    Loading image id=32 at address 0x84001010
+INFO:    Image id=32 loaded: 0x84001010 - 0x84001213
+INFO:    FCONF: Config file with image ID:32 loaded at address = 0x84001010
+INFO:    Loading image id=24 at address 0x84001300
+INFO:    Image id=24 loaded: 0x84001300 - 0x840015e4
+INFO:    FCONF: Config file with image ID:24 loaded at address = 0x84001300
+INFO:    BL1: Loading BL2
+INFO:    Loading image id=1 at address 0x8401f000
+INFO:    Image id=1 loaded: 0x8401f000 - 0x84027824
+NOTICE:  BL1: Booting BL2
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+ENABLE_PAUTH is 0
+ENABLE_RME is 0
+INFO:    FCONF: Reading FW_CONFIG firmware configuration file from: 0x84001010
+INFO:    FCONF: Reading firmware configuration information for: dyn_cfg
+INFO:    FCONF: Reading TB_FW firmware configuration file from: 0x84001300
+NOTICE:  BL2: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL2: Built : 22:40:03, Aug 27 2026
+INFO:    BL2: Doing platform setup
+INFO:    BL2: Loading image id 3
+INFO:    Loading image id=3 at address 0x84003000
+INFO:    Image id=3 loaded: 0x84003000 - 0x840151b4
+INFO:    BL2: Loading image id 23
+INFO:    Loading image id=23 at address 0x87f00000
+INFO:    Image id=23 loaded: 0x87f00000 - 0x87f0257c
+INFO:    BL2: Loading image id 25
+INFO:    Loading image id=25 at address 0x84001300
+INFO:    Image id=25 loaded: 0x84001300 - 0x84001348
+INFO:    BL2: Loading image id 5
+INFO:    Loading image id=5 at address 0x88200000
+INFO:    Image id=5 loaded: 0x88200000 - 0x88400000
+INFO:    BL2: Loading image id 27
+INFO:    Loading image id=27 at address 0x88000000
+INFO:    Image id=27 loaded: 0x88000000 - 0x88000048
+INFO:    BL31 FCONF: FW_CONFIG address = 84001010
+INFO:    FCONF: Reading FW_CONFIG firmware configuration file from: 0x84001010
+INFO:    FCONF: Reading firmware configuration information for: dyn_cfg
+d0 0d fe ed 00 00 00 48 00 00 00 38 00 00 00 48 
+d0 0d fe ed 00 00 25 7c 00 00 00 48 00 00 22 20 
+INFO:    FCONF: Reading HW_CONFIG firmware configuration file from: 0x87f00000
+INFO:    FCONF: Reading firmware configuration information for: pci_props
+WARNING: FCONF: Unable to locate 'pci' node
+INFO:    FCONF: Reading firmware configuration information for: dram_layout
+INFO:    FCONF: Reading firmware configuration information for: cpu_timer
+INFO:    FCONF: Reading firmware configuration information for: uart_config
+INFO:    FCONF: Reading firmware configuration information for: topology
+INFO:    FCONF: Reading firmware configuration information for: gicv3_config
+NOTICE:  BL31: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL31: Built : 22:40:04, Aug 27 2026
+INFO:    GICv4 without legacy support detected.
+INFO:    ARM GICv4 driver initialized in EL3
+INFO:    Maximum SPI INTID supported: 287
+INFO:    BL31: Initializing runtime services
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+NOTICE:  FINISH bl31_main. Time to start UEFI
+UEFI firmware (version V1.0 built at 22:09:45 on Jun 12 2026)
+SecMain: line:108,PcdSystemMemoryBase:0x88200000
+SecMain: line:109,PcdSystemMemorySize:0x70000000
+SecMain: line:110,PcdFdBaseAddress:0x88200000
+SecMain: line:111,PcdFdSize:0x400000
+SecMain: line:113
+SecMain: line:114,UefiMemoryBase:0xF0200000
+SecMain: line:115,PcdSystemMemoryUefiRegionSize:0x8000000
+SecMain: line:116,StackBase:0xF81F0000
+PhysicalBase     80000000 VirtualBase     80000000 Length     80000000 Attributes            1
+PhysicalBase            0 VirtualBase            0 Length      8000000 Attributes            6
+PhysicalBase      8000000 VirtualBase      8000000 Length      4000000 Attributes            6
+PhysicalBase      C000000 VirtualBase      C000000 Length      1000000 Attributes            6
+PhysicalBase      D000000 VirtualBase      D000000 Length      1000000 Attributes            6
+PhysicalBase      E000000 VirtualBase      E000000 Length      1000000 Attributes            6
+PhysicalBase      F000000 VirtualBase      F000000 Length      1000000 Attributes            6
+PhysicalBase     40000000 VirtualBase     40000000 Length     20000000 Attributes            6
+PhysicalBase     60000000 VirtualBase     60000000 Length     10000000 Attributes            6
+PhysicalBase     70000000 VirtualBase     70000000 Length     10000000 Attributes            6
+PhysicalBase    900000000 VirtualBase    900000000 Length    380000000 Attributes            1
+Loading DxeCore at 0x00F79E4000 EntryPoint=0x00F79ED2C8
+CoreInitializeMemoryServices:
+  BaseAddress - 0xF0201000 Length - 0x77E3000 MinimalMemorySizeNeeded - 0xA1000
+DxeMain: MemoryBaseAddress=0xF0201000 MemoryLength=0x77E3000
+HOBLIST address in DXE = 0xF793E018
+Memory Allocation 0x00000004 0xF81EF000 - 0xF81EFFFF
+Memory Allocation 0x00000004 0x88200000 - 0x885FFFFF
+Memory Allocation 0x00000004 0xF81EE000 - 0xF81EEFFF
+Memory Allocation 0x00000004 0xF81ED000 - 0xF81EDFFF
+Memory Allocation 0x00000004 0xF81EC000 - 0xF81ECFFF
+Memory Allocation 0x00000004 0xF81EB000 - 0xF81EBFFF
+Memory Allocation 0x00000004 0xF81EA000 - 0xF81EAFFF
+Memory Allocation 0x00000004 0xF81E9000 - 0xF81E9FFF
+Memory Allocation 0x00000004 0xF81F0000 - 0xF81FFFFF
+Memory Allocation 0x00000004 0xF81D9000 - 0xF81E8FFF
+Memory Allocation 0x00000004 0xF7E02000 - 0xF81D8FFF
+Memory Allocation 0x00000004 0xF7A2B000 - 0xF7E01FFF
+Memory Allocation 0x00000003 0xF79E4000 - 0xF7A2AFFF
+Memory Allocation 0x00000003 0xF79E4000 - 0xF7A2AFFF
+FV Hob            0x88200000 - 0x883FFFFF
+FV Hob            0xF7A2B000 - 0xF7E007FF
+FV2 Hob           0xF7A2B000 - 0xF7E007FF
+                  00000000-0000-0000-0000-000000000000 - 9E21FD93-9C72-4C15-8C4B-E77F1DB2D792
+Loading driver 80CF7257-87AB-47F9-A3FE-D50B76D89541
+Loading driver at 0x000F75A5000 EntryPoint=0x000F75AA0E8 PcdDxe.efi
+Loading driver B601F8C4-43B7-4784-95B1-F4226CB40CEE
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7970000 EntryPoint=0x000F7972B54 RuntimeDxe.efi
+Loading driver F80697E9-7FD6-4665-8646-88E33EF71DFC
+Loading driver at 0x000F7401000 EntryPoint=0x000F7404174 SecurityStubDxe.efi
+Warning: This BaseRngTimerLib implementation will be deprecated. Please use the MdeModulePkg implementation equivalent.
+Loading driver 4B28E4C7-FF36-4E10-93CF-A82159E777C5
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7960000 EntryPoint=0x000F7962E1C ResetSystemRuntimeDxe.efi
+Loading driver 4C6E0267-C77D-410D-8100-1495911A989D
+Loading driver at 0x000F75AF000 EntryPoint=0x000F75B10EC MetronomeDxe.efi
+Loading driver B8D9777E-D72A-451F-9BDB-BAFB52A68415
+Loading driver at 0x000F758A000 EntryPoint=0x000F758E67C ArmCpuDxe.efi
+MemoryProtectionCpuArchProtocolNotify:
+SetUefiImageMemoryAttributes - 0x00000000F79E4000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F79E5000 - 0x0000000000028000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F7A0D000 - 0x000000000001E000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F75A5000 - 0x0000000000001000 (0x0000000000004000)
+ReplaceTableEntry: splitting block entry with MMU disabled
+SetUefiImageMemoryAttributes - 0x00000000F75A6000 - 0x0000000000006000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F75AC000 - 0x0000000000002000 (0x0000000000004000)
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+SetUefiImageMemoryAttributes - 0x00000000F7401000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F7402000 - 0x00000000000CA000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F74CC000 - 0x0000000000006000 (0x0000000000004000)
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+SetUefiImageMemoryAttributes - 0x00000000F75AF000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F75B0000 - 0x0000000000002000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F75B2000 - 0x0000000000002000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F758A000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F758B000 - 0x0000000000007000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F7592000 - 0x0000000000004000 (0x0000000000004000)
+Loading driver CBD2E4D5-7068-4FF5-B462-9822B4AD8D60
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7950000 EntryPoint=0x000F7958C84 VariableRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+VarCheckLibRegisterSetVariableCheckHandler - 0xF7954AF8 Success
+Variable driver will work at emulated non-volatile variable mode!
+Variable driver will work with auth variable format!
+NOTICE - AuthVariableLibInitialize() returns Unsupported!
+Variable driver will continue to work without auth variable support!
+RecordSecureBootPolicyVarData GetVariable SecureBoot Status E
+VarCheckLibRegisterSetVariableCheckHandler - 0xF7954118 Success
+Loading driver 348C4D62-BFBD-4882-9ECE-C80BB1C4783B
+Loading driver at 0x000F7521000 EntryPoint=0x000F75257CC HiiDatabase.efi
+SetUefiImageMemoryAttributes - 0x00000000F7521000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7522000 - 0x000000000001C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F753E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 9622E42C-8E38-4A08-9E8F-54F784652F6B
+Loading driver at 0x000F7549000 EntryPoint=0x000F754EB20 AcpiTableDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7549000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F754A000 - 0x0000000000007000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7551000 - 0x0000000000003000 (0x0000000000004008)
+Fail to locate AcpiSiliconHob!!
+Loading driver 9A5163E7-5C29-453F-825C-837A46A81E15
+Loading driver at 0x000F755A000 EntryPoint=0x000F755C6F4 SerialDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F755A000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F755B000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F755E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver F9D88642-0737-49BC-81B5-6889CD57D9EA
+Loading driver at 0x000F7541000 EntryPoint=0x000F75454B0 SmbiosDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7541000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7542000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7547000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 168D1A6E-F4A5-448A-9E95-795661BB3067
+Loading driver at 0x000F7554000 EntryPoint=0x000F75566C8 ArmPciCpuIo2Dxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7554000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7555000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7558000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 9B680FCE-AD6B-4F3A-B60B-F59899003443
+Loading driver at 0x000F7502000 EntryPoint=0x000F750B36C DevicePathDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7502000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7503000 - 0x000000000000C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F750F000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver B336F62D-4135-4A55-AE4E-4971BBF0885D
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7940000 EntryPoint=0x000F7942C9C RealTimeClock.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+InitializeRealTimeClock: using default timezone/daylight settings
+Loading driver 42857F0A-13F2-4B21-8A23-53D3F714B840
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F74F0000 EntryPoint=0x000F74F2514 CapsuleRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+Loading driver AD608272-D07F-4964-801E-7BD3B7888652
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F74E0000 EntryPoint=0x000F74E2308 MonotonicCounterRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+Loading driver 953FF472-9B9E-4058-84CF-227DAF89DC82
+Loading driver at 0x000F751B000 EntryPoint=0x000F751D848 ArmGicV3Dxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F751B000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F751C000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F751F000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver FE5CEA76-4F72-49E8-986F-2CD899DFFE5D
+Loading driver at 0x000F74D8000 EntryPoint=0x000F74DD3B4 FaultTolerantWriteDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F74D8000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F74D9000 - 0x0000000000006000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F74DF000 - 0x0000000000001000 (0x0000000000004008)
+Loading driver FC097B3C-2EBD-4A75-A3DA-121DCAB365CC
+Loading driver at 0x000F7516000 EntryPoint=0x000F75187C4 DtPlatformDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7516000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7517000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F751A000 - 0x0000000000001000 (0x0000000000004008)
+DtPlatformDxeEntryPoint: no DT/ACPI preference found, defaulting to DT
+Loading driver 128FB770-5E79-4176-9E51-9BB268A17DD1
+Loading driver at 0x000F73D1000 EntryPoint=0x000F73D94C0 PciHostBridgeDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73D1000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73D2000 - 0x000000000000C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73DE000 - 0x0000000000002000 (0x0000000000004008)
+PCIe Link Up
+SMMU_GBPA:0x0
+RootBridge: PciRoot(0x0)
+  Support/Attr: 0 / 0
+    DmaAbove4G: No
+NoExtConfSpace: No
+     AllocAttr: 0 ()
+           Bus: 0 - 10 Translation=0
+            Io: FFFFFFFF - 0 Translation=0
+           Mem: 60000000 - 6FFFFFFF Translation=0
+    MemAbove4G: FFFFFFFFFFFFFFFF - 0 Translation=0
+          PMem: FFFFFFFF - 0 Translation=0
+   PMemAbove4G: FFFFFFFFFFFFFFFF - 0 Translation=0
+Loading driver EBF342FE-B1D3-4EF8-957C-8048606FF671
+Loading driver at 0x000F739A000 EntryPoint=0x000F739BD10 SetupBrowser.efi
+SetUefiImageMemoryAttributes - 0x00000000F739A000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F739B000 - 0x0000000000018000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73B3000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 6D33944A-EC75-4855-A54D-809C75241F6C
+Loading driver at 0x000F7380000 EntryPoint=0x000F73823AC BdsDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7380000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7381000 - 0x0000000000017000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7398000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 49EA041E-6752-42CA-B0B1-7344FE2546B7
+Loading driver at 0x000F7511000 EntryPoint=0x000F7513288 ArmTimerDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7511000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7512000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7514000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 0619F5C2-4858-4CAA-A86A-73A21A18DF6B
+Loading driver at 0x000F73EB000 EntryPoint=0x000F73ED3F4 GenericWatchdogDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73EB000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73EC000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73EE000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver E660EA85-058E-4B55-A54B-F02F83A24707
+Loading driver at 0x000F7369000 EntryPoint=0x000F736AA9C DisplayEngine.efi
+SetUefiImageMemoryAttributes - 0x00000000F7369000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F736A000 - 0x0000000000012000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F737C000 - 0x0000000000004000 (0x0000000000004008)
+Loading driver 51CCF399-4FDF-4E55-A45B-E123F84D456A
+Loading driver at 0x000F73CA000 EntryPoint=0x000F73CDEE0 ConPlatformDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73CA000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73CB000 - 0x0000000000004000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73CF000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 408EDCEC-CF6D-477C-A5A8-B4844E3DE281
+Loading driver at 0x000F73E0000 EntryPoint=0x000F73E723C ConSplitterDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73E0000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73E1000 - 0x0000000000008000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73E9000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver CCCB0C28-4B24-11D5-9A5A-0090273FC14D
+Loading driver at 0x000F7360000 EntryPoint=0x000F7364828 GraphicsConsoleDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7360000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7361000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7366000 - 0x0000000000003000 (0x0000000000004008)
+Loading driver 9E863906-A40F-4875-977F-5B93FF237FC6
+Loading driver at 0x000F7355000 EntryPoint=0x000F735C500 TerminalDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7355000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7356000 - 0x0000000000008000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F735E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 6B38F7B4-AD98-40E9-9093-ACA2B5A253C4
+Loading driver at 0x000F734D000 EntryPoint=0x000F7351670 DiskIoDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F734D000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F734E000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7353000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 1FA1F39E-FEFF-4AAE-BD7B-38A070A3B609
+Loading driver at 0x000F7343000 EntryPoint=0x000F734920C PartitionDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7343000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7344000 - 0x0000000000007000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F734B000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 961578FE-B6B7-44C3-AF35-6BC705CD2B1F
+Loading driver at 0x000F7328000 EntryPoint=0x000F73316BC Fat.efi
+SetUefiImageMemoryAttributes - 0x00000000F7328000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7329000 - 0x000000000000A000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7333000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver CD3BAFB6-50FB-4FE8-8E4E-AB74D2C1A600
+Loading driver at 0x000F73B6000 EntryPoint=0x000F73B8384 EnglishDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73B6000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73B7000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73B9000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 93B80004-9FB3-11D4-9A3A-0090273FC14D
+Loading driver at 0x000F7301000 EntryPoint=0x000F73088E8 PciBusDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7301000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7302000 - 0x0000000000010000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7312000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 5BE3BDF4-53CF-46A3-A6A9-73C34A6E5EE3
+Loading driver at 0x000F7335000 EntryPoint=0x000F733E5DC NvmExpressDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7335000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7336000 - 0x000000000000B000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7341000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver FE3542FE-C1D3-4EF8-657C-8048606FF671
+Loading driver at 0x000F72CE000 EntryPoint=0x000F72D83A4 DriverSample.efi
+SetUefiImageMemoryAttributes - 0x00000000F72CE000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F72CF000 - 0x000000000000E000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F72DD000 - 0x000000000000A000 (0x0000000000004008)
+[Bds] Entry...
+[BdsDxe] Locate Variable Policy protocol - Success
+[Variable]END_OF_DXE is signaled
+Initialize variable error flag (FF)
+PCI Bus First Scanning
+PciBus: Discovered PPB @ [00|00|00]  [VID = 0x10EE, DID = 0x7021]
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x10,bit4 should be 1
+PciBus: Discovered PCI @ [01|00|00]  [VID = 0x1B36, DID = 0x10]
+LocatePciExpressCapabilityRegBlock: [01|00|00] failed to access config space at offset 0x100
+   BAR[0]: Type =  Mem64; Alignment = 0x3FFF;	Length = 0x4000;	Offset = 0x10
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x0,bit4 should be 1
+PciBus: Discovered PPB @ [00|00|00]  [VID = 0x10EE, DID = 0x7021]
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x10
+New DeviceControl2 = 0x10,bit4 should be 1
+PciBus: Discovered PCI @ [01|00|00]  [VID = 0x1B36, DID = 0x10]
+LocatePciExpressCapabilityRegBlock: [01|00|00] failed to access config space at offset 0x100
+   BAR[0]: Type =  Mem64; Alignment = 0x3FFF;	Length = 0x4000;	Offset = 0x10
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x0,bit4 should be 1
+PciHostBridge: SubmitResources for PciRoot(0x0)
+ Mem: Granularity/SpecificFlag = 32 / 00
+      Length/Alignment = 0x100000 / 0xFFFFF
+PciBus: HostBridge->SubmitResources() - Success
+PciHostBridge: NotifyPhase (AllocateResources)
+ RootBridge: PciRoot(0x0)
+  Mem: Base/Length/Alignment = 60000000/100000/FFFFF - Success
+PciBus: HostBridge->NotifyPhase(AllocateResources) - Success
+Process Option ROM: BAR Base/Length = 0/0
+PciBus: Resource Map for Root Bridge PciRoot(0x0)
+Type =  Mem32; Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF
+   Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF;	Owner = PPB [00|00|00:**]
+
+PciBus: Resource Map for Bridge [00|00|00]
+Type =  Mem32; Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF
+   Base = 0x60000000;	Length = 0x4000;	Alignment = 0x3FFF;	Owner = PCI [01|00|00:10]
+
+PciTestSupportedAttribute: line:1034
+PciTestSupportedAttribute: line:1037,OldTpl:4
+PciTestSupportedAttribute: line:1064
+PciTestSupportedAttribute: line:1067,OldTpl:4
+PciTestSupportedAttribute: line:1034
+PciTestSupportedAttribute: line:1037,OldTpl:4
+[Bds]RegisterKeyNotify: 000C/0000 80000000/00 Success
+[Bds]RegisterKeyNotify: 0017/0000 80000000/00 Success
+[Bds]RegisterKeyNotify: 0000/000D 80000000/00 Success
+Terminal - Mode 0, Column = 80, Row = 25
+Terminal - Mode 1, Column = 80, Row = 50
+Terminal - Mode 2, Column = 100, Row = 31
+[2J[04D[=3h[2J[09DTianocore/EDK2 firmware version V1.0
+Press ESCAPE for boot options BootDiscoveryPolicyHandler - Failed to locate gEfiBootManagerPolicyProtocolGuid.Driver connect will be skipped.
+HandleCapsules: processing capsules ...
+[Bds]RegisterKeyNotify: 0000/0073 80000000/00 Success
+[Bds]OsIndication: 0000000000000000
+[Bds]=============Begin Load Options Dumping ...=============
+  Driver Options:
+  SysPrep Options:
+  Boot Options:
+    Boot0000: UiApp 		 0x0109
+    Boot0001: UEFI Shell 		 0x0000
+  PlatformRecovery Options:
+    PlatformRecovery0000: Default PlatformRecovery 		 0x0001
+[Bds]=============End Load Options Dumping=============
+[Bds]BdsWait ...Zzzzzzzzzzzz...
+[Bds]Exit the waiting!
+[Bds]Stop Hotkey Service!
+[Bds]UnregisterKeyNotify: 000C/0000 Success
+[Bds]UnregisterKeyNotify: 0017/0000 Success
+[Bds]UnregisterKeyNotify: 0000/000D Success
+[Bds]UnregisterKeyNotify: 0000/0073 Success
+Process PlatformRecovery0000 (Default PlatformRecovery) ...
+NvmExpressDriverBindingStart: start
+Cc.En: 0
+Cc.Css: 0
+Cc.Mps: 0
+Cc.Ams: 0
+Cc.Shn: 0
+Cc.Iosqes: 0
+Cc.Iocqes: 0
+NVMe controller is disabled with status [Success].
+Private->Buffer = [00000000F72F5000]
+Admin     Submission Queue size (Aqa.Asqs) = [00000001]
+Admin     Completion Queue size (Aqa.Acqs) = [00000001]
+Admin     Submission Queue (SqBuffer[0]) = [00000000F72F5000]
+Admin     Completion Queue (CqBuffer[0]) = [00000000F72F6000]
+Sync  I/O Submission Queue (SqBuffer[1]) = [00000000F72F7000]
+Sync  I/O Completion Queue (CqBuffer[1]) = [00000000F72F8000]
+Async I/O Submission Queue (SqBuffer[2]) = [00000000F72F9000]
+Async I/O Completion Queue (CqBuffer[2]) = [00000000F72FA000]
+Aqa.Asqs: 1
+Aqa.Acqs: 1
+Asq: F72F5000
+Acq: F72F6000h
+Cc.En: 1
+Cc.Css: 0
+Cc.Mps: 0
+Cc.Ams: 0
+Cc.Shn: 0
+Cc.Iosqes: 6
+Cc.Iocqes: 4
+NVMe controller is enabled with status [Success].
+ == NVME IDENTIFY CONTROLLER DATA ==
+    PCI VID   : 0x1B36
+    PCI SSVID : 0x1AF4
+    SN        : deadbeef            
+    MN        : QEMU NVMe Ctrl                          
+    FR        : 0x312E3131
+    TNVMCAP (high 8-byte) : 0x0
+    TNVMCAP (low 8-byte)  : 0x0
+    RAB       : 0x6
+    IEEE      : 0x525400
+    AERL      : 0x3
+    SQES      : 0x66
+    CQES      : 0x44
+    NN        : 0x100
+ == NVME IDENTIFY NAMESPACE [1] DATA ==
+    NSZE        : 0x20000
+    NCAP        : 0x20000
+    NUSE        : 0x20000
+    LBAF0.LBADS : 0x9
+NvmExpressDriverBindingStart: end successfully
+ BlockSize : 512 
+ LastBlock : 1FFFF 
+NvmExpressDriverBindingStart: start
+NvmExpressDriverBindingStart: end successfully
+FSOpen: Open '\EFI\BOOT\BOOTAA64.EFI' Success
+[Bds] Expand \EFI\BOOT\BOOTAA64.EFI -> PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\EFI\BOOT\BOOTAA64.EFI
+[Security] 3rd party image[0] can be loaded after EndOfDxe: PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\EFI\BOOT\BOOTAA64.EFI.
+Loading driver at 0x000F6BDE000 EntryPoint=0x000F6BE61A4 Shell.efi
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[2J[01;01HUEFI Interactive Shell v2.2
+EDK II
+UEFI v2.70 (ArmSample Platform, 0x00010000)
+[1m[33m[40mMapping table[0m[37m[40m
+[1m[33m[40m      FS0:[0m[37m[40m [1m[37m[40mAlias(s):[0m[37m[40mF0:;BLK0:
+          PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-0
+0)
+Press [1m[37m[40mESC[0m[37m[40m in 5 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 4 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 3 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 2 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 1 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+[Security] 3rd party image[0] can be loaded after EndOfDxe: PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\Image.efi.
+Loading driver at 0x000F5980000 EntryPoint=0x000F6133FA4 
+EFI stub: Booting Linux Kernel...
+SetMemoryAttributes: BaseAddress == 0xF5000000, Length == 0x7D0000, Attributes == 0x20000
+SetMemoryAttributes: BaseAddress == 0xF57D0000, Length == 0x140000, Attributes == 0x4000
+FSOpen: Open 'initrd.img' Success
+EFI stub: Loaded initrd from command line option
+FSOpen: Open 'n2-ref.dtb' Success
+EFI stub: Using DTB from command line
+EFI stub: Exiting boot services...
+SetUefiImageMemoryAttributes - 0x00000000F7970000 - 0x0000000000006000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7960000 - 0x0000000000006000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7950000 - 0x000000000000F000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7940000 - 0x0000000000005000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F74F0000 - 0x0000000000005000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F74E0000 - 0x0000000000004000 (0x0000000000000008)
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd493]
+[    0.000000] Linux version 6.6.0 (charles@ubu-2404-pve) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #1 SMP Fri Sep 18 16:16:49 CST 2026
+[    0.000000] Machine model: arm-v9 compliant core with pcie
+[    0.000000] earlycon: uart8250 at MMIO32 0x000000000c000000 (options '')
+[    0.000000] printk: bootconsole [uart8250] enabled
+[    0.000000] efi: EFI v2.7 by ArmSample Platform
+[    0.000000] efi: INITRD=0xf6dd6f18 MEMRESERVE=0xf6dd6f98 
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000088200000-0x0000000c7fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000088200000-0x00000000f6b4ffff]
+[    0.000000]   node   0: [mem 0x00000000f6b50000-0x00000000f6bcffff]
+[    0.000000]   node   0: [mem 0x00000000f6bd0000-0x00000000f74dffff]
+[    0.000000]   node   0: [mem 0x00000000f74e0000-0x00000000f74fffff]
+[    0.000000]   node   0: [mem 0x00000000f7500000-0x00000000f755ffff]
+[    0.000000]   node   0: [mem 0x00000000f7560000-0x00000000f757ffff]
+[    0.000000]   node   0: [mem 0x00000000f7580000-0x00000000f793ffff]
+[    0.000000]   node   0: [mem 0x00000000f7940000-0x00000000f797ffff]
+[    0.000000]   node   0: [mem 0x00000000f7980000-0x00000000f799ffff]
+[    0.000000]   node   0: [mem 0x00000000f79a0000-0x00000000f79dffff]
+[    0.000000]   node   0: [mem 0x00000000f79e0000-0x00000000f81fffff]
+[    0.000000]   node   0: [mem 0x0000000900000000-0x0000000c7fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000088200000-0x0000000c7fffffff]
+[    0.000000] On node 0, zone Normal: 512 pages in unavailable ranges
+[    0.000000] On node 0, zone Normal: 32256 pages in unavailable ranges
+[    0.000000] percpu: Embedded 20 pages/cpu s44200 r8192 d29528 u81920
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Virtualization Host Extensions
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: fs0:\Image.efi console=ttyS0,115200 earlycon=uart8250,mmio32,0x0C000000 initrd=\initrd.img dtb=\n2-ref.dtb rdinit=/init
+[    0.000000] Unknown kernel command line parameters "dtb=\n2-ref.dtb", will be passed to user space.
+[    0.000000] random: crng init done
+[    0.000000] Dentry cache hash table entries: 2097152 (order: 12, 16777216 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 4064256
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x0000000c6a800000-0x0000000c6e800000] (64MB)
+[    0.000000] Memory: 16151344K/16515072K available (5760K kernel code, 788K rwdata, 1804K rodata, 448K init, 347K bss, 363728K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-1, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: GICv4 features: 
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x000000000e080000
+[    0.000000] ITS: No ITS available, not enabling LPIs
+[    0.000000] GICv3: === GICD Registers ===
+[    0.000000] GICv3: GICD_CTLR     (0x0000): 0x00000012
+[    0.000000] GICv3: GICD_TYPER    (0x0004): 0x037e0408
+[    0.000000] GICv3: GICD_IIDR     (0x0008): 0x0000043b
+[    0.000000] GICv3: GICD_TYPER2   (0x000c): 0x00000000
+[    0.000000] GICv3: GICD_STATUSR  (0x0010): 0x00000000
+[    0.000000] GICv3: GICD SPI 64-95 Debug:
+[    0.000000] GICv3:   GICD_IGROUPR[2] (0x88): 0x00000000
+[    0.000000] GICv3:   GICD_ISENABLER[2] (0x108): 0x00000000
+[    0.000000] GICv3:   GICD_ICENABLER[2] (0x188): 0x00000000
+[    0.000000] GICv3:   GICD_ISPENDR[2] (0x208): 0x00000000
+[    0.000000] GICv3:   GICD_ICPENDR[2] (0x288): 0x00000000
+[    0.000000] GICv3:   GICD_ISACTIVER[2] (0x308): 0x00000000
+[    0.000000] GICv3:   GICD_ICACTIVER[2] (0x388): 0x00000000
+[    0.000000] GICv3:   GICD_IPRIORITYR[16] (0x440): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[17] (0x444): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[18] (0x448): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[19] (0x44c): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[20] (0x450): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[21] (0x454): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[22] (0x458): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[23] (0x45c): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_ICFGR[32] (0xc80): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[33] (0xc84): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[34] (0xc88): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[35] (0xc8c): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[36] (0xc90): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[37] (0xc94): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[38] (0xc98): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[39] (0xc9c): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[40] (0xca0): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[41] (0xca4): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[42] (0xca8): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[43] (0xcac): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[44] (0xcb0): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[45] (0xcb4): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[46] (0xcb8): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[47] (0xcbc): 0x00000000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 100.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x171024e7e0, max_idle_ns: 440795205315 ns
+[    0.000501] sched_clock: 57 bits at 100MHz, resolution 10ns, wraps every 4398046511100ns
+[    0.059811] Calibrating delay loop (skipped), value calculated using timer frequency.. 200.00 BogoMIPS (lpj=400000)
+[    0.062809] pid_max: default: 32768 minimum: 301
+[    0.082667] Mount-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.084470] Mountpoint-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.239881] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0.315213] rcu: Hierarchical SRCU implementation.
+[    0.316332] rcu: 	Max phase no-delay instances is 1000.
+[    0.339639] ITS-PCI-MSI: starting initialization
+[    0.344431] Remapping and enabling EFI services.
+[    0.353235] smp: Bringing up secondary CPUs ...
+[    0.354654] smp: Brought up 1 node, 1 CPU
+[    0.355166] SMP: Total of 1 processors activated.
+[    0.355917] CPU features: detected: 32-bit EL0 Support
+[    0.356414] CPU features: detected: ARMv8.4 Translation Table Level
+[    0.357289] CPU features: detected: Instruction cache invalidation not required for I/D coherence
+[    0.358201] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[    0.358948] CPU features: detected: CRC32 instructions
+[    0.359416] CPU features: detected: Data independent timing control (DIT)
+[    0.360019] CPU features: detected: Enhanced Virtualization Traps
+[    0.360564] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.361112] CPU features: detected: Random Number Generator
+[    0.361793] CPU features: detected: Speculation barrier (SB)
+[    0.362339] CPU features: detected: Stage-2 Force Write-Back
+[    0.362842] CPU features: detected: TLB range maintenance instructions
+[    0.363538] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+[    0.369884] spectre-bhb mitigation disabled by compile time option
+[    0.373912] CPU: All CPU(s) started at EL2
+[    0.374432] alternatives: applying system-wide alternatives
+[    0.458246] devtmpfs: initialized
+[    0.501817] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.503860] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.529953] DMI not present or invalid.
+[    0.539292] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.569152] DMA: preallocated 2048 KiB GFP_KERNEL pool for atomic allocations
+[    0.586859] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.590388] ASID allocator initialised with 65536 entries
+[    0.594603] Serial: AMBA PL011 UART driver
+[    0.634178] Modules: 30448 pages in range for non-PLT usage
+[    0.634350] Modules: 521968 pages in range for PLT usage
+[    0.656811] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.658072] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.658763] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.659645] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.660260] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.660848] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.661410] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.661998] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.704247] efivars: Registered efivars operations
+[    0.794469] vgaarb: loaded
+[    0.799960] clocksource: Switched to clocksource arch_sys_counter
+[    0.839326] NET: Registered PF_INET protocol family
+[    0.854661] IP idents hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.908811] tcp_listen_portaddr_hash hash table entries: 8192 (order: 5, 131072 bytes, linear)
+[    0.910892] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.911948] TCP established hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.917608] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    0.925925] TCP: Hash tables configured (established 131072 bind 65536)
+[    0.939695] UDP hash table entries: 8192 (order: 6, 262144 bytes, linear)
+[    0.942493] UDP-Lite hash table entries: 8192 (order: 6, 262144 bytes, linear)
+[    0.949663] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.953015] PCI: CLS 0 bytes, default 64
+[    0.987704] workingset: timestamp_bits=46 max_order=22 bucket_order=0
+[    0.998831] ntfs: driver 2.1.32 [Flags: R/W DEBUG].
+[    1.001071] ntfs3: Max link count 4000
+[    1.001514] ntfs3: Enabled Linux POSIX ACLs support
+[    1.001996] ntfs3: Warning: Activated 64 bits per cluster. Windows does not support this
+[    1.003032] ntfs3: Read-only LZX/Xpress compression included
+[    1.005728] io scheduler mq-deadline registered
+[    1.006676] io scheduler kyber registered
+[    1.019815] Unpacking initramfs...
+[    1.085032] xilinx-pcie 40000000.pci: host bridge /soc/pci@40000000 ranges:
+[    1.091245] xilinx-pcie 40000000.pci:       IO 0x0070000000..0x0070ffffff -> 0x0000000000
+[    1.095388] xilinx-pcie 40000000.pci:      MEM 0x0060000000..0x006fffffff -> 0x0060000000
+[    1.119789] GICv3: IRQ 65: unmask
+[    1.123303] GICv3: IRQ 65: mask
+[    1.124317] GICv3: IRQ 65: unmask
+[    1.127212] xilinx-pcie 40000000.pci: PCIe Link is UP
+[   22.030802] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[   22.033307] rcu: 	(detected by 0, t=5252 jiffies, g=-1183, q=4 ncpus=1)
+[   22.034334] rcu: All QSes seen, last rcu_sched kthread activity 5252 (4294897770-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[   22.037182] rcu: rcu_sched kthread starved for 5252 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[   22.038457] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[   22.039442] rcu: RCU grace-period kthread stack dump:
+[   22.040602] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[   22.044360] Call trace:
+[   22.045222]  __switch_to+0xb4/0xf4
+[   22.046801]  __schedule+0x24c/0x510
+[   22.047380]  schedule+0x4c/0xa0
+[   22.047778]  schedule_timeout+0x6c/0xd0
+[   22.048300]  rcu_gp_fqs_loop+0xd4/0x33c
+[   22.048777]  rcu_gp_kthread+0xd8/0xec
+[   22.049216]  kthread+0xd8/0xdc
+[   22.049629]  ret_from_fork+0x10/0x20
+[   22.050813] rcu: Stack dump where RCU GP kthread last ran:
+[   22.052549] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[   22.053718] Hardware name: arm-v9 compliant core with pcie (DT)
+[   22.054974] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   22.055934] pc : __do_softirq+0x9c/0x274
+[   22.056640] lr : __do_softirq+0x68/0x274
+[   22.057174] sp : ffff000bfffca2b0
+[   22.057612] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[   22.058759] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[   22.059610] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[   22.060451] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[   22.061306] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[   22.062141] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[   22.062978] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[   22.063816] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[   22.064649] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[   22.065485] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[   22.066541] Call trace:
+[   22.067204]  __do_softirq+0x9c/0x274
+[   22.067764]  ____do_softirq+0xc/0x14
+[   22.068225]  call_on_irq_stack+0x24/0x34
+[   22.068687]  do_softirq_own_stack+0x18/0x24
+[   22.069167]  irq_exit_rcu+0xd4/0xec
+[   22.069600]  el1_interrupt+0x34/0x4c
+[   22.070052]  el1h_64_irq_handler+0x14/0x1c
+[   22.070547]  el1h_64_irq+0x64/0x68
+[   22.070952]  xilinx_pcie_probe+0x17c/0x42c
+[   22.071461]  platform_probe+0x50/0x90
+[   22.071934]  really_probe+0xa8/0x2d0
+[   22.072372]  __driver_probe_device+0xc4/0xe8
+[   22.072879]  driver_probe_device+0x3c/0x110
+[   22.073374]  __driver_attach+0x88/0x18c
+[   22.073919]  bus_for_each_dev+0x60/0xa0
+[   22.074381]  driver_attach+0x20/0x28
+[   22.074811]  bus_add_driver+0xe0/0x1ec
+[   22.075255]  driver_register+0x58/0x114
+[   22.075716]  __platform_driver_register+0x24/0x2c
+[   22.076268]  xilinx_pcie_driver_init+0x18/0x20
+[   22.076804]  do_one_initcall+0x54/0x16c
+[   22.077256]  kernel_init_freeable+0x174/0x234
+[   22.077765]  kernel_init+0x20/0x1cc
+[   22.078218]  ret_from_fork+0x10/0x20
+[   85.050343] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[   85.051610] rcu: 	(detected by 0, t=21007 jiffies, g=-1183, q=4 ncpus=1)
+[   85.052355] rcu: All QSes seen, last rcu_sched kthread activity 21007 (4294913525-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[   85.053642] rcu: rcu_sched kthread starved for 21007 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[   85.054693] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[   85.055583] rcu: RCU grace-period kthread stack dump:
+[   85.056122] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[   85.057305] Call trace:
+[   85.057597]  __switch_to+0xb4/0xf4
+[   85.058140]  __schedule+0x24c/0x510
+[   85.058553]  schedule+0x4c/0xa0
+[   85.058931]  schedule_timeout+0x6c/0xd0
+[   85.059388]  rcu_gp_fqs_loop+0xd4/0x33c
+[   85.059844]  rcu_gp_kthread+0xd8/0xec
+[   85.060267]  kthread+0xd8/0xdc
+[   85.060655]  ret_from_fork+0x10/0x20
+[   85.061091] rcu: Stack dump where RCU GP kthread last ran:
+[   85.061690] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[   85.062334] Hardware name: arm-v9 compliant core with pcie (DT)
+[   85.062945] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   85.063684] pc : __do_softirq+0x9c/0x274
+[   85.064138] lr : __do_softirq+0x68/0x274
+[   85.064575] sp : ffff000bfffca2b0
+[   85.064934] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[   85.065775] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[   85.066609] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[   85.067436] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[   85.068274] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[   85.069089] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[   85.069907] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[   85.070719] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[   85.071528] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[   85.072338] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[   85.073148] Call trace:
+[   85.073430]  __do_softirq+0x9c/0x274
+[   85.073840]  ____do_softirq+0xc/0x14
+[   85.074252]  call_on_irq_stack+0x24/0x34
+[   85.074697]  do_softirq_own_stack+0x18/0x24
+[   85.075169]  irq_exit_rcu+0xd4/0xec
+[   85.075596]  el1_interrupt+0x34/0x4c
+[   85.076030]  el1h_64_irq_handler+0x14/0x1c
+[   85.076505]  el1h_64_irq+0x64/0x68
+[   85.076896]  xilinx_pcie_probe+0x17c/0x42c
+[   85.077378]  platform_probe+0x50/0x90
+[   85.077832]  really_probe+0xa8/0x2d0
+[   85.078279]  __driver_probe_device+0xc4/0xe8
+[   85.078767]  driver_probe_device+0x3c/0x110
+[   85.079243]  __driver_attach+0x88/0x18c
+[   85.079688]  bus_for_each_dev+0x60/0xa0
+[   85.080129]  driver_attach+0x20/0x28
+[   85.080549]  bus_add_driver+0xe0/0x1ec
+[   85.080986]  driver_register+0x58/0x114
+[   85.081434]  __platform_driver_register+0x24/0x2c
+[   85.081972]  xilinx_pcie_driver_init+0x18/0x20
+[   85.082491]  do_one_initcall+0x54/0x16c
+[   85.082923]  kernel_init_freeable+0x174/0x234
+[   85.083416]  kernel_init+0x20/0x1cc
+[   85.083810]  ret_from_fork+0x10/0x20
+[  148.070352] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  148.071693] rcu: 	(detected by 0, t=36762 jiffies, g=-1183, q=4 ncpus=1)
+[  148.072477] rcu: All QSes seen, last rcu_sched kthread activity 36762 (4294929280-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  148.073923] rcu: rcu_sched kthread starved for 36762 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  148.074994] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  148.075907] rcu: RCU grace-period kthread stack dump:
+[  148.076457] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  148.077675] Call trace:
+[  148.078011]  __switch_to+0xb4/0xf4
+[  148.078537]  __schedule+0x24c/0x510
+[  148.078962]  schedule+0x4c/0xa0
+[  148.079348]  schedule_timeout+0x6c/0xd0
+[  148.079811]  rcu_gp_fqs_loop+0xd4/0x33c
+[  148.080281]  rcu_gp_kthread+0xd8/0xec
+[  148.080717]  kthread+0xd8/0xdc
+[  148.081114]  ret_from_fork+0x10/0x20
+[  148.081551] rcu: Stack dump where RCU GP kthread last ran:
+[  148.082166] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  148.082840] Hardware name: arm-v9 compliant core with pcie (DT)
+[  148.083481] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  148.084237] pc : __do_softirq+0x9c/0x274
+[  148.084693] lr : __do_softirq+0x68/0x274
+[  148.085140] sp : ffff000bfffca2b0
+[  148.085510] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  148.086376] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[  148.087215] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  148.088107] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  148.088957] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  148.089793] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[  148.090627] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[  148.091464] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[  148.092294] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[  148.093130] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  148.093987] Call trace:
+[  148.094276]  __do_softirq+0x9c/0x274
+[  148.094703]  ____do_softirq+0xc/0x14
+[  148.095130]  call_on_irq_stack+0x24/0x34
+[  148.095592]  do_softirq_own_stack+0x18/0x24
+[  148.096081]  irq_exit_rcu+0xd4/0xec
+[  148.096521]  el1_interrupt+0x34/0x4c
+[  148.096963]  el1h_64_irq_handler+0x14/0x1c
+[  148.097452]  el1h_64_irq+0x64/0x68
+[  148.097858]  xilinx_pcie_probe+0x17c/0x42c
+[  148.098384]  platform_probe+0x50/0x90
+[  148.098850]  really_probe+0xa8/0x2d0
+[  148.099286]  __driver_probe_device+0xc4/0xe8
+[  148.099792]  driver_probe_device+0x3c/0x110
+[  148.100291]  __driver_attach+0x88/0x18c
+[  148.100750]  bus_for_each_dev+0x60/0xa0
+[  148.101204]  driver_attach+0x20/0x28
+[  148.101633]  bus_add_driver+0xe0/0x1ec
+[  148.102078]  driver_register+0x58/0x114
+[  148.102534]  __platform_driver_register+0x24/0x2c
+[  148.103093]  xilinx_pcie_driver_init+0x18/0x20
+[  148.103623]  do_one_initcall+0x54/0x16c
+[  148.104079]  kernel_init_freeable+0x174/0x234
+[  148.104592]  kernel_init+0x20/0x1cc
+[  148.105010]  ret_from_fork+0x10/0x20
+[  211.090380] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  211.091816] rcu: 	(detected by 0, t=52517 jiffies, g=-1183, q=4 ncpus=1)
+[  211.092550] rcu: All QSes seen, last rcu_sched kthread activity 52517 (4294945035-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  211.093802] rcu: rcu_sched kthread starved for 52517 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  211.094836] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  211.095706] rcu: RCU grace-period kthread stack dump:
+[  211.096222] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  211.097389] Call trace:
+[  211.097675]  __switch_to+0xb4/0xf4
+[  211.098209]  __schedule+0x24c/0x510
+[  211.098609]  schedule+0x4c/0xa0
+[  211.098977]  schedule_timeout+0x6c/0xd0
+[  211.099424]  rcu_gp_fqs_loop+0xd4/0x33c
+[  211.099872]  rcu_gp_kthread+0xd8/0xec
+[  211.100344]  kthread+0xd8/0xdc
+[  211.100725]  ret_from_fork+0x10/0x20
+[  211.101326] rcu: Stack dump where RCU GP kthread last ran:
+[  211.101911] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  211.102544] Hardware name: arm-v9 compliant core with pcie (DT)
+[  211.103137] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  211.103903] pc : __do_softirq+0x9c/0x274
+[  211.104340] lr : __do_softirq+0x68/0x274
+[  211.104766] sp : ffff000bfffca2b0
+[  211.105127] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  211.105951] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[  211.106749] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  211.107546] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  211.108428] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  211.109222] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[  211.110025] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[  211.110816] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[  211.111648] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[  211.112438] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  211.113232] Call trace:
+[  211.113511]  __do_softirq+0x9c/0x274
+[  211.113911]  ____do_softirq+0xc/0x14
+[  211.114315]  call_on_irq_stack+0x24/0x34
+[  211.114746]  do_softirq_own_stack+0x18/0x24
+[  211.115214]  irq_exit_rcu+0xd4/0xec
+[  211.115637]  el1_interrupt+0x34/0x4c
+[  211.116066]  el1h_64_irq_handler+0x14/0x1c
+[  211.116539]  el1h_64_irq+0x64/0x68
+[  211.116923]  xilinx_pcie_probe+0x17c/0x42c
+[  211.117377]  platform_probe+0x50/0x90
+[  211.117823]  really_probe+0xa8/0x2d0
+[  211.118259]  __driver_probe_device+0xc4/0xe8
+[  211.118731]  driver_probe_device+0x3c/0x110
+[  211.119198]  __driver_attach+0x88/0x18c
+[  211.119629]  bus_for_each_dev+0x60/0xa0
+[  211.120060]  driver_attach+0x20/0x28
+[  211.120467]  bus_add_driver+0xe0/0x1ec
+[  211.120894]  driver_register+0x58/0x114
+[  211.121334]  __platform_driver_register+0x24/0x2c
+[  211.121858]  xilinx_pcie_driver_init+0x18/0x20
+[  211.122355]  do_one_initcall+0x54/0x16c
+[  211.122778]  kernel_init_freeable+0x174/0x234
+[  211.123259]  kernel_init+0x20/0x1cc
+[  211.123648]  ret_from_fork+0x10/0x20
+[  274.110494] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  274.111953] rcu: 	(detected by 0, t=68272 jiffies, g=-1183, q=4 ncpus=1)
+[  274.112705] rcu: All QSes seen, last rcu_sched kthread activity 68272 (4294960790-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  274.113998] rcu: rcu_sched kthread starved for 68272 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  274.115055] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  274.115946] rcu: RCU grace-period kthread stack dump:
+[  274.116477] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  274.117660] Call trace:
+[  274.117990]  __switch_to+0xb4/0xf4
+[  274.118497]  __schedule+0x24c/0x510
+[  274.118909]  schedule+0x4c/0xa0
+[  274.119284]  schedule_timeout+0x6c/0xd0
+[  274.119756]  rcu_gp_fqs_loop+0xd4/0x33c
+[  274.120215]  rcu_gp_kthread+0xd8/0xec
+[  274.120642]  kthread+0xd8/0xdc
+[  274.121034]  ret_from_fork+0x10/0x20
+[  274.121462] rcu: Stack dump where RCU GP kthread last ran:
+[  274.122058] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  274.122703] Hardware name: arm-v9 compliant core with pcie (DT)
+[  274.123317] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  274.124070] pc : __do_softirq+0x9c/0x274
+[  274.124517] lr : __do_softirq+0x68/0x274
+[  274.124952] sp : ffff000bfffca2b0
+[  274.125315] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  274.126153] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[  274.126986] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  274.127803] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  274.128761] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  274.129683] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[  274.130508] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[  274.131319] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[  274.132133] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[  274.132943] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  274.133765] Call trace:
+[  274.134050]  __do_softirq+0x9c/0x274
+[  274.134460]  ____do_softirq+0xc/0x14
+[  274.134878]  call_on_irq_stack+0x24/0x34
+[  274.135327]  do_softirq_own_stack+0x18/0x24
+[  274.135799]  irq_exit_rcu+0xd4/0xec
+[  274.136240]  el1_interrupt+0x34/0x4c
+[  274.136673]  el1h_64_irq_handler+0x14/0x1c
+[  274.137150]  el1h_64_irq+0x64/0x68
+[  274.137539]  xilinx_pcie_probe+0x17c/0x42c
+[  274.138081]  platform_probe+0x50/0x90
+[  274.138534]  really_probe+0xa8/0x2d0
+[  274.138956]  __driver_probe_device+0xc4/0xe8
+[  274.139447]  driver_probe_device+0x3c/0x110
+[  274.139931]  __driver_attach+0x88/0x18c
+[  274.140376]  bus_for_each_dev+0x60/0xa0
+[  274.140829]  driver_attach+0x20/0x28
+[  274.141245]  bus_add_driver+0xe0/0x1ec
+[  274.141680]  driver_register+0x58/0x114
+[  274.142127]  __platform_driver_register+0x24/0x2c
+[  274.142662]  xilinx_pcie_driver_init+0x18/0x20
+[  274.143176]  do_one_initcall+0x54/0x16c
+[  274.143611]  kernel_init_freeable+0x174/0x234
+[  274.144107]  kernel_init+0x20/0x1cc
+[  274.144510]  ret_from_fork+0x10/0x20
+[  337.130440] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  337.131961] rcu: 	(detected by 0, t=84027 jiffies, g=-1183, q=4 ncpus=1)
+[  337.132918] rcu: All QSes seen, last rcu_sched kthread activity 84027 (4294976545-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  337.134585] rcu: rcu_sched kthread starved for 84027 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  337.135936] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  337.137100] rcu: RCU grace-period kthread stack dump:
+[  337.137795] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  337.139312] Call trace:
+[  337.139677]  __switch_to+0xb4/0xf4
+[  337.140289]  __schedule+0x24c/0x510
+[  337.140810]  schedule+0x4c/0xa0
+[  337.141279]  schedule_timeout+0x6c/0xd0
+[  337.141854]  rcu_gp_fqs_loop+0xd4/0x33c
+[  337.142429]  rcu_gp_kthread+0xd8/0xec
+[  337.142962]  kthread+0xd8/0xdc
+[  337.143440]  ret_from_fork+0x10/0x20
+[  337.143987] rcu: Stack dump where RCU GP kthread last ran:
+[  337.144760] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  337.145589] Hardware name: arm-v9 compliant core with pcie (DT)
+[  337.146377] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  337.147340] pc : __do_softirq+0x9c/0x274
+[  337.147942] lr : __do_softirq+0x68/0x274
+[  337.148506] sp : ffff000bfffca2b0
+[  337.148979] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  337.150040] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[  337.151076] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  337.152118] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  337.153146] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  337.154181] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[  337.155217] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[  337.156242] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[  337.157273] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[  337.158323] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  337.159365] Call trace:
+[  337.159729]  __do_softirq+0x9c/0x274
+[  337.160247]  ____do_softirq+0xc/0x14
+[  337.160767]  call_on_irq_stack+0x24/0x34
+[  337.161339]  do_softirq_own_stack+0x18/0x24
+[  337.161936]  irq_exit_rcu+0xd4/0xec
+[  337.162471]  el1_interrupt+0x34/0x4c
+[  337.163034]  el1h_64_irq_handler+0x14/0x1c
+[  337.163513]  el1h_64_irq+0x64/0x68
+[  337.163906]  xilinx_pcie_probe+0x17c/0x42c
+[  337.164379]  platform_probe+0x50/0x90
+[  337.164836]  really_probe+0xa8/0x2d0
+[  337.165261]  __driver_probe_device+0xc4/0xe8
+[  337.165748]  driver_probe_device+0x3c/0x110
+[  337.166223]  __driver_attach+0x88/0x18c
+[  337.166668]  bus_for_each_dev+0x60/0xa0
+[  337.167116]  driver_attach+0x20/0x28
+[  337.167538]  bus_add_driver+0xe0/0x1ec
+[  337.168027]  driver_register+0x58/0x114
+[  337.168477]  __platform_driver_register+0x24/0x2c
+[  337.169018]  xilinx_pcie_driver_init+0x18/0x20
+[  337.169543]  do_one_initcall+0x54/0x16c
+[  337.169979]  kernel_init_freeable+0x174/0x234
+[  337.170480]  kernel_init+0x20/0x1cc
+[  337.170879]  ret_from_fork+0x10/0x20
+[  400.150497] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  400.151898] rcu: 	(detected by 0, t=99782 jiffies, g=-1183, q=4 ncpus=1)
+[  400.152638] rcu: All QSes seen, last rcu_sched kthread activity 99782 (4294992300-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  400.153903] rcu: rcu_sched kthread starved for 99782 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  400.154920] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  400.155796] rcu: RCU grace-period kthread stack dump:
+[  400.156312] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  400.157481] Call trace:
+[  400.157764]  __switch_to+0xb4/0xf4
+[  400.158302]  __schedule+0x24c/0x510
+[  400.158719]  schedule+0x4c/0xa0
+[  400.159088]  schedule_timeout+0x6c/0xd0
+[  400.159535]  rcu_gp_fqs_loop+0xd4/0x33c
+[  400.159982]  rcu_gp_kthread+0xd8/0xec
+[  400.160401]  kthread+0xd8/0xdc
+[  400.160777]  ret_from_fork+0x10/0x20
+[  400.161200] rcu: Stack dump where RCU GP kthread last ran:
+[  400.161788] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  400.162428] Hardware name: arm-v9 compliant core with pcie (DT)
+[  400.163026] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  400.163754] pc : __do_softirq+0x9c/0x274
+[  400.164194] lr : __do_softirq+0x68/0x274
+[  400.164619] sp : ffff000bfffca2b0
+[  400.164973] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  400.165819] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[  400.166621] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  400.167424] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  400.168260] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  400.169058] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[  400.169875] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[  400.170672] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[  400.171466] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[  400.172265] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  400.173075] Call trace:
+[  400.173354]  __do_softirq+0x9c/0x274
+[  400.173758]  ____do_softirq+0xc/0x14
+[  400.174167]  call_on_irq_stack+0x24/0x34
+[  400.174612]  do_softirq_own_stack+0x18/0x24
+[  400.175073]  irq_exit_rcu+0xd4/0xec
+[  400.175487]  el1_interrupt+0x34/0x4c
+[  400.175910]  el1h_64_irq_handler+0x14/0x1c
+[  400.176378]  el1h_64_irq+0x64/0x68
+[  400.176761]  xilinx_pcie_probe+0x17c/0x42c
+[  400.177224]  platform_probe+0x50/0x90
+[  400.177669]  really_probe+0xa8/0x2d0
+[  400.178111]  __driver_probe_device+0xc4/0xe8
+[  400.178589]  driver_probe_device+0x3c/0x110
+[  400.179060]  __driver_attach+0x88/0x18c
+[  400.179494]  bus_for_each_dev+0x60/0xa0
+[  400.179930]  driver_attach+0x20/0x28
+[  400.180339]  bus_add_driver+0xe0/0x1ec
+[  400.180764]  driver_register+0x58/0x114
+[  400.181204]  __platform_driver_register+0x24/0x2c
+[  400.181734]  xilinx_pcie_driver_init+0x18/0x20
+[  400.182241]  do_one_initcall+0x54/0x16c
+[  400.182666]  kernel_init_freeable+0x174/0x234
+[  400.183266]  kernel_init+0x20/0x1cc
+[  400.183664]  ret_from_fork+0x10/0x20
+[  463.170459] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  463.171768] rcu: 	(detected by 0, t=115537 jiffies, g=-1183, q=4 ncpus=1)
+[  463.172512] rcu: All QSes seen, last rcu_sched kthread activity 115537 (4295008055-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  463.173795] rcu: rcu_sched kthread starved for 115537 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  463.174827] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  463.175709] rcu: RCU grace-period kthread stack dump:
+[  463.176230] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  463.177403] Call trace:
+[  463.177688]  __switch_to+0xb4/0xf4
+[  463.178299]  __schedule+0x24c/0x510
+[  463.178707]  schedule+0x4c/0xa0
+[  463.179076]  schedule_timeout+0x6c/0xd0
+[  463.179523]  rcu_gp_fqs_loop+0xd4/0x33c
+[  463.179972]  rcu_gp_kthread+0xd8/0xec
+[  463.180386]  kthread+0xd8/0xdc
+[  463.180768]  ret_from_fork+0x10/0x20
+[  463.181192] rcu: Stack dump where RCU GP kthread last ran:
+[  463.181776] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  463.182404] Hardware name: arm-v9 compliant core with pcie (DT)
+[  463.183002] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  463.183727] pc : __do_softirq+0x9c/0x274
+[  463.184157] lr : __do_softirq+0x68/0x274
+[  463.184597] sp : ffff000bfffca2b0
+[  463.184951] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  463.185775] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[  463.186593] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  463.187387] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  463.188245] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  463.189042] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[  463.189838] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[  463.190627] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[  463.191416] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[  463.192206] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  463.193000] Call trace:
+[  463.193277]  __do_softirq+0x9c/0x274
+[  463.193672]  ____do_softirq+0xc/0x14
+[  463.194071]  call_on_irq_stack+0x24/0x34
+[  463.194505]  do_softirq_own_stack+0x18/0x24
+[  463.194965]  irq_exit_rcu+0xd4/0xec
+[  463.195383]  el1_interrupt+0x34/0x4c
+[  463.195807]  el1h_64_irq_handler+0x14/0x1c
+[  463.196273]  el1h_64_irq+0x64/0x68
+[  463.196659]  xilinx_pcie_probe+0x17c/0x42c
+[  463.197119]  platform_probe+0x50/0x90
+[  463.197565]  really_probe+0xa8/0x2d0
+[  463.198051]  __driver_probe_device+0xc4/0xe8
+[  463.198536]  driver_probe_device+0x3c/0x110
+[  463.199005]  __driver_attach+0x88/0x18c
+[  463.199440]  bus_for_each_dev+0x60/0xa0
+[  463.199874]  driver_attach+0x20/0x28
+[  463.200285]  bus_add_driver+0xe0/0x1ec
+[  463.200707]  driver_register+0x58/0x114
+[  463.201144]  __platform_driver_register+0x24/0x2c
+[  463.201665]  xilinx_pcie_driver_init+0x18/0x20
+[  463.202169]  do_one_initcall+0x54/0x16c
+[  463.202592]  kernel_init_freeable+0x174/0x234
+[  463.203075]  kernel_init+0x20/0x1cc
+[  463.203468]  ret_from_fork+0x10/0x20
+[  526.190467] rcu: INFO: rcu_sched detected stalls on CPUs/tasks:
+[  526.191828] rcu: 	(detected by 0, t=131292 jiffies, g=-1183, q=4 ncpus=1)
+[  526.192568] rcu: All QSes seen, last rcu_sched kthread activity 131292 (4295023810-4294892518), jiffies_till_next_fqs=1, root ->qsmask 0x0
+[  526.193830] rcu: rcu_sched kthread starved for 131292 jiffies! g-1183 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+[  526.194879] rcu: 	Unless rcu_sched kthread gets sufficient CPU time, OOM is now expected behavior.
+[  526.195746] rcu: RCU grace-period kthread stack dump:
+[  526.196267] task:rcu_sched       state:R  running task     stack:0     pid:12    ppid:2      flags:0x00000008
+[  526.197649] Call trace:
+[  526.197969]  __switch_to+0xb4/0xf4
+[  526.198468]  __schedule+0x24c/0x510
+[  526.198870]  schedule+0x4c/0xa0
+[  526.199237]  schedule_timeout+0x6c/0xd0
+[  526.199687]  rcu_gp_fqs_loop+0xd4/0x33c
+[  526.200141]  rcu_gp_kthread+0xd8/0xec
+[  526.200553]  kthread+0xd8/0xdc
+[  526.200933]  ret_from_fork+0x10/0x20
+[  526.201351] rcu: Stack dump where RCU GP kthread last ran:
+[  526.201935] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.6.0 #1
+[  526.202571] Hardware name: arm-v9 compliant core with pcie (DT)
+[  526.203167] pstate: 40000009 (nZcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  526.203889] pc : __do_softirq+0x9c/0x274
+[  526.204323] lr : __do_softirq+0x68/0x274
+[  526.204761] sp : ffff000bfffca2b0
+[  526.205115] x29: ffff000bfffca2b0 x28: ffff000008522000 x27: 0000000000000002
+[  526.205933] x26: ffff8000807800a0 x25: 00000000fffedc01 x24: 0000000000000000
+[  526.206730] x23: ffff8000807e7000 x22: ffff8000807de000 x21: ffff8000807de828
+[  526.207519] x20: ffff8000807f50c0 x19: ffff000008522000 x18: ffffffffffffffff
+[  526.208340] x17: ffff800b7f7e3000 x16: ffff000bfffc6340 x15: 00003d0900000000
+[  526.209138] x14: 1ab8724b76a7eb64 x13: 08f448a1c2e0b390 x12: 0000000008f448a1
+[  526.209935] x11: 00000000f5257d14 x10: 000000000000b67e x9 : 0000000000000004
+[  526.210729] x8 : 000000003b5dc100 x7 : 7fffffffffffffff x6 : 00000000554144d6
+[  526.211516] x5 : 01ffffffffffffff x4 : 0000000000000015 x3 : 00000000000014be
+[  526.212306] x2 : 0000000000000100 x1 : ffff800b7f7e3000 x0 : ffff8000807e7340
+[  526.213095] Call trace:
+[  526.213378]  __do_softirq+0x9c/0x274
+[  526.213777]  ____do_softirq+0xc/0x14
+[  526.214176]  call_on_irq_stack+0x24/0x34
+[  526.214611]  do_softirq_own_stack+0x18/0x24
+[  526.215083]  irq_exit_rcu+0xd4/0xec
+[  526.215507]  el1_interrupt+0x34/0x4c
+[  526.215926]  el1h_64_irq_handler+0x14/0x1c
+[  526.216388]  el1h_64_irq+0x64/0x68
+[  526.216772]  xilinx_pcie_probe+0x17c/0x42c
+[  526.217226]  platform_probe+0x50/0x90
+[  526.217669]  really_probe+0xa8/0x2d0
+[  526.218101]  __driver_probe_device+0xc4/0xe8
+[  526.218575]  driver_probe_device+0x3c/0x110
+[  526.219039]  __driver_attach+0x88/0x18c
+[  526.219473]  bus_for_each_dev+0x60/0xa0
+[  526.219904]  driver_attach+0x20/0x28
+[  526.220314]  bus_add_driver+0xe0/0x1ec
+[  526.220740]  driver_register+0x58/0x114
+[  526.221178]  __platform_driver_register+0x24/0x2c
+[  526.221700]  xilinx_pcie_driver_init+0x18/0x20
+[  526.222200]  do_one_initcall+0x54/0x16c
+[  526.222622]  kernel_init_freeable+0x174/0x234
+[  526.223111]  kernel_init+0x20/0x1cc
+[  526.223499]  ret_from_fork+0x10/0x20

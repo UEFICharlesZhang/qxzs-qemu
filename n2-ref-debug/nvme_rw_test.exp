@@ -1,0 +1,21 @@
+#!/usr/bin/expect -f
+set timeout 180
+log_file -a /tmp/n2ref-verify/nvme-rw-serial.log
+spawn socat - UNIX-CONNECT:/tmp/n2ref-verify/serial.sock
+send "\r"
+expect {
+    -re {~ # *$} {}
+    timeout { puts "TIMEOUT_SHELL"; exit 2 }
+}
+send "echo NVME_TEST_START\r"
+expect -re {~ # *$}
+send "ls -l /dev/nvme*\r"
+expect -re {~ # *$}
+send {mkdir -p /tmp; SCRATCH=""; for d in /dev/nvme*n1; do sz=$(cat /sys/block/$(basename $d)/size); if [ "$sz" = "65536" ]; then SCRATCH=$d; fi; done; echo "SCRATCH=$SCRATCH"; if [ -z "$SCRATCH" ]; then echo NO_SCRATCH; else dd if=$SCRATCH of=/dev/null bs=4096 count=16; dd if=/dev/urandom of=/tmp/pat bs=4096 count=16; dd if=/tmp/pat of=$SCRATCH bs=4096 count=16; sync; dd if=$SCRATCH of=/tmp/back bs=4096 count=16; md5sum /tmp/pat /tmp/back; cmp /tmp/pat /tmp/back && echo CMP_OK || echo CMP_FAIL; dd if=/dev/urandom of=/tmp/big bs=65536 count=64; dd if=/tmp/big of=$SCRATCH bs=65536 count=64; sync; dd if=$SCRATCH of=/tmp/bigback bs=65536 count=64; md5sum /tmp/big /tmp/bigback; cmp /tmp/big /tmp/bigback && echo BIG_CMP_OK || echo BIG_CMP_FAIL; dd if=$SCRATCH of=/dev/null bs=65536 count=512; echo FULL_READ_DONE; fi; cat /proc/interrupts | grep -e nvme -e 65 -e 14; echo NVME_TEST_""DONE}
+send "\r"
+expect {
+    -re {NVME_TEST_DONE} {}
+    timeout { puts "TIMEOUT_TEST"; exit 3 }
+}
+expect -re {~ # *$}
+exit 0

@@ -1,0 +1,232 @@
+diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
+index f6c6878578c0..5e65f288cbe1 100644
+--- a/drivers/pci/controller/pcie-xilinx.c
++++ b/drivers/pci/controller/pcie-xilinx.c
+@@ -10,7 +10,6 @@
+  * ARM PCI Host generic driver.
+  */
+ 
+-#include <linux/delay.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
+ #include <linux/irq.h>
+@@ -73,6 +72,7 @@
+ #define XILINX_PCIE_RPIFR1_INTR_VALID	BIT(31)
+ #define XILINX_PCIE_RPIFR1_MSI_INTR	BIT(30)
+ #define XILINX_PCIE_RPIFR1_INTR_MASK	GENMASK(28, 27)
++#define XILINX_PCIE_RPIFR1_INTR_ASSERT	BIT(29)
+ #define XILINX_PCIE_RPIFR1_ALL_MASK	0xFFFFFFFF
+ #define XILINX_PCIE_RPIFR1_INTR_SHIFT	27
+ 
+@@ -103,8 +103,6 @@
+ /* Number of MSI IRQs */
+ #define XILINX_NUM_MSI_IRQS		128
+ 
+-static u32 irq_cnt=0;
+-
+ /**
+  * struct xilinx_pcie - PCIe port information
+  * @dev: Device pointer
+@@ -120,6 +118,7 @@ struct xilinx_pcie {
+ 	struct device *dev;
+ 	void __iomem *reg_base;
+ 	void __iomem *intx_ctrl_base;
++	unsigned int irq;
+ 	unsigned long msi_map[BITS_TO_LONGS(XILINX_NUM_MSI_IRQS)];
+ 	struct mutex map_lock;
+ 	struct irq_domain *msi_domain;
+@@ -159,7 +158,6 @@ static inline void xilinx_pcie_intx_ctrl_set(struct xilinx_pcie *pcie, u32 off,
+ 	 * the write, so it only returns once the write reached the register.
+ 	 */
+ 	readl(reg);
+-	mdelay(3);
+ }
+ 
+ static inline bool xilinx_pcie_link_up(struct xilinx_pcie *pcie)
+@@ -386,36 +384,51 @@ static irqreturn_t xilinx_pcie_intr_handler(int irq, void *data)
+ {
+ 	struct xilinx_pcie *pcie = (struct xilinx_pcie *)data;
+ 	struct device *dev = pcie->dev;
+-	u32 val, mask, status;
+-
++	u32 idr, imr, status, fifo;
++	bool handled = false;
++	int i;
+ 
+-	/* Always set bit0 of 0x0C005030 on handler entry */
+ 	xilinx_pcie_intx_ctrl_set(pcie, XILINX_PCIE_INTX_CTRL0_OFF,
+ 				  XILINX_PCIE_INTX_CTRL_BIT0);
+ 
+ 	/*
+-	 * Give the bridge 1ms to settle before reading IDR/IMR.
+-	 * Hardirq context (IRQF_NO_THREAD, IRQs off): busy-wait only,
+-	 * mdelay()/udelay() are allowed here, msleep() is not.
++	 * Drain the root port interrupt FIFO.  The controller queues both
++	 * assert and deassert events, so pop every entry but dispatch only
++	 * asserts.  Do this unconditionally: an event may have been latched
++	 * while IMR was being reprogrammed.
+ 	 */
+-	
+-	// pr_info("chz: %s - irq=%d\n",__func__, irq);
+-
+-	/* Read interrupt decode and mask registers */
+-	val = pcie_read(pcie, XILINX_PCIE_REG_IDR);
+-	mask = pcie_read(pcie, XILINX_PCIE_REG_IMR);
+-
+-	status = val & mask;
+-	// pr_info("chz: %s - val=0x%x\n",__func__, val);
+-	// pr_info("chz: %s - mask=0x%x\n",__func__, mask);
+-	// pr_info("chz: %s - status=0x%x\n",__func__, status);
+-	
+-	if (!status)
+-	{
+-		pr_info("chz: %s - irq not valid\n",__func__);
+-		return IRQ_NONE;
++	for (i = 0; i < 32; i++) {
++		fifo = pcie_read(pcie, XILINX_PCIE_REG_RPIFR1);
++		if (!(fifo & XILINX_PCIE_RPIFR1_INTR_VALID))
++			break;
++
++		pcie_write(pcie, XILINX_PCIE_RPIFR1_ALL_MASK,
++			   XILINX_PCIE_REG_RPIFR1);
++		handled = true;
++
++		if (!(fifo & XILINX_PCIE_RPIFR1_INTR_ASSERT))
++			continue;
++
++		if (fifo & XILINX_PCIE_RPIFR1_MSI_INTR) {
++			u32 msg = pcie_read(pcie, XILINX_PCIE_REG_RPIFR2) &
++				  XILINX_PCIE_RPIFR2_MSG_DATA;
++
++			if (pcie->msi_domain)
++				generic_handle_domain_irq(pcie->msi_domain->parent,
++							  msg);
++		} else {
++			u32 pin = (fifo & XILINX_PCIE_RPIFR1_INTR_MASK) >>
++				  XILINX_PCIE_RPIFR1_INTR_SHIFT;
++
++			if (pcie->leg_domain)
++				generic_handle_domain_irq(pcie->leg_domain, pin);
++		}
+ 	}
+ 
++	idr = pcie_read(pcie, XILINX_PCIE_REG_IDR);
++	imr = pcie_read(pcie, XILINX_PCIE_REG_IMR);
++	status = idr & imr;
++
+ 	if (status & XILINX_PCIE_INTR_LINK_DOWN)
+ 		dev_warn(dev, "Link Down\n");
+ 
+@@ -446,47 +459,6 @@ static irqreturn_t xilinx_pcie_intr_handler(int irq, void *data)
+ 		xilinx_pcie_clear_err_interrupts(pcie);
+ 	}
+ 
+-	if (status & (XILINX_PCIE_INTR_INTX | XILINX_PCIE_INTR_MSI)) {
+-		struct irq_domain *domain;
+-		int retries = 100;
+-
+-		// while(pcie_read(pcie, XILINX_PCIE_REG_RPSC)&BIT(18)) {
+-		irq_cnt++;
+-		// pr_info("chz: %s processing event %d\n",__func__, irq_cnt);
+-		
+-		/* Poll for FIFO valid bit to handle FVP/simulation timing race */
+-		do {
+-		val = pcie_read(pcie, XILINX_PCIE_REG_RPIFR1);
+-			if (val & XILINX_PCIE_RPIFR1_INTR_VALID)
+-				break;
+-			cpu_relax();
+-		} while (retries--);
+-
+-		/* Check whether interrupt valid */
+-		if (!(val & XILINX_PCIE_RPIFR1_INTR_VALID)) {
+-			dev_warn(dev, "RP Intr FIFO1 read error\n");
+-			goto error;
+-		}
+-
+-		/* Decode the IRQ number */
+-		if (val & XILINX_PCIE_RPIFR1_MSI_INTR) {
+-			val = pcie_read(pcie, XILINX_PCIE_REG_RPIFR2) &
+-				XILINX_PCIE_RPIFR2_MSG_DATA;
+-			domain = pcie->msi_domain->parent;
+-		} else {
+-			val = (val & XILINX_PCIE_RPIFR1_INTR_MASK) >>
+-				XILINX_PCIE_RPIFR1_INTR_SHIFT;
+-			domain = pcie->leg_domain;
+-		}
+-
+-		/* Clear interrupt FIFO register 1 */
+-		pcie_write(pcie, XILINX_PCIE_RPIFR1_ALL_MASK,
+-			   XILINX_PCIE_REG_RPIFR1);
+-
+-		generic_handle_domain_irq(domain, val);
+-		// }
+-	}
+-
+ 	if (status & XILINX_PCIE_INTR_SLV_UNSUPP)
+ 		dev_warn(dev, "Slave unsupported request\n");
+ 
+@@ -514,16 +486,17 @@ static irqreturn_t xilinx_pcie_intr_handler(int irq, void *data)
+ 	if (status & XILINX_PCIE_INTR_MST_ERRP)
+ 		dev_warn(dev, "Master error poison\n");
+ 
+-error:
+-	/* Always set bit0 of 0x0C005034 on handler exit */
+ 	xilinx_pcie_intx_ctrl_set(pcie, XILINX_PCIE_INTX_CTRL1_OFF,
+ 				  XILINX_PCIE_INTX_CTRL_BIT0);
+ 
+-	/* Clear the Interrupt Decode register */
+-	pcie_write(pcie, status, XILINX_PCIE_REG_IDR);
+-	// pr_info("chz: %s %d irq processed !\n",__func__, irq_cnt);
++	/*
++	 * Clear every pending IDR bit.  Writing the value read here makes
++	 * the controller drop interrupt_out; events arriving after this
++	 * read re-assert the line and the handler will run again.
++	 */
++	pcie_write(pcie, idr, XILINX_PCIE_REG_IDR);
+ 
+-	return IRQ_HANDLED;
++	return (status || handled) ? IRQ_HANDLED : IRQ_NONE;
+ }
+ 
+ /**
+@@ -611,7 +584,6 @@ static int xilinx_pcie_parse_dt(struct xilinx_pcie *pcie)
+ 	struct device *dev = pcie->dev;
+ 	struct device_node *node = dev->of_node;
+ 	struct resource regs;
+-	unsigned int irq;
+ 	int err;
+ 
+ 	err = of_address_to_resource(node, 0, &regs);
+@@ -634,13 +606,10 @@ static int xilinx_pcie_parse_dt(struct xilinx_pcie *pcie)
+ 		dev_warn(dev, "failed to ioremap INTx ctrl reg 0x%x\n",
+ 			 XILINX_PCIE_INTX_CTRL_PHYS);
+ 
+-	irq = irq_of_parse_and_map(node, 0);
+-	err = devm_request_irq(dev, irq, xilinx_pcie_intr_handler,
+-			       IRQF_SHARED | IRQF_NO_THREAD,
+-			       "xilinx-pcie", pcie);
+-	if (err) {
+-		dev_err(dev, "unable to request irq %d\n", irq);
+-		return err;
++	pcie->irq = irq_of_parse_and_map(node, 0);
++	if (!pcie->irq) {
++		dev_err(dev, "unable to map IRQ\n");
++		return -EINVAL;
+ 	}
+ 
+ 	return 0;
+@@ -684,6 +653,14 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+ 		return err;
+ 	}
+ 
++	err = devm_request_irq(dev, pcie->irq, xilinx_pcie_intr_handler,
++			       IRQF_SHARED | IRQF_NO_THREAD,
++			       "xilinx-pcie", pcie);
++	if (err) {
++		dev_err(dev, "unable to request irq %u\n", pcie->irq);
++		return err;
++	}
++
+ 	bridge->sysdata = pcie;
+ 	bridge->ops = &xilinx_pcie_ops;
+ 

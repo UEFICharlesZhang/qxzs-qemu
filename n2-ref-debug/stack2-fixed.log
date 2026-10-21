@@ -1,0 +1,898 @@
+I am ATF
+NOTICE:  Booting Trusted Firmware
+NOTICE:  BL1: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL1: Built : 22:40:01, Aug 27 2026
+INFO:    BL1: RAM 0x84033000 - 0x8403a000
+INFO:    Loading image id=32 at address 0x84001010
+INFO:    Image id=32 loaded: 0x84001010 - 0x84001213
+INFO:    FCONF: Config file with image ID:32 loaded at address = 0x84001010
+INFO:    Loading image id=24 at address 0x84001300
+INFO:    Image id=24 loaded: 0x84001300 - 0x840015e4
+INFO:    FCONF: Config file with image ID:24 loaded at address = 0x84001300
+INFO:    BL1: Loading BL2
+INFO:    Loading image id=1 at address 0x8401f000
+INFO:    Image id=1 loaded: 0x8401f000 - 0x84027824
+NOTICE:  BL1: Booting BL2
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x8401f000
+INFO:    SPSR = 0x3c5
+INFO:    Argument #0 = 0x84001010
+INFO:    Argument #1 = 0x84001000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+ENABLE_PAUTH is 0
+ENABLE_RME is 0
+INFO:    FCONF: Reading FW_CONFIG firmware configuration file from: 0x84001010
+INFO:    FCONF: Reading firmware configuration information for: dyn_cfg
+INFO:    FCONF: Reading TB_FW firmware configuration file from: 0x84001300
+NOTICE:  BL2: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL2: Built : 22:40:03, Aug 27 2026
+INFO:    BL2: Doing platform setup
+INFO:    BL2: Loading image id 3
+INFO:    Loading image id=3 at address 0x84003000
+INFO:    Image id=3 loaded: 0x84003000 - 0x840151b4
+INFO:    BL2: Loading image id 23
+INFO:    Loading image id=23 at address 0x87f00000
+INFO:    Image id=23 loaded: 0x87f00000 - 0x87f0257c
+INFO:    BL2: Loading image id 25
+INFO:    Loading image id=25 at address 0x84001300
+INFO:    Image id=25 loaded: 0x84001300 - 0x84001348
+INFO:    BL2: Loading image id 5
+INFO:    Loading image id=5 at address 0x88200000
+INFO:    Image id=5 loaded: 0x88200000 - 0x88400000
+INFO:    BL2: Loading image id 27
+INFO:    Loading image id=27 at address 0x88000000
+INFO:    Image id=27 loaded: 0x88000000 - 0x88000048
+INFO:    BL31 FCONF: FW_CONFIG address = 84001010
+INFO:    FCONF: Reading FW_CONFIG firmware configuration file from: 0x84001010
+INFO:    FCONF: Reading firmware configuration information for: dyn_cfg
+d0 0d fe ed 00 00 00 48 00 00 00 38 00 00 00 48 
+d0 0d fe ed 00 00 25 7c 00 00 00 48 00 00 22 20 
+INFO:    FCONF: Reading HW_CONFIG firmware configuration file from: 0x87f00000
+INFO:    FCONF: Reading firmware configuration information for: pci_props
+WARNING: FCONF: Unable to locate 'pci' node
+INFO:    FCONF: Reading firmware configuration information for: dram_layout
+INFO:    FCONF: Reading firmware configuration information for: cpu_timer
+INFO:    FCONF: Reading firmware configuration information for: uart_config
+INFO:    FCONF: Reading firmware configuration information for: topology
+INFO:    FCONF: Reading firmware configuration information for: gicv3_config
+NOTICE:  BL31: v2.13.0(release):d12bba4-dirty
+NOTICE:  BL31: Built : 22:40:04, Aug 27 2026
+INFO:    GICv4 without legacy support detected.
+INFO:    ARM GICv4 driver initialized in EL3
+INFO:    Maximum SPI INTID supported: 287
+INFO:    BL31: Initializing runtime services
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+INFO:    Entry point address = 0x88200000
+INFO:    SPSR = 0x3c9
+INFO:    Argument #0 = 0x88000000
+INFO:    Argument #1 = 0x87f00000
+INFO:    Argument #2 = 0x0
+INFO:    Argument #3 = 0x0
+INFO:    Argument #4 = 0x0
+INFO:    Argument #5 = 0x0
+INFO:    Argument #6 = 0x0
+INFO:    Argument #7 = 0x0
+NOTICE:  FINISH bl31_main. Time to start UEFI
+UEFI firmware (version V1.0 built at 22:09:45 on Jun 12 2026)
+SecMain: line:108,PcdSystemMemoryBase:0x88200000
+SecMain: line:109,PcdSystemMemorySize:0x70000000
+SecMain: line:110,PcdFdBaseAddress:0x88200000
+SecMain: line:111,PcdFdSize:0x400000
+SecMain: line:113
+SecMain: line:114,UefiMemoryBase:0xF0200000
+SecMain: line:115,PcdSystemMemoryUefiRegionSize:0x8000000
+SecMain: line:116,StackBase:0xF81F0000
+PhysicalBase     80000000 VirtualBase     80000000 Length     80000000 Attributes            1
+PhysicalBase            0 VirtualBase            0 Length      8000000 Attributes            6
+PhysicalBase      8000000 VirtualBase      8000000 Length      4000000 Attributes            6
+PhysicalBase      C000000 VirtualBase      C000000 Length      1000000 Attributes            6
+PhysicalBase      D000000 VirtualBase      D000000 Length      1000000 Attributes            6
+PhysicalBase      E000000 VirtualBase      E000000 Length      1000000 Attributes            6
+PhysicalBase      F000000 VirtualBase      F000000 Length      1000000 Attributes            6
+PhysicalBase     40000000 VirtualBase     40000000 Length     20000000 Attributes            6
+PhysicalBase     60000000 VirtualBase     60000000 Length     10000000 Attributes            6
+PhysicalBase     70000000 VirtualBase     70000000 Length     10000000 Attributes            6
+PhysicalBase    900000000 VirtualBase    900000000 Length    380000000 Attributes            1
+Loading DxeCore at 0x00F79E4000 EntryPoint=0x00F79ED2C8
+CoreInitializeMemoryServices:
+  BaseAddress - 0xF0201000 Length - 0x77E3000 MinimalMemorySizeNeeded - 0xA1000
+DxeMain: MemoryBaseAddress=0xF0201000 MemoryLength=0x77E3000
+HOBLIST address in DXE = 0xF793E018
+Memory Allocation 0x00000004 0xF81EF000 - 0xF81EFFFF
+Memory Allocation 0x00000004 0x88200000 - 0x885FFFFF
+Memory Allocation 0x00000004 0xF81EE000 - 0xF81EEFFF
+Memory Allocation 0x00000004 0xF81ED000 - 0xF81EDFFF
+Memory Allocation 0x00000004 0xF81EC000 - 0xF81ECFFF
+Memory Allocation 0x00000004 0xF81EB000 - 0xF81EBFFF
+Memory Allocation 0x00000004 0xF81EA000 - 0xF81EAFFF
+Memory Allocation 0x00000004 0xF81E9000 - 0xF81E9FFF
+Memory Allocation 0x00000004 0xF81F0000 - 0xF81FFFFF
+Memory Allocation 0x00000004 0xF81D9000 - 0xF81E8FFF
+Memory Allocation 0x00000004 0xF7E02000 - 0xF81D8FFF
+Memory Allocation 0x00000004 0xF7A2B000 - 0xF7E01FFF
+Memory Allocation 0x00000003 0xF79E4000 - 0xF7A2AFFF
+Memory Allocation 0x00000003 0xF79E4000 - 0xF7A2AFFF
+FV Hob            0x88200000 - 0x883FFFFF
+FV Hob            0xF7A2B000 - 0xF7E007FF
+FV2 Hob           0xF7A2B000 - 0xF7E007FF
+                  00000000-0000-0000-0000-000000000000 - 9E21FD93-9C72-4C15-8C4B-E77F1DB2D792
+Loading driver 80CF7257-87AB-47F9-A3FE-D50B76D89541
+Loading driver at 0x000F75A5000 EntryPoint=0x000F75AA0E8 PcdDxe.efi
+Loading driver B601F8C4-43B7-4784-95B1-F4226CB40CEE
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7970000 EntryPoint=0x000F7972B54 RuntimeDxe.efi
+Loading driver F80697E9-7FD6-4665-8646-88E33EF71DFC
+Loading driver at 0x000F7401000 EntryPoint=0x000F7404174 SecurityStubDxe.efi
+Warning: This BaseRngTimerLib implementation will be deprecated. Please use the MdeModulePkg implementation equivalent.
+Loading driver 4B28E4C7-FF36-4E10-93CF-A82159E777C5
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7960000 EntryPoint=0x000F7962E1C ResetSystemRuntimeDxe.efi
+Loading driver 4C6E0267-C77D-410D-8100-1495911A989D
+Loading driver at 0x000F75AF000 EntryPoint=0x000F75B10EC MetronomeDxe.efi
+Loading driver B8D9777E-D72A-451F-9BDB-BAFB52A68415
+Loading driver at 0x000F758A000 EntryPoint=0x000F758E67C ArmCpuDxe.efi
+MemoryProtectionCpuArchProtocolNotify:
+SetUefiImageMemoryAttributes - 0x00000000F79E4000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F79E5000 - 0x0000000000028000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F7A0D000 - 0x000000000001E000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F75A5000 - 0x0000000000001000 (0x0000000000004000)
+ReplaceTableEntry: splitting block entry with MMU disabled
+SetUefiImageMemoryAttributes - 0x00000000F75A6000 - 0x0000000000006000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F75AC000 - 0x0000000000002000 (0x0000000000004000)
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+SetUefiImageMemoryAttributes - 0x00000000F7401000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F7402000 - 0x00000000000CA000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F74CC000 - 0x0000000000006000 (0x0000000000004000)
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+SetUefiImageMemoryAttributes - 0x00000000F75AF000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F75B0000 - 0x0000000000002000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F75B2000 - 0x0000000000002000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F758A000 - 0x0000000000001000 (0x0000000000004000)
+SetUefiImageMemoryAttributes - 0x00000000F758B000 - 0x0000000000007000 (0x0000000000020000)
+SetUefiImageMemoryAttributes - 0x00000000F7592000 - 0x0000000000004000 (0x0000000000004000)
+Loading driver CBD2E4D5-7068-4FF5-B462-9822B4AD8D60
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7950000 EntryPoint=0x000F7958C84 VariableRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+VarCheckLibRegisterSetVariableCheckHandler - 0xF7954AF8 Success
+Variable driver will work at emulated non-volatile variable mode!
+Variable driver will work with auth variable format!
+NOTICE - AuthVariableLibInitialize() returns Unsupported!
+Variable driver will continue to work without auth variable support!
+RecordSecureBootPolicyVarData GetVariable SecureBoot Status E
+VarCheckLibRegisterSetVariableCheckHandler - 0xF7954118 Success
+Loading driver 348C4D62-BFBD-4882-9ECE-C80BB1C4783B
+Loading driver at 0x000F7521000 EntryPoint=0x000F75257CC HiiDatabase.efi
+SetUefiImageMemoryAttributes - 0x00000000F7521000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7522000 - 0x000000000001C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F753E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 9622E42C-8E38-4A08-9E8F-54F784652F6B
+Loading driver at 0x000F7549000 EntryPoint=0x000F754EB20 AcpiTableDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7549000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F754A000 - 0x0000000000007000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7551000 - 0x0000000000003000 (0x0000000000004008)
+Fail to locate AcpiSiliconHob!!
+Loading driver 9A5163E7-5C29-453F-825C-837A46A81E15
+Loading driver at 0x000F755A000 EntryPoint=0x000F755C6F4 SerialDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F755A000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F755B000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F755E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver F9D88642-0737-49BC-81B5-6889CD57D9EA
+Loading driver at 0x000F7541000 EntryPoint=0x000F75454B0 SmbiosDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7541000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7542000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7547000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 168D1A6E-F4A5-448A-9E95-795661BB3067
+Loading driver at 0x000F7554000 EntryPoint=0x000F75566C8 ArmPciCpuIo2Dxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7554000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7555000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7558000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 9B680FCE-AD6B-4F3A-B60B-F59899003443
+Loading driver at 0x000F7502000 EntryPoint=0x000F750B36C DevicePathDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7502000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7503000 - 0x000000000000C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F750F000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver B336F62D-4135-4A55-AE4E-4971BBF0885D
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F7940000 EntryPoint=0x000F7942C9C RealTimeClock.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+InitializeRealTimeClock: using default timezone/daylight settings
+Loading driver 42857F0A-13F2-4B21-8A23-53D3F714B840
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F74F0000 EntryPoint=0x000F74F2514 CapsuleRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+Loading driver AD608272-D07F-4964-801E-7BD3B7888652
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+Loading driver at 0x000F74E0000 EntryPoint=0x000F74E2308 MonotonicCounterRuntimeDxe.efi
+!!!!!!!!  Image Section Alignment(0x1000) does not match Required Alignment (0x10000)  !!!!!!!!
+ProtectUefiImage failed to create image properties record
+Loading driver 953FF472-9B9E-4058-84CF-227DAF89DC82
+Loading driver at 0x000F751B000 EntryPoint=0x000F751D848 ArmGicV3Dxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F751B000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F751C000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F751F000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver FE5CEA76-4F72-49E8-986F-2CD899DFFE5D
+Loading driver at 0x000F74D8000 EntryPoint=0x000F74DD3B4 FaultTolerantWriteDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F74D8000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F74D9000 - 0x0000000000006000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F74DF000 - 0x0000000000001000 (0x0000000000004008)
+Loading driver FC097B3C-2EBD-4A75-A3DA-121DCAB365CC
+Loading driver at 0x000F7516000 EntryPoint=0x000F75187C4 DtPlatformDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7516000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7517000 - 0x0000000000003000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F751A000 - 0x0000000000001000 (0x0000000000004008)
+DtPlatformDxeEntryPoint: no DT/ACPI preference found, defaulting to DT
+Loading driver 128FB770-5E79-4176-9E51-9BB268A17DD1
+Loading driver at 0x000F73D1000 EntryPoint=0x000F73D94C0 PciHostBridgeDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73D1000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73D2000 - 0x000000000000C000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73DE000 - 0x0000000000002000 (0x0000000000004008)
+PCIe Link Up
+SMMU_GBPA:0x0
+RootBridge: PciRoot(0x0)
+  Support/Attr: 0 / 0
+    DmaAbove4G: No
+NoExtConfSpace: No
+     AllocAttr: 0 ()
+           Bus: 0 - 10 Translation=0
+            Io: FFFFFFFF - 0 Translation=0
+           Mem: 60000000 - 6FFFFFFF Translation=0
+    MemAbove4G: FFFFFFFFFFFFFFFF - 0 Translation=0
+          PMem: FFFFFFFF - 0 Translation=0
+   PMemAbove4G: FFFFFFFFFFFFFFFF - 0 Translation=0
+Loading driver EBF342FE-B1D3-4EF8-957C-8048606FF671
+Loading driver at 0x000F739A000 EntryPoint=0x000F739BD10 SetupBrowser.efi
+SetUefiImageMemoryAttributes - 0x00000000F739A000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F739B000 - 0x0000000000018000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73B3000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 6D33944A-EC75-4855-A54D-809C75241F6C
+Loading driver at 0x000F7380000 EntryPoint=0x000F73823AC BdsDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7380000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7381000 - 0x0000000000017000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7398000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 49EA041E-6752-42CA-B0B1-7344FE2546B7
+Loading driver at 0x000F7511000 EntryPoint=0x000F7513288 ArmTimerDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7511000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7512000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7514000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 0619F5C2-4858-4CAA-A86A-73A21A18DF6B
+Loading driver at 0x000F73EB000 EntryPoint=0x000F73ED3F4 GenericWatchdogDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73EB000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73EC000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73EE000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver E660EA85-058E-4B55-A54B-F02F83A24707
+Loading driver at 0x000F7369000 EntryPoint=0x000F736AA9C DisplayEngine.efi
+SetUefiImageMemoryAttributes - 0x00000000F7369000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F736A000 - 0x0000000000012000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F737C000 - 0x0000000000004000 (0x0000000000004008)
+Loading driver 51CCF399-4FDF-4E55-A45B-E123F84D456A
+Loading driver at 0x000F73CA000 EntryPoint=0x000F73CDEE0 ConPlatformDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73CA000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73CB000 - 0x0000000000004000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73CF000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 408EDCEC-CF6D-477C-A5A8-B4844E3DE281
+Loading driver at 0x000F73E0000 EntryPoint=0x000F73E723C ConSplitterDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73E0000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73E1000 - 0x0000000000008000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73E9000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver CCCB0C28-4B24-11D5-9A5A-0090273FC14D
+Loading driver at 0x000F7360000 EntryPoint=0x000F7364828 GraphicsConsoleDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7360000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7361000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7366000 - 0x0000000000003000 (0x0000000000004008)
+Loading driver 9E863906-A40F-4875-977F-5B93FF237FC6
+Loading driver at 0x000F7355000 EntryPoint=0x000F735C500 TerminalDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7355000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7356000 - 0x0000000000008000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F735E000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 6B38F7B4-AD98-40E9-9093-ACA2B5A253C4
+Loading driver at 0x000F734D000 EntryPoint=0x000F7351670 DiskIoDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F734D000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F734E000 - 0x0000000000005000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7353000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 1FA1F39E-FEFF-4AAE-BD7B-38A070A3B609
+Loading driver at 0x000F7343000 EntryPoint=0x000F734920C PartitionDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7343000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7344000 - 0x0000000000007000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F734B000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 961578FE-B6B7-44C3-AF35-6BC705CD2B1F
+Loading driver at 0x000F7328000 EntryPoint=0x000F73316BC Fat.efi
+SetUefiImageMemoryAttributes - 0x00000000F7328000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7329000 - 0x000000000000A000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7333000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver CD3BAFB6-50FB-4FE8-8E4E-AB74D2C1A600
+Loading driver at 0x000F73B6000 EntryPoint=0x000F73B8384 EnglishDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F73B6000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F73B7000 - 0x0000000000002000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F73B9000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 93B80004-9FB3-11D4-9A3A-0090273FC14D
+Loading driver at 0x000F7301000 EntryPoint=0x000F73088E8 PciBusDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7301000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7302000 - 0x0000000000010000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7312000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver 5BE3BDF4-53CF-46A3-A6A9-73C34A6E5EE3
+Loading driver at 0x000F7335000 EntryPoint=0x000F733E5DC NvmExpressDxe.efi
+SetUefiImageMemoryAttributes - 0x00000000F7335000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F7336000 - 0x000000000000B000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F7341000 - 0x0000000000002000 (0x0000000000004008)
+Loading driver FE3542FE-C1D3-4EF8-657C-8048606FF671
+Loading driver at 0x000F72CE000 EntryPoint=0x000F72D83A4 DriverSample.efi
+SetUefiImageMemoryAttributes - 0x00000000F72CE000 - 0x0000000000001000 (0x0000000000004008)
+SetUefiImageMemoryAttributes - 0x00000000F72CF000 - 0x000000000000E000 (0x0000000000020008)
+SetUefiImageMemoryAttributes - 0x00000000F72DD000 - 0x000000000000A000 (0x0000000000004008)
+[Bds] Entry...
+[BdsDxe] Locate Variable Policy protocol - Success
+[Variable]END_OF_DXE is signaled
+Initialize variable error flag (FF)
+PCI Bus First Scanning
+PciBus: Discovered PPB @ [00|00|00]  [VID = 0x10EE, DID = 0x7021]
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x10,bit4 should be 1
+PciBus: Discovered PCI @ [01|00|00]  [VID = 0x1B36, DID = 0x10]
+LocatePciExpressCapabilityRegBlock: [01|00|00] failed to access config space at offset 0x100
+   BAR[0]: Type =  Mem64; Alignment = 0x3FFF;	Length = 0x4000;	Offset = 0x10
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x0,bit4 should be 1
+PciBus: Discovered PPB @ [00|00|00]  [VID = 0x10EE, DID = 0x7021]
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x10
+New DeviceControl2 = 0x10,bit4 should be 1
+PciBus: Discovered PCI @ [01|00|00]  [VID = 0x1B36, DID = 0x10]
+LocatePciExpressCapabilityRegBlock: [01|00|00] failed to access config space at offset 0x100
+   BAR[0]: Type =  Mem64; Alignment = 0x3FFF;	Length = 0x4000;	Offset = 0x10
+
+PcieCapabilityPtr offset = 0x80
+Orginal DeviceControl2 = 0x0
+New DeviceControl2 = 0x0,bit4 should be 1
+PciHostBridge: SubmitResources for PciRoot(0x0)
+ Mem: Granularity/SpecificFlag = 32 / 00
+      Length/Alignment = 0x100000 / 0xFFFFF
+PciBus: HostBridge->SubmitResources() - Success
+PciHostBridge: NotifyPhase (AllocateResources)
+ RootBridge: PciRoot(0x0)
+  Mem: Base/Length/Alignment = 60000000/100000/FFFFF - Success
+PciBus: HostBridge->NotifyPhase(AllocateResources) - Success
+Process Option ROM: BAR Base/Length = 0/0
+PciBus: Resource Map for Root Bridge PciRoot(0x0)
+Type =  Mem32; Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF
+   Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF;	Owner = PPB [00|00|00:**]
+
+PciBus: Resource Map for Bridge [00|00|00]
+Type =  Mem32; Base = 0x60000000;	Length = 0x100000;	Alignment = 0xFFFFF
+   Base = 0x60000000;	Length = 0x4000;	Alignment = 0x3FFF;	Owner = PCI [01|00|00:10]
+
+PciTestSupportedAttribute: line:1034
+PciTestSupportedAttribute: line:1037,OldTpl:4
+PciTestSupportedAttribute: line:1064
+PciTestSupportedAttribute: line:1067,OldTpl:4
+PciTestSupportedAttribute: line:1034
+PciTestSupportedAttribute: line:1037,OldTpl:4
+[Bds]RegisterKeyNotify: 000C/0000 80000000/00 Success
+[Bds]RegisterKeyNotify: 0017/0000 80000000/00 Success
+[Bds]RegisterKeyNotify: 0000/000D 80000000/00 Success
+Terminal - Mode 0, Column = 80, Row = 25
+Terminal - Mode 1, Column = 80, Row = 50
+Terminal - Mode 2, Column = 100, Row = 31
+[2J[04D[=3h[2J[09DTianocore/EDK2 firmware version V1.0
+Press ESCAPE for boot options BootDiscoveryPolicyHandler - Failed to locate gEfiBootManagerPolicyProtocolGuid.Driver connect will be skipped.
+HandleCapsules: processing capsules ...
+[Bds]RegisterKeyNotify: 0000/0073 80000000/00 Success
+[Bds]OsIndication: 0000000000000000
+[Bds]=============Begin Load Options Dumping ...=============
+  Driver Options:
+  SysPrep Options:
+  Boot Options:
+    Boot0000: UiApp 		 0x0109
+    Boot0001: UEFI Shell 		 0x0000
+  PlatformRecovery Options:
+    PlatformRecovery0000: Default PlatformRecovery 		 0x0001
+[Bds]=============End Load Options Dumping=============
+[Bds]BdsWait ...Zzzzzzzzzzzz...
+[Bds]Exit the waiting!
+[Bds]Stop Hotkey Service!
+[Bds]UnregisterKeyNotify: 000C/0000 Success
+[Bds]UnregisterKeyNotify: 0017/0000 Success
+[Bds]UnregisterKeyNotify: 0000/000D Success
+[Bds]UnregisterKeyNotify: 0000/0073 Success
+Process PlatformRecovery0000 (Default PlatformRecovery) ...
+NvmExpressDriverBindingStart: start
+Cc.En: 0
+Cc.Css: 0
+Cc.Mps: 0
+Cc.Ams: 0
+Cc.Shn: 0
+Cc.Iosqes: 0
+Cc.Iocqes: 0
+NVMe controller is disabled with status [Success].
+Private->Buffer = [00000000F72F5000]
+Admin     Submission Queue size (Aqa.Asqs) = [00000001]
+Admin     Completion Queue size (Aqa.Acqs) = [00000001]
+Admin     Submission Queue (SqBuffer[0]) = [00000000F72F5000]
+Admin     Completion Queue (CqBuffer[0]) = [00000000F72F6000]
+Sync  I/O Submission Queue (SqBuffer[1]) = [00000000F72F7000]
+Sync  I/O Completion Queue (CqBuffer[1]) = [00000000F72F8000]
+Async I/O Submission Queue (SqBuffer[2]) = [00000000F72F9000]
+Async I/O Completion Queue (CqBuffer[2]) = [00000000F72FA000]
+Aqa.Asqs: 1
+Aqa.Acqs: 1
+Asq: F72F5000
+Acq: F72F6000h
+Cc.En: 1
+Cc.Css: 0
+Cc.Mps: 0
+Cc.Ams: 0
+Cc.Shn: 0
+Cc.Iosqes: 6
+Cc.Iocqes: 4
+NVMe controller is enabled with status [Success].
+ == NVME IDENTIFY CONTROLLER DATA ==
+    PCI VID   : 0x1B36
+    PCI SSVID : 0x1AF4
+    SN        : deadbeef            
+    MN        : QEMU NVMe Ctrl                          
+    FR        : 0x312E3131
+    TNVMCAP (high 8-byte) : 0x0
+    TNVMCAP (low 8-byte)  : 0x0
+    RAB       : 0x6
+    IEEE      : 0x525400
+    AERL      : 0x3
+    SQES      : 0x66
+    CQES      : 0x44
+    NN        : 0x100
+ == NVME IDENTIFY NAMESPACE [1] DATA ==
+    NSZE        : 0x20000
+    NCAP        : 0x20000
+    NUSE        : 0x20000
+    LBAF0.LBADS : 0x9
+NvmExpressDriverBindingStart: end successfully
+ BlockSize : 512 
+ LastBlock : 1FFFF 
+NvmExpressDriverBindingStart: start
+NvmExpressDriverBindingStart: end successfully
+FSOpen: Open '\EFI\BOOT\BOOTAA64.EFI' Success
+[Bds] Expand \EFI\BOOT\BOOTAA64.EFI -> PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\EFI\BOOT\BOOTAA64.EFI
+[Security] 3rd party image[0] can be loaded after EndOfDxe: PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\EFI\BOOT\BOOTAA64.EFI.
+Loading driver at 0x000F6BDE000 EntryPoint=0x000F6BE61A4 Shell.efi
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[HiiDatabase]: Memory allocation is required after ReadyToBoot, which may change memory map and cause S4 resume issue.
+[2J[01;01HUEFI Interactive Shell v2.2
+EDK II
+UEFI v2.70 (ArmSample Platform, 0x00010000)
+[1m[33m[40mMapping table[0m[37m[40m
+[1m[33m[40m      FS0:[0m[37m[40m [1m[37m[40mAlias(s):[0m[37m[40mF0:;BLK0:
+          PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-0
+0)
+Press [1m[37m[40mESC[0m[37m[40m in 5 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 4 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 3 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 2 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.[72DPress [1m[37m[40mESC[0m[37m[40m in 1 seconds to skip [1m[33m[40mstartup.nsh[0m[37m[40m or any other key to continue.
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\startup.nsh' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+FSOpen: Open '\Image.efi' Success
+[Security] 3rd party image[0] can be loaded after EndOfDxe: PciRoot(0x0)/Pci(0x0,0x0)/Pci(0x0,0x0)/NVMe(0x1,00-00-00-00-00-00-00-00)/\Image.efi.
+Loading driver at 0x000F5980000 EntryPoint=0x000F6133FA4 
+EFI stub: Booting Linux Kernel...
+SetMemoryAttributes: BaseAddress == 0xF5000000, Length == 0x7D0000, Attributes == 0x20000
+SetMemoryAttributes: BaseAddress == 0xF57D0000, Length == 0x140000, Attributes == 0x4000
+FSOpen: Open 'initrd.img' Success
+EFI stub: Loaded initrd from command line option
+FSOpen: Open 'n2-ref.dtb' Success
+EFI stub: Using DTB from command line
+EFI stub: Exiting boot services...
+SetUefiImageMemoryAttributes - 0x00000000F7970000 - 0x0000000000006000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7960000 - 0x0000000000006000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7950000 - 0x000000000000F000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F7940000 - 0x0000000000005000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F74F0000 - 0x0000000000005000 (0x0000000000000008)
+SetUefiImageMemoryAttributes - 0x00000000F74E0000 - 0x0000000000004000 (0x0000000000000008)
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd493]
+[    0.000000] Linux version 6.6.0+ (charles@ubu-2404-pve) (aarch64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #2 SMP Wed Oct 21 15:20:20 CST 2026
+[    0.000000] Machine model: arm-v9 compliant core with pcie
+[    0.000000] earlycon: uart8250 at MMIO32 0x000000000c000000 (options '')
+[    0.000000] printk: bootconsole [uart8250] enabled
+[    0.000000] efi: EFI v2.7 by ArmSample Platform
+[    0.000000] efi: INITRD=0xf6dd6f18 MEMRESERVE=0xf6dd6f98 
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000088200000-0x0000000c7fffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000088200000-0x00000000f6b4ffff]
+[    0.000000]   node   0: [mem 0x00000000f6b50000-0x00000000f6bcffff]
+[    0.000000]   node   0: [mem 0x00000000f6bd0000-0x00000000f74dffff]
+[    0.000000]   node   0: [mem 0x00000000f74e0000-0x00000000f74fffff]
+[    0.000000]   node   0: [mem 0x00000000f7500000-0x00000000f755ffff]
+[    0.000000]   node   0: [mem 0x00000000f7560000-0x00000000f757ffff]
+[    0.000000]   node   0: [mem 0x00000000f7580000-0x00000000f793ffff]
+[    0.000000]   node   0: [mem 0x00000000f7940000-0x00000000f797ffff]
+[    0.000000]   node   0: [mem 0x00000000f7980000-0x00000000f799ffff]
+[    0.000000]   node   0: [mem 0x00000000f79a0000-0x00000000f79dffff]
+[    0.000000]   node   0: [mem 0x00000000f79e0000-0x00000000f81fffff]
+[    0.000000]   node   0: [mem 0x0000000900000000-0x0000000c7fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000088200000-0x0000000c7fffffff]
+[    0.000000] On node 0, zone Normal: 512 pages in unavailable ranges
+[    0.000000] On node 0, zone Normal: 32256 pages in unavailable ranges
+[    0.000000] percpu: Embedded 20 pages/cpu s44200 r8192 d29528 u81920
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: Virtualization Host Extensions
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: kernel page table isolation disabled by kernel configuration
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: fs0:\Image.efi console=ttyS0,115200 earlycon=uart8250,mmio32,0x0C000000 initrd=\initrd.img dtb=\n2-ref.dtb rdinit=/init
+[    0.000000] Unknown kernel command line parameters "dtb=\n2-ref.dtb", will be passed to user space.
+[    0.000000] random: crng init done
+[    0.000000] Dentry cache hash table entries: 2097152 (order: 12, 16777216 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 4064256
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: mapped [mem 0x0000000c6a800000-0x0000000c6e800000] (64MB)
+[    0.000000] Memory: 16151344K/16515072K available (5760K kernel code, 788K rwdata, 1804K rodata, 448K init, 347K bss, 363728K reserved, 0K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-1, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: GICv4 features: 
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x000000000e080000
+[    0.000000] ITS: No ITS available, not enabling LPIs
+[    0.000000] GICv3: === GICD Registers ===
+[    0.000000] GICv3: GICD_CTLR     (0x0000): 0x00000012
+[    0.000000] GICv3: GICD_TYPER    (0x0004): 0x037e0408
+[    0.000000] GICv3: GICD_IIDR     (0x0008): 0x0000043b
+[    0.000000] GICv3: GICD_TYPER2   (0x000c): 0x00000000
+[    0.000000] GICv3: GICD_STATUSR  (0x0010): 0x00000000
+[    0.000000] GICv3: GICD SPI 64-95 Debug:
+[    0.000000] GICv3:   GICD_IGROUPR[2] (0x88): 0x00000000
+[    0.000000] GICv3:   GICD_ISENABLER[2] (0x108): 0x00000000
+[    0.000000] GICv3:   GICD_ICENABLER[2] (0x188): 0x00000000
+[    0.000000] GICv3:   GICD_ISPENDR[2] (0x208): 0x00000000
+[    0.000000] GICv3:   GICD_ICPENDR[2] (0x288): 0x00000000
+[    0.000000] GICv3:   GICD_ISACTIVER[2] (0x308): 0x00000000
+[    0.000000] GICv3:   GICD_ICACTIVER[2] (0x388): 0x00000000
+[    0.000000] GICv3:   GICD_IPRIORITYR[16] (0x440): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[17] (0x444): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[18] (0x448): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[19] (0x44c): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[20] (0x450): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[21] (0x454): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[22] (0x458): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_IPRIORITYR[23] (0x45c): 0xa0a0a0a0
+[    0.000000] GICv3:   GICD_ICFGR[32] (0xc80): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[33] (0xc84): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[34] (0xc88): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[35] (0xc8c): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[36] (0xc90): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[37] (0xc94): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[38] (0xc98): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[39] (0xc9c): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[40] (0xca0): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[41] (0xca4): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[42] (0xca8): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[43] (0xcac): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[44] (0xcb0): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[45] (0xcb4): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[46] (0xcb8): 0x00000000
+[    0.000000] GICv3:   GICD_ICFGR[47] (0xcbc): 0x00000000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 100.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x171024e7e0, max_idle_ns: 440795205315 ns
+[    0.000554] sched_clock: 57 bits at 100MHz, resolution 10ns, wraps every 4398046511100ns
+[    0.065157] Calibrating delay loop (skipped), value calculated using timer frequency.. 200.00 BogoMIPS (lpj=400000)
+[    0.067584] pid_max: default: 32768 minimum: 301
+[    0.090575] Mount-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.092199] Mountpoint-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.269264] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0.353539] rcu: Hierarchical SRCU implementation.
+[    0.354416] rcu: 	Max phase no-delay instances is 1000.
+[    0.380266] ITS-PCI-MSI: starting initialization
+[    0.385487] Remapping and enabling EFI services.
+[    0.395833] smp: Bringing up secondary CPUs ...
+[    0.397386] smp: Brought up 1 node, 1 CPU
+[    0.397939] SMP: Total of 1 processors activated.
+[    0.398794] CPU features: detected: 32-bit EL0 Support
+[    0.399351] CPU features: detected: ARMv8.4 Translation Table Level
+[    0.400406] CPU features: detected: Instruction cache invalidation not required for I/D coherence
+[    0.401323] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[    0.402124] CPU features: detected: CRC32 instructions
+[    0.402624] CPU features: detected: Data independent timing control (DIT)
+[    0.403263] CPU features: detected: Enhanced Virtualization Traps
+[    0.403840] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.404715] CPU features: detected: Random Number Generator
+[    0.405261] CPU features: detected: Speculation barrier (SB)
+[    0.405796] CPU features: detected: Stage-2 Force Write-Back
+[    0.406334] CPU features: detected: TLB range maintenance instructions
+[    0.407091] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+[    0.413903] spectre-bhb mitigation disabled by compile time option
+[    0.418172] CPU: All CPU(s) started at EL2
+[    0.418722] alternatives: applying system-wide alternatives
+[    0.512196] devtmpfs: initialized
+[    0.561225] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.563108] futex hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.592364] DMI not present or invalid.
+[    0.603000] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.636362] DMA: preallocated 2048 KiB GFP_KERNEL pool for atomic allocations
+[    0.656170] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.660527] ASID allocator initialised with 65536 entries
+[    0.665370] Serial: AMBA PL011 UART driver
+[    0.709246] Modules: 30448 pages in range for non-PLT usage
+[    0.709457] Modules: 521968 pages in range for PLT usage
+[    0.734423] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.735754] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.736510] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.737417] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.738110] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.738760] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.739370] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.740049] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.787067] efivars: Registered efivars operations
+[    0.887216] vgaarb: loaded
+[    0.893435] clocksource: Switched to clocksource arch_sys_counter
+[    0.938030] NET: Registered PF_INET protocol family
+[    0.955131] IP idents hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    1.008839] tcp_listen_portaddr_hash hash table entries: 8192 (order: 5, 131072 bytes, linear)
+[    1.010677] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    1.012070] TCP established hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    1.018168] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    1.026665] TCP: Hash tables configured (established 131072 bind 65536)
+[    1.041144] UDP hash table entries: 8192 (order: 6, 262144 bytes, linear)
+[    1.044218] UDP-Lite hash table entries: 8192 (order: 6, 262144 bytes, linear)
+[    1.052288] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    1.055880] PCI: CLS 0 bytes, default 64
+[    1.096207] workingset: timestamp_bits=46 max_order=22 bucket_order=0
+[    1.108694] ntfs: driver 2.1.32 [Flags: R/W DEBUG].
+[    1.111367] ntfs3: Max link count 4000
+[    1.113323] ntfs3: Enabled Linux POSIX ACLs support
+[    1.113861] ntfs3: Warning: Activated 64 bits per cluster. Windows does not support this
+[    1.114646] ntfs3: Read-only LZX/Xpress compression included
+[    1.117553] io scheduler mq-deadline registered
+[    1.118397] io scheduler kyber registered
+[    1.132322] Unpacking initramfs...
+[    1.163147] xilinx-pcie 40000000.pci: host bridge /soc/pci@40000000 ranges:
+[    1.169751] xilinx-pcie 40000000.pci:       IO 0x0070000000..0x0070ffffff -> 0x0000000000
+[    1.174806] xilinx-pcie 40000000.pci:      MEM 0x0060000000..0x006fffffff -> 0x0060000000
+[    1.202259] xilinx-pcie 40000000.pci: PCIe Link is UP
+[    1.209995] GICv3: IRQ 65: unmask
+[    1.213800] GICv3: IRQ 65: mask
+[    1.214830] GICv3: IRQ 65: unmask
+[    1.231047] xilinx-pcie 40000000.pci: PCI host bridge to bus 0000:00
+[    1.233971] pci_bus 0000:00: root bus resource [bus 00-10]
+[    1.236462] pci_bus 0000:00: root bus resource [io  0x0000-0xffffff]
+[    1.237349] pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
+[    1.250997] pci 0000:00:00.0: [10ee:7021] type 01 class 0x060400
+[    1.252137] chz pci dev vid:10ee,did:7021
+[    1.252839] chz process dev vid:10ee,did:7021
+[    1.261463] pci 0000:00:00.0: enabling Extended Tags
+[    1.272470] OF: OF-MSI: msi_map_get_device_domain for 0000:00:00.0, id=0x0, bus_token=3, np=(null)
+[    1.274269] OF: OF-MSI: msi_map_get_device_domain - irq_find_matching_host returns 0000000000000000
+[    1.275798] pci 0000:00:00.0: PCI: dev_msi_domain - pci_msi_get_device_domain returns 0000000000000000
+[    1.276729] pci 0000:00:00.0: PCI: set_msi_domain - pci_dev_msi_domain returns 0000000000000000
+[    1.277626] pci 0000:00:00.0: PCI: set_msi_domain - falling back to bus domain ffff000008f6c000
+[    1.278499] pci 0000:00:00.0: PCI: set_msi_domain - setting domain ffff000008f6c000
+[    1.292226] pci_bus 0000:01: extended config space not accessible
+[    1.294972] pci 0000:01:00.0: [1b36:0010] type 00 class 0x010802
+[    1.295986] chz pci dev vid:1b36,did:0010
+[    1.296423] chz process dev vid:1b36,did:0010
+[    1.301586] pci 0000:01:00.0: reg 0x10: [mem 0x60000000-0x60003fff 64bit]
+[    1.310203] pci 0000:01:00.0: enabling Extended Tags
+[    1.314873] pci 0000:01:00.0: 0.000 Gb/s available PCIe bandwidth, limited by Unknown x0 link at 0000:00:00.0 (capable of 2.000 Gb/s with 2.5 GT/s PCIe x1 link)
+[    1.317471] OF: OF-MSI: msi_map_get_device_domain for 0000:01:00.0, id=0x100, bus_token=3, np=(null)
+[    1.318427] OF: OF-MSI: msi_map_get_device_domain - irq_find_matching_host returns 0000000000000000
+[    1.319296] pci 0000:01:00.0: PCI: dev_msi_domain - pci_msi_get_device_domain returns 0000000000000000
+[    1.320535] pci 0000:01:00.0: PCI: set_msi_domain - pci_dev_msi_domain returns 0000000000000000
+[    1.321377] pci 0000:01:00.0: PCI: set_msi_domain - falling back to bus domain ffff000008f6c000
+[    1.322204] pci 0000:01:00.0: PCI: set_msi_domain - setting domain ffff000008f6c000
+[    1.340501] pci 0000:00:00.0: BAR 8: assigned [mem 0x60000000-0x600fffff]
+[    1.342749] pci 0000:01:00.0: BAR 0: assigned [mem 0x60000000-0x60003fff 64bit]
+[    1.346610] pci 0000:00:00.0: PCI bridge to [bus 01]
+[    1.348486] pci 0000:00:00.0:   bridge window [mem 0x60000000-0x600fffff]
+[    1.421108] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    1.549256] printk: console [ttyS0] disabled
+[    1.575918] c000000.serial: ttyS0 at MMIO 0xc000000 (irq = 0, base_baud = 6250000) is a 16550A
+[    1.590442] printk: console [ttyS0] enabled
+[    1.590442] printk: console [ttyS0] enabled
+[    1.594049] printk: bootconsole [uart8250] disabled
+[    1.594049] printk: bootconsole [uart8250] disabled
+[    1.725305] nvme nvme0: pci function 0000:01:00.0
+[    1.731079] nvme 0000:01:00.0: pci: alloc irq vectors: min=1 max=1 flags=0x7 (MSIX=1 MSI=1 LEGACY=1 AFFINITY=0)
+[    1.733362] nvme 0000:01:00.0: MSI-X: enter - minvec=1, maxvec=1, msi_enabled=0, msix_cap=0x40
+[    1.734592] nvme 0000:01:00.0: MSI: domain_supports - feature_mask=0x20000, mode=0, domain=00000000ca92014b
+[    1.737403] nvme 0000:01:00.0: MSI: global domain, flags=0x57
+[    1.738202] nvme 0000:01:00.0: MSI: feature_mask=0x20000, supported=0x57, result=false
+[    1.739190] nvme 0000:01:00.0: MSI-X: domain does not support MSI-X (feature check failed)
+[    1.740593] nvme 0000:01:00.0: pci: MSI-X allocation failed, ret=-524
+[    1.742095] nvme 0000:01:00.0: pci: MSI allocation failed, ret=-22
+[    1.743150] nvme 0000:01:00.0: pci: using legacy INTx, irq=14
+[    1.744290] nvme nvme0: nvme: using legacy INTx for admin queue
+[    1.745044] chz: nvme_debug_msix_address_width - enter!
+[    1.756585] nvme nvme0: nvme: requesting IRQ for q0, vector=0, linux_irq=14
+[    1.758975] nvme nvme0: nvme: IRQ requested successfully for q0 (irq=14), total_requests=1
+[    1.780504] NET: Registered PF_INET6 protocol family
+[    1.861215] Freeing initrd memory: 1996K
+[    1.936258] Segment Routing with IPv6
+[    1.937729] In-situ OAM (IOAM) with IPv6
+[    1.941690] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.020126] nvme nvme0: chz: nvme_probe - before nvme_setup_host_mem (DISABLED)
+[    2.021155] nvme nvme0: chz: nvme_probe - before nvme_setup_io_queues (online_queues=1)
+[    2.022149] nvme nvme0: chz: nvme_setup_io_queues - ENTRY (nr_allocated_queues=2)
+[    2.023035] nvme nvme0: chz: nvme_setup_io_queues - before nvme_set_queue_count (nr_io_queues=1)
+[    2.031282] clk: Disabling unused clocks
+[    2.046743] nvme nvme0: chz: nvme_setup_io_queues - after nvme_set_queue_count (result=0, nr_io_queues=1)
+[    2.048264] nvme nvme0: chz: nvme_setup_io_queues - before nvme_setup_io_queues_trylock
+[    2.049299] nvme nvme0: chz: nvme_setup_io_queues - after nvme_setup_io_queues_trylock (result=0)
+[    2.056980] nvme nvme0: chz: nvme_setup_io_queues - before pci_free_irq_vectors
+[    2.058267] nvme nvme0: chz: nvme_setup_io_queues - before nvme_setup_irqs (nr_io_queues=1)
+[    2.059387] nvme nvme0: nvme: requesting IRQs - irq_queues=2 (min=1, max=2)
+[    2.060543] nvme nvme0: nvme: PCI flags before alloc - msix_enabled=0, msi_enabled=0
+[    2.061416] nvme nvme0: nvme: PCI MSI-X capability at offset 0x40
+[    2.062089] nvme nvme0: nvme: PCI MSI capability at offset 0x0
+[    2.062789] nvme nvme0: nvme: MSI domain=ffff000008f6c000, is_hierarchy=1
+[    2.063990] nvme nvme0: nvme: MSI domain flags=0x57
+[    2.064614] nvme nvme0: nvme: MSI domain supports MSI-X=NO
+[    2.065240] nvme nvme0: chz: nvme_setup_irqs - before pci_alloc_irq_vectors_affinity (irq_queues=2)
+[    2.066205] nvme 0000:01:00.0: pci: alloc irq vectors: min=1 max=2 flags=0xf (MSIX=1 MSI=1 LEGACY=1 AFFINITY=1)
+[    2.067312] nvme 0000:01:00.0: MSI-X: enter - minvec=1, maxvec=2, msi_enabled=0, msix_cap=0x40
+[    2.068441] nvme 0000:01:00.0: MSI: domain_supports - feature_mask=0x20000, mode=0, domain=00000000ca92014b
+[    2.069472] nvme 0000:01:00.0: MSI: global domain, flags=0x57
+[    2.070119] nvme 0000:01:00.0: MSI: feature_mask=0x20000, supported=0x57, result=false
+[    2.070953] nvme 0000:01:00.0: MSI-X: domain does not support MSI-X (feature check failed)
+[    2.072010] nvme 0000:01:00.0: pci: MSI-X allocation failed, ret=-524
+[    2.072723] nvme 0000:01:00.0: pci: MSI allocation failed, ret=-22
+[    2.073969] nvme 0000:01:00.0: pci: using legacy INTx, irq=14
+[    2.074630] nvme nvme0: chz: nvme_setup_irqs - after pci_alloc_irq_vectors_affinity (result=1)
+[    2.075771] nvme nvme0: nvme: pci_alloc_irq_vectors_affinity returns 1
+[    2.076545] nvme nvme0: nvme: PCI flags after alloc - msix_enabled=0, msi_enabled=0
+[    2.077487] nvme nvme0: nvme: using legacy INTx for IO queues
+[    2.078200] chz: nvme_debug_msix_address_width - enter!
+[    2.078795] nvme nvme0: chz: nvme_setup_io_queues - after nvme_setup_irqs (result=1)
+[    2.079929] nvme nvme0: nvme: requesting IRQ for q0, vector=0, linux_irq=14
+[    2.080909] nvme nvme0: nvme: IRQ requested successfully for q0 (irq=14), total_requests=2
+[    2.110607] nvme nvme0: nvme: requesting IRQ for q1, vector=0, linux_irq=14
+[    2.112514] nvme nvme0: nvme: IRQ requested successfully for q1 (irq=14), total_requests=1
+[    2.113641] nvme nvme0: 1/0/0 default/read/poll queues
+[    2.114240] nvme nvme0: chz: nvme_probe - after nvme_setup_io_queues (result=0, online_queues=2)
+[    2.114966] nvme nvme0: chz: nvme_probe - checking online_queues > 1 (online_queues=2)
+[    2.116037] nvme nvme0: chz: nvme_probe - allocating IO tag set
+[    2.120617] nvme nvme0: chz: nvme_probe - before nvme_change_ctrl_state to LIVE
+[    2.139009] nvme nvme0: Ignoring bogus Namespace Identifiers
+[    2.243003]  nvme0n1:
+[    2.412364] Freeing unused kernel memory: 448K
+[    2.425024] Run /init as init process
+init.sh
+
+sh: can't access tty; job control turned off
+~ # 

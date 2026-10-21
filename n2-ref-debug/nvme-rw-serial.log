@@ -1,0 +1,60 @@
+spawn socat - UNIX-CONNECT:/tmp/n2ref-verify/serial.sock
+
+
+~ # echo NVME_TEST_START
+echo NVME_TEST_START
+NVME_TEST_START
+~ # ls -l /dev/nvme*
+ls -l /dev/nvme*
+crw-rw----    1 0        0         253,   0 Jan  1 00:00 [1;35m/dev/nvme0[m
+brw-rw----    1 0        0         259,   0 Jan  1 00:00 [1;35m/dev/nvme0n1[m
+crw-rw----    1 0        0         253,   1 Jan  1 00:00 [1;35m/dev/nvme1[m
+brw-rw----    1 0        0         259,   1 Jan  1 00:00 [1;35m/dev/nvme1n1[m
+~ # mkdir -p /tmp; SCRATCH=""; for d in /dev/nvme*n1; do sz=$(cat /sys/block/$(basename $d)/size); if [ "$sz" = "65536" ]; then SCRATCH=$d; fi; done; echo "SCRATCH=$SCRATCH"; if [ -z "$SCRATCH" ]; then echo NO_SCRATCH; else dd if=$SCRATCH of=/dev/null bs=4096 count=16; dd if=/dev/urandom of=/tmp/pat bs=4096 count=16; dd if=/tmp/pat of=$SCRATCH bs=4096 count=16; sync; dd if=$SCRATCH of=/tmp/back bs=4096 count=16; md5sum /tmp/pat /tmp/back; cmp /tmp/pat /tmp/back && echo CMP_OK || echo CMP_FAIL; dd if=/dev/urandom of=/tmp/big bs=65536 count=64; dd if=/tmp/big of=$SCRATCH bs=65536 count=64; sync; dd if=$SCRATCH of=/tmp/bigback bs=65536 count=64; md5sum /tmp/big /tmp/bigback; cmp /tmp/big /tmp/bigback && echo BIG_CMP_OK || echo BIG_CMP_FAIL; dd if=$SCRATCH of=/dev/null bs=65536 count=512; echo FULL_READ_DONE; fi; cat /proc/interrupts | grep -e nvme -e 65 -e 14; echo NVME_TEST_""DONE
+mkdir -p /tmp; SCRATCH=""; for d in /dev/nvme*n1; do sz=$(cat /sys/block/$(b
+asename $d)/size); if [ "$sz" = "65536" ]; then SCRATCH=$d; fi; done; echo "SCRA
+TCH=$SCRATCH"; if [ -z "$SCRATCH" ]; then echo NO_SCRATCH; else dd if=$SCRATCH o
+f=/dev/null bs=4096 count=16; dd if=/dev/urandom of=/tmp/pat bs=4096 count=16; d
+d if=/tmp/pat of=$SCRATCH bs=4096 count=16; sync; dd if=$SCRATCH of=/tmp/back bs
+=4096 count=16; md5sum /tmp/pat /tmp/back; cmp /tmp/pat /tmp/back && echo CMP_OK
+ || echo CMP_FAIL; dd if=/dev/urandom of=/tmp/big bs=65536 count=64; dd if=/tmp/
+big of=$SCRATCH bs=65536 count=64; sync; dd if=$SCRATCH of=/tmp/bigback bs=65536
+ count=64; md5sum /tmp/big /tmp/bigback; cmp /tmp/big /tmp/bigback && echo BIG_C
+MP_OK || echo BIG_CMP_FAIL; dd if=$SCRATCH of=/dev/null bs=65536 count=512; echo
+ FULL_READ_DONE; fi; cat /proc/interrupts | grep -e nvme -e 65 -e 14; echo NVME_
+TEST_""DONE
+SCRATCH=/dev/nvme1n1
+16+0 records in
+16+0 records out
+65536 bytes (64.0KB) copied, 0.064405 seconds, 993.7KB/s
+16+0 records in
+16+0 records out
+65536 bytes (64.0KB) copied, 0.007591 seconds, 8.2MB/s
+16+0 records in
+16+0 records out
+65536 bytes (64.0KB) copied, 0.051941 seconds, 1.2MB/s
+16+0 records in
+16+0 records out
+65536 bytes (64.0KB) copied, 0.022921 seconds, 2.7MB/s
+0eecc3398524dc275cee72c30cd4f27d  /tmp/pat
+0eecc3398524dc275cee72c30cd4f27d  /tmp/back
+CMP_OK
+64+0 records in
+64+0 records out
+4194304 bytes (4.0MB) copied, 0.348356 seconds, 11.5MB/s
+64+0 records in
+64+0 records out
+4194304 bytes (4.0MB) copied, 0.167693 seconds, 23.9MB/s
+64+0 records in
+64+0 records out
+4194304 bytes (4.0MB) copied, 0.141552 seconds, 28.3MB/s
+1c45533bbe803b6c2e6d766137f31dd1  /tmp/big
+1c45533bbe803b6c2e6d766137f31dd1  /tmp/bigback
+BIG_CMP_OK
+512+0 records in
+512+0 records out
+33554432 bytes (32.0MB) copied, 0.742201 seconds, 43.1MB/s
+FULL_READ_DONE
+ 14:        679     GICv3  65 Level     xilinx-pcie, nvme0q0, nvme0q1, nvme1q0, nvme1q1
+NVME_TEST_DONE
+~ # 
